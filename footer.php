@@ -21,7 +21,7 @@
             <div id="copyrights">
                 © <span id="year"><?php echo date('Y'); ?></span>, <a href="<?php bloginfo('url') ?>" class="naked-link"><?php bloginfo('name') ?></a>
             </div>
-            <?php get_template_part('templates/block-socials', null, array(
+            <?php get_template_part('templates/socials', null, array(
                 'classes' => 'btn-3d btn-3d-' .  (get_theme_mod('pt_footer_general_color', false) ? 'primary' : 'secondary'),
             )); ?>
         </div>

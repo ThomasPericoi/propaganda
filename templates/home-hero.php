@@ -19,7 +19,7 @@
                     <?php endif; ?>
                 </div>
             <?php endif; ?>
-            <?php get_template_part('templates/block-socials', null, array(
+            <?php get_template_part('templates/socials', null, array(
                 'classes' => '',
             )); ?>
         </div>
