@@ -79,6 +79,40 @@ function theme_customize_register($wp_customize)
         )
     );
 
+    /* SOCIALS
+    --------------------------------------------------------------- */
+    $wp_customize->add_section('pt_socials', array(
+        'panel' => 'pt_theme_options',
+        'title' => __('Socials', 'propaganda'),
+        'description' => __('Options related to the Social Icons. Leave empty if you don\'t want to display it.', 'propaganda'),
+    ));
+
+    // Shortcut
+    shortcut('pt_socials_behance', '#hp-hero .socials', $wp_customize);
+    shortcut('pt_socials_discord', 'footer .socials', $wp_customize);
+
+    // ------------ General Options ------------
+    custom_heading('pt_socials_heading_content', 'pt_socials', 'General Options', $wp_customize);
+
+    $socials = ["behance", "discord", "dribbble", "facebook", "github", "linkedin", "mail", "medium", "phone", "reddit", "soundcloud", "spotify", "stackOverflow", "twitch", "twitter", "youtube"];
+
+    foreach ($socials as $value) {
+        $wp_customize->add_setting('pt_socials_' . $value, array(
+            'default' => __('', 'propaganda'),
+            'sanitize_callback' => 'pt_sanitize_textarea',
+        ));
+
+        $wp_customize->add_control(
+            'pt_socials_' . $value,
+            array(
+                'type' => 'url',
+                'section' => 'pt_socials',
+                'settings' => 'pt_socials_' . $value,
+                'label' => __(ucfirst($value), 'propaganda'),
+            )
+        );
+    }
+
     /* HEADER
     --------------------------------------------------------------- */
     $wp_customize->add_section('pt_header', array(
@@ -91,7 +125,7 @@ function theme_customize_register($wp_customize)
     shortcut('pt_header_position', 'header .container', $wp_customize);
 
     // ------------ General Options ------------
-    custom_heading('pt_header_heading_general', 'pt_header', 'General Option', $wp_customize);
+    custom_heading('pt_header_heading_general', 'pt_header', 'General Options', $wp_customize);
 
     // Position 
     $wp_customize->add_setting('pt_header_position', array(
@@ -130,7 +164,7 @@ function theme_customize_register($wp_customize)
     ));
 
     // ------------ Logo Options ------------
-    custom_heading('pt_header_heading_logo', 'pt_header', 'Logo Option', $wp_customize);
+    custom_heading('pt_header_heading_logo', 'pt_header', 'Logo Options', $wp_customize);
 
     // Logo Upload
     $wp_customize->add_setting('pt_header_logo', array(
@@ -207,7 +241,7 @@ function theme_customize_register($wp_customize)
     );
 
     // ------------ Menu Options ------------
-    custom_heading('pt_header_heading_menu', 'pt_header', 'Menu Option', $wp_customize);
+    custom_heading('pt_header_heading_menu', 'pt_header', 'Menu Options', $wp_customize);
 
     // Notice
     $wp_customize->add_setting('pt_header_menu', array());
@@ -222,7 +256,7 @@ function theme_customize_register($wp_customize)
     ));
 
     // ------------ Button Options ------------
-    custom_heading('pt_header_heading_button', 'pt_header', 'Button Option', $wp_customize);
+    custom_heading('pt_header_heading_button', 'pt_header', 'Button Options', $wp_customize);
 
     // Button Label
     $wp_customize->add_setting('pt_header_button_label', array(
@@ -287,7 +321,7 @@ function theme_customize_register($wp_customize)
     shortcut('pt_hero_background', '#hp-hero .container', $wp_customize);
 
     // ------------ General Options ------------
-    custom_heading('pt_hero_heading_general', 'pt_hero', 'General Option', $wp_customize);
+    custom_heading('pt_hero_heading_general', 'pt_hero', 'General Options', $wp_customize);
 
     // Background
     $wp_customize->add_setting(
@@ -393,7 +427,7 @@ function theme_customize_register($wp_customize)
     ));
 
     // ------------ Title Options ------------
-    custom_heading('pt_hero_heading_titles', 'pt_hero', 'Titles Option', $wp_customize);
+    custom_heading('pt_hero_heading_titles', 'pt_hero', 'Titles Options', $wp_customize);
 
     // Title
     $wp_customize->add_setting('pt_hero_title', array(
@@ -408,7 +442,7 @@ function theme_customize_register($wp_customize)
             'section' => 'pt_hero',
             'settings' => 'pt_hero_title',
             'label' => __('Title', 'propaganda'),
-            'description' => __('Text for the title h1 of the Hero. &lt;br&gt; are accepted.', 'propaganda'),
+            'description' => __('Text for the title h1 of the Hero. &lt;br&gt;, bold and italic are accepted.', 'propaganda'),
         )
     );
 
@@ -430,7 +464,7 @@ function theme_customize_register($wp_customize)
     );
 
     // ------------ Button Options ------------
-    custom_heading('pt_hero_heading_buttons', 'pt_hero', 'Button Option', $wp_customize);
+    custom_heading('pt_hero_heading_buttons', 'pt_hero', 'Button Options', $wp_customize);
 
     for ($count = 1; $count <= 2; $count++) {
 
@@ -540,7 +574,7 @@ function theme_customize_register($wp_customize)
     shortcut('pt_skills_heading_alignment', '#hp-skills .container', $wp_customize);
 
     // ------------ General Options ------------
-    custom_heading('pt_skills_heading_general', 'pt_skills', 'General Option', $wp_customize);
+    custom_heading('pt_skills_heading_general', 'pt_skills', 'General Options', $wp_customize);
 
     // Color
     $wp_customize->add_setting(
@@ -597,7 +631,7 @@ function theme_customize_register($wp_customize)
     );
 
     // ------------ Headings Options ------------
-    custom_heading('pt_skills_heading_headings', 'pt_skills', 'Headings Option', $wp_customize);
+    custom_heading('pt_skills_heading_headings', 'pt_skills', 'Headings Options', $wp_customize);
 
     // Alignment
     $wp_customize->add_setting(
@@ -657,8 +691,91 @@ function theme_customize_register($wp_customize)
         )
     );
 
+    // ------------ General Options ------------
+    custom_heading('pt_skills_heading_Grid', 'pt_skills', 'Grid Options', $wp_customize);
+
+    // Number Grid Items
+    $wp_customize->add_setting('pt_skills_grid_items', array(
+        'default' => __('8', 'propaganda'),
+        'transport' => 'refresh',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control(
+        'pt_skills_grid_items',
+        array(
+            'type' => 'number',
+            'section' => 'pt_skills',
+            'settings' => 'pt_skills_grid_items',
+            'label' => __('Number of grid items', 'propaganda'),
+            'description' => __('Number of grid items displayed in the grid in the Skills section. Refresh the all page after modifying the value.', 'propaganda'),
+        )
+    );
+
+    $items = get_theme_mod('pt_skills_grid_items', "8");
+
+    for ($count = 1; $count <= $items; $count++) {
+
+        // Separator
+        separator('pt_skills_content_separator_' . $count, 'pt_skills', $wp_customize);
+
+        // Icon
+        $wp_customize->add_setting(
+            'pt_skills_content_' . $count . '_icon',
+            array(
+                'default' => 'origami',
+                'sanitize_callback' => 'pt_sanitize_select'
+            )
+        );
+
+        $wp_customize->add_control(
+            'pt_skills_content_' . $count . '_icon',
+            array(
+                'type' => 'select',
+                'section' => 'pt_skills',
+                'label' => __('Icon ' . $count),
+                'description' => __('Icon of the item ' . $count . ' in the Skills section.'),
+                'choices' => $icons,
+            )
+        );
+
+        // Title
+        $wp_customize->add_setting('pt_skills_content_' . $count . '_title', array(
+            'default' => __('Origami', 'propaganda'),
+            'sanitize_callback' => 'sanitize_text_field',
+        ));
+
+        $wp_customize->add_control(
+            'pt_skills_content_' . $count . '_title',
+            array(
+                'type' => 'text',
+                'section' => 'pt_skills',
+                'settings' => 'pt_skills_content_' . $count . '_title',
+                'label' => __('Title ' . $count, 'propaganda'),
+                'description' => __('Title of the item ' . $count . ' in the Skills section.', 'propaganda'),
+            )
+        );
+
+        // Pill
+        $wp_customize->add_setting('pt_skills_content_' . $count . '_pill', array(
+            'default' => __('', 'propaganda'),
+            'sanitize_callback' => 'sanitize_text_field',
+        ));
+
+        $wp_customize->add_control(
+            'pt_skills_content_' . $count . '_pill',
+            array(
+                'type' => 'text',
+                'section' => 'pt_skills',
+                'settings' => 'pt_skills_content_' . $count . '_pill',
+                'label' => __('Pill label ' . $count, 'propaganda'),
+                'description' => __('Label of the pill of the item ' . $count . ' in the Skills section.', 'propaganda'),
+            )
+        );
+    }
+
     // ------------ Subsection Options ------------
-    custom_heading('pt_skills_heading_subsection', 'pt_skills', 'Subsection Option', $wp_customize);
+    custom_heading('pt_skills_heading_subsection', 'pt_skills', 'Subsection Options', $wp_customize);
 
     // Subtitle
     $wp_customize->add_setting('pt_skills_subsection_subtitle', array(
@@ -677,8 +794,146 @@ function theme_customize_register($wp_customize)
         )
     );
 
+    // List Displayed
+    $wp_customize->add_setting(
+        'pt_skills_subsection_displayed',
+        array(
+            'default' => true,
+            'sanitize_callback' => 'pt_sanitize_checkbox'
+        )
+    );
+
+    $wp_customize->add_control(new PT_Toggle_Basic_Custom_Control(
+        $wp_customize,
+        'pt_skills_subsection_displayed',
+        array(
+            'section' => 'pt_skills',
+            'label' => __('Show the subsection section.', 'propaganda'),
+        )
+    ));
+
     // Separator
     separator('pt_skills_subsection_separator_1', 'pt_skills', $wp_customize);
+
+    // Column 1 - List Items
+    $wp_customize->add_setting('pt_skills_subsection_col_1_grid_items', array(
+        'default' => __('4', 'propaganda'),
+        'transport' => 'refresh',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control(
+        'pt_skills_subsection_col_1_grid_items',
+        array(
+            'type' => 'number',
+            'section' => 'pt_skills',
+            'settings' => 'pt_skills_subsection_col_1_grid_items',
+            'label' => __('Column 1 - Number of list items', 'propaganda'),
+            'description' => __('Number of list items displayed in the subsection of the Skills section. Refresh the all page after modifying the value.', 'propaganda'),
+        )
+    );
+
+    $items = get_theme_mod('pt_skills_subsection_col_1_grid_items', "4");
+
+    for ($count = 1; $count <= $items; $count++) {
+
+        // Column 1 - List Title
+        $wp_customize->add_setting('pt_skills_subsection_col_1_items' . $count . '_list_title', array(
+            'default' => __('IT Languages', 'propaganda'),
+            'sanitize_callback' => 'sanitize_text_field',
+        ));
+
+        $wp_customize->add_control(
+            'pt_skills_subsection_col_1_items' . $count . '_list_title',
+            array(
+                'type' => 'text',
+                'section' => 'pt_skills',
+                'settings' => 'pt_skills_subsection_col_1_items' . $count . '_list_title',
+                'label' => __('Column 1 - List Title ' . $count, 'propaganda'),
+                'description' => __('Title of the list ' . $count . ' in the Skills section.', 'propaganda'),
+            )
+        );
+
+        // Column 1 - List Elements
+        $wp_customize->add_setting('pt_skills_subsection_col_1_items' . $count . '_list_elements', array(
+            'default' => __('<li>HTML</li><li>PHP</li>', 'propaganda'),
+            'sanitize_callback' => 'pt_sanitize_textarea',
+        ));
+
+        $wp_customize->add_control(
+            'pt_skills_subsection_col_1_items' . $count . '_list_elements',
+            array(
+                'type' => 'textarea',
+                'section' => 'pt_skills',
+                'settings' => 'pt_skills_subsection_col_1_items' . $count . '_list_elements',
+                'label' => __('Column 1 - List Elements ' . $count, 'propaganda'),
+                'description' => __('Content for the list of the Skills. &lt;br&gt;, bold and italic are accepted. To make it a list, use &lt;li&gt;.', 'propaganda'),
+            )
+        );
+    }
+
+    // Separator
+    separator('pt_skills_subsection_separator_2', 'pt_skills', $wp_customize);
+
+    // Column 2 - List Items
+    $wp_customize->add_setting('pt_skills_subsection_col_2_grid_items', array(
+        'default' => __('3', 'propaganda'),
+        'transport' => 'refresh',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control(
+        'pt_skills_subsection_col_2_grid_items',
+        array(
+            'type' => 'number',
+            'section' => 'pt_skills',
+            'settings' => 'pt_skills_subsection_col_2_grid_items',
+            'label' => __('Column 2 - Number of list items', 'propaganda'),
+            'description' => __('Number of list items displayed in the subsection of the Skills section. Refresh the all page after modifying the value.', 'propaganda'),
+        )
+    );
+
+    $items = get_theme_mod('pt_skills_subsection_col_2_grid_items', "3");
+
+    for ($count = 1; $count <= $items; $count++) {
+
+        // Column 2 - List Title
+        $wp_customize->add_setting('pt_skills_subsection_col_2_items' . $count . '_list_title', array(
+            'default' => __('IT Languages', 'propaganda'),
+            'sanitize_callback' => 'sanitize_text_field',
+        ));
+
+        $wp_customize->add_control(
+            'pt_skills_subsection_col_2_items' . $count . '_list_title',
+            array(
+                'type' => 'text',
+                'section' => 'pt_skills',
+                'settings' => 'pt_skills_subsection_col_2_items' . $count . '_list_title',
+                'label' => __('Column 2 - List Title ' . $count, 'propaganda'),
+                'description' => __('Title of the list ' . $count . ' in the Skills section.', 'propaganda'),
+            )
+        );
+
+        // Column 2 - List Elements
+        $wp_customize->add_setting('pt_skills_subsection_col_2_items' . $count . '_list_elements', array(
+            'default' => __('<li>HTML</li><li>PHP</li>', 'propaganda'),
+            'sanitize_callback' => 'pt_sanitize_textarea',
+        ));
+
+        $wp_customize->add_control(
+            'pt_skills_subsection_col_2_items' . $count . '_list_elements',
+            array(
+                'type' => 'textarea',
+                'section' => 'pt_skills',
+                'settings' => 'pt_skills_subsection_col_2_items' . $count . '_list_elements',
+                'label' => __('Column 2 - List Elements ' . $count, 'propaganda'),
+                'description' => __('Content for the list of the Skills. &lt;br&gt;, bold and italic are accepted. To make it a list, use &lt;li&gt;.', 'propaganda'),
+            )
+        );
+    }
+
+    // Separator
+    separator('pt_skills_subsection_separator_3', 'pt_skills', $wp_customize);
 
     // Skills Form Displayed
     $wp_customize->add_setting(
@@ -727,7 +982,7 @@ function theme_customize_register($wp_customize)
     shortcut('pt_informations_heading_alignment', '#hp-informations .container', $wp_customize);
 
     // ------------ General Options ------------
-    custom_heading('pt_informations_heading_general', 'pt_informations', 'General Option', $wp_customize);
+    custom_heading('pt_informations_heading_general', 'pt_informations', 'General Options', $wp_customize);
 
     // Block Color
     $wp_customize->add_setting(
@@ -768,7 +1023,7 @@ function theme_customize_register($wp_customize)
     ));
 
     // ------------ Headings Options ------------
-    custom_heading('pt_informations_heading_headings', 'pt_informations', 'Headings Option', $wp_customize);
+    custom_heading('pt_informations_heading_headings', 'pt_informations', 'Headings Options', $wp_customize);
 
     // Alignment
     $wp_customize->add_setting(
@@ -829,7 +1084,7 @@ function theme_customize_register($wp_customize)
     );
 
     // ------------ Content Options ------------
-    custom_heading('pt_informations_heading_content', 'pt_informations', 'Content Option', $wp_customize);
+    custom_heading('pt_informations_heading_content', 'pt_informations', 'Content Options', $wp_customize);
 
     // Profile Picture
     $wp_customize->add_setting('pt_informations_profile_picture', array(
@@ -885,35 +1140,182 @@ function theme_customize_register($wp_customize)
             'section' => 'pt_informations',
             'settings' => 'pt_informations_description',
             'label' => __('Description', 'propaganda'),
-            'description' => __('Text for the description in the Informations section. &lt;br&gt; are accepted.', 'propaganda'),
+            'description' => __('Text for the description in the Informations section. &lt;br&gt;, bold and italic are accepted.', 'propaganda'),
         )
     );
 
     // Separator
     separator('pt_informations_content_separator_2', 'pt_informations', $wp_customize);
 
-    for ($count = 1; $count <= 2; $count++) {
+    // List Displayed
+    $wp_customize->add_setting(
+        'pt_informations_lists_displayed',
+        array(
+            'default' => false,
+            'sanitize_callback' => 'pt_sanitize_checkbox'
+        )
+    );
 
-        // Title
-        $wp_customize->add_setting('pt_informations_col_' . $count . '_title', array(
-            'default' => __('What a title!', 'propaganda'),
-            'sanitize_callback' => 'sanitize_text_field',
+    $wp_customize->add_control(new PT_Toggle_Basic_Custom_Control(
+        $wp_customize,
+        'pt_informations_lists_displayed',
+        array(
+            'section' => 'pt_informations',
+            'label' => __('Show the list section.', 'propaganda'),
+        )
+    ));
+
+    // Separator
+    separator('pt_informations_content_separator_3', 'pt_informations', $wp_customize);
+
+
+    // Column 1 - Title
+    $wp_customize->add_setting('pt_informations_col_1_title', array(
+        'default' => __('What a title!', 'propaganda'),
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control(
+        'pt_informations_col_1_title',
+        array(
+            'type' => 'text',
+            'section' => 'pt_informations',
+            'settings' => 'pt_informations_col_1_title',
+            'label' => __('Column 1 - Title', 'propaganda'),
+            'description' => __('Text for the title of the column 1 in the Informations section.', 'propaganda'),
+        )
+    );
+
+    // Column 1 - List Items
+    $wp_customize->add_setting('pt_informations_col_1_grid_item', array(
+        'default' => __('1', 'propaganda'),
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control(
+        'pt_informations_col_1_grid_item',
+        array(
+            'type' => 'number',
+            'section' => 'pt_informations',
+            'settings' => 'pt_informations_col_1_grid_item',
+            'label' => __('Column 1 - Number of list items', 'propaganda'),
+            'description' => __('Number of list items displayed in the 1st list in the Informations section. Refresh the all page after modifying the value.', 'propaganda'),
+        )
+    );
+
+    $items = get_theme_mod('pt_informations_col_1_grid_item', "1");
+
+    for ($count = 1; $count <= $items; $count++) {
+
+        // Text
+        $wp_customize->add_setting('pt_informations_col_1_content_' . $count . '_text', array(
+            'default' => __('<b>1931 - 1934 | Master Degree</b> King\'s College of Cambridge', 'propaganda'),
+            'sanitize_callback' => 'pt_sanitize_textarea',
         ));
 
         $wp_customize->add_control(
-            'pt_informations_col_' . $count . '_title',
+            'pt_informations_col_1_content_' . $count . '_text',
             array(
-                'type' => 'text',
+                'type' => 'textarea',
                 'section' => 'pt_informations',
-                'settings' => 'pt_informations_col_' . $count . '_title',
-                'label' => __('Column ' . $count . ' - Title', 'propaganda'),
-                'description' => __('Text for the title of the column ' . $count . ' in the Informations section.', 'propaganda'),
+                'settings' => 'pt_informations_col_1_content_' . $count . '_text',
+                'label' => __('Column 1 - Text ' . $count, 'propaganda'),
+                'description' => __('Text for the list element ' . $count . ' in the Informations section. &lt;br&gt;, bold and italic are accepted.', 'propaganda'),
             )
         );
-        if ($count != 2) {
-            // Separator
-            separator('pt_informations_content_separator_3', 'pt_informations', $wp_customize);
-        }
+
+        // Link
+        $wp_customize->add_setting('pt_informations_col_1_content_' . $count . '_link', array(
+            'default' => __('', 'propaganda'),
+            'sanitize_callback' => 'pt_sanitize_url',
+        ));
+
+        $wp_customize->add_control(
+            'pt_informations_col_1_content_' . $count . '_link',
+            array(
+                'type' => 'url',
+                'section' => 'pt_informations',
+                'settings' => 'pt_informations_col_1_content_' . $count . '_link',
+                'label' => __('Column 1 - Link ' . $count, 'propaganda'),
+                'description' => __('Link for the list element ' . $count . ' in the Informations section.', 'propaganda'),
+            )
+        );
+    }
+
+    // Separator
+    separator('pt_informations_content_separator_4', 'pt_informations', $wp_customize);
+
+    // Column 2 - Title
+    $wp_customize->add_setting('pt_informations_col_2_title', array(
+        'default' => __('What a title!', 'propaganda'),
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control(
+        'pt_informations_col_2_title',
+        array(
+            'type' => 'text',
+            'section' => 'pt_informations',
+            'settings' => 'pt_informations_col_2_title',
+            'label' => __('Column 2 - Title', 'propaganda'),
+            'description' => __('Text for the title of the column 2 in the Informations section.', 'propaganda'),
+        )
+    );
+
+    // Column 1 - List Items
+    $wp_customize->add_setting('pt_informations_col_2_grid_item', array(
+        'default' => __('1', 'propaganda'),
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control(
+        'pt_informations_col_2_grid_item',
+        array(
+            'type' => 'number',
+            'section' => 'pt_informations',
+            'settings' => 'pt_informations_col_2_grid_item',
+            'label' => __('Column 2 - Number of list items', 'propaganda'),
+            'description' => __('Number of list items displayed in the 2nd list in the Informations section. Refresh the all page after modifying the value.', 'propaganda'),
+        )
+    );
+
+    $items = get_theme_mod('pt_informations_col_2_grid_item', "1");
+
+    for ($count = 1; $count <= $items; $count++) {
+
+        // Text
+        $wp_customize->add_setting('pt_informations_col_2_content_' . $count . '_text', array(
+            'default' => __('<b>1931 - 1934 | Master Degree</b> King\'s College of Cambridge', 'propaganda'),
+            'sanitize_callback' => 'pt_sanitize_textarea',
+        ));
+
+        $wp_customize->add_control(
+            'pt_informations_col_2_content_' . $count . '_text',
+            array(
+                'type' => 'textarea',
+                'section' => 'pt_informations',
+                'settings' => 'pt_informations_col_2_content_' . $count . '_text',
+                'label' => __('Column 2 - Text ' . $count, 'propaganda'),
+                'description' => __('Text for the list element ' . $count . ' in the Informations section. &lt;br&gt;, bold and italic are accepted.', 'propaganda'),
+            )
+        );
+
+        // Link
+        $wp_customize->add_setting('pt_informations_col_2_content_' . $count . '_link', array(
+            'default' => __('', 'propaganda'),
+            'sanitize_callback' => 'pt_sanitize_url',
+        ));
+
+        $wp_customize->add_control(
+            'pt_informations_col_2_content_' . $count . '_link',
+            array(
+                'type' => 'url',
+                'section' => 'pt_informations',
+                'settings' => 'pt_informations_col_2_content_' . $count . '_link',
+                'label' => __('Column 2 - Link ' . $count, 'propaganda'),
+                'description' => __('Link for the list element ' . $count . ' in the Informations section.', 'propaganda'),
+            )
+        );
     }
 
     /* HOMEPAGE - BENEFITS SECTION
@@ -928,7 +1330,7 @@ function theme_customize_register($wp_customize)
     shortcut('pt_benefits_heading_alignment', '#hp-benefits .container', $wp_customize);
 
     // ------------ Headings Options ------------
-    custom_heading('pt_benefits_heading_headings', 'pt_benefits', 'Headings Option', $wp_customize);
+    custom_heading('pt_benefits_heading_headings', 'pt_benefits', 'Headings Options', $wp_customize);
 
     // Alignment
     $wp_customize->add_setting(
@@ -1008,7 +1410,7 @@ function theme_customize_register($wp_customize)
     );
 
     // ------------ Content Options ------------
-    custom_heading('pt_benefits_heading_content', 'pt_benefits', 'Content Option', $wp_customize);
+    custom_heading('pt_benefits_heading_content', 'pt_benefits', 'Content Options', $wp_customize);
 
     for ($count = 1; $count <= 4; $count++) {
 
@@ -1084,7 +1486,7 @@ function theme_customize_register($wp_customize)
     shortcut('pt_clients_heading_alignment', '#hp-clients .container', $wp_customize);
 
     // ------------ General Options ------------
-    custom_heading('pt_clients_heading_general', 'pt_clients', 'General Option', $wp_customize);
+    custom_heading('pt_clients_heading_general', 'pt_clients', 'General Options', $wp_customize);
 
     // Color
     $wp_customize->add_setting(
@@ -1105,8 +1507,25 @@ function theme_customize_register($wp_customize)
         )
     ));
 
+    // Displayed Items
+    $wp_customize->add_setting('pt_clients_items', array(
+        'default' => __('12', 'propaganda'),
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control(
+        'pt_clients_items',
+        array(
+            'type' => 'number',
+            'section' => 'pt_clients',
+            'settings' => 'pt_clients_items',
+            'label' => __('Number of items displayed', 'propaganda'),
+            'description' => __('Number of clients that this section will display.', 'propaganda'),
+        )
+    );
+
     // ------------ Headings Options ------------
-    custom_heading('pt_clients_heading_headings', 'pt_clients', 'Headings Option', $wp_customize);
+    custom_heading('pt_clients_heading_headings', 'pt_clients', 'Headings Options', $wp_customize);
 
     // Alignment
     $wp_customize->add_setting(
@@ -1178,7 +1597,7 @@ function theme_customize_register($wp_customize)
     shortcut('pt_testimonials_heading_alignment', '#hp-testimonials .container', $wp_customize);
 
     // ------------ General Options ------------
-    custom_heading('pt_testimonials_heading_general', 'pt_testimonials', 'General Option', $wp_customize);
+    custom_heading('pt_testimonials_heading_general', 'pt_testimonials', 'General Options', $wp_customize);
 
     // Color
     $wp_customize->add_setting(
@@ -1199,8 +1618,25 @@ function theme_customize_register($wp_customize)
         )
     ));
 
+    // Displayed Items
+    $wp_customize->add_setting('pt_testimonials_items', array(
+        'default' => __('7', 'propaganda'),
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control(
+        'pt_testimonials_items',
+        array(
+            'type' => 'number',
+            'section' => 'pt_testimonials',
+            'settings' => 'pt_testimonials_items',
+            'label' => __('Number of items displayed', 'propaganda'),
+            'description' => __('Number of testimonials that this section will display.', 'propaganda'),
+        )
+    );
+
     // ------------ Headings Options ------------
-    custom_heading('pt_testimonials_heading_headings', 'pt_testimonials', 'Headings Option', $wp_customize);
+    custom_heading('pt_testimonials_heading_headings', 'pt_testimonials', 'Headings Options', $wp_customize);
 
     // Alignment
     $wp_customize->add_setting(
@@ -1272,7 +1708,7 @@ function theme_customize_register($wp_customize)
     shortcut('pt_projects_general_color', '#projects-preview', $wp_customize);
 
     // ------------ General Options ------------
-    custom_heading('pt_projects_heading_general', 'pt_projects', 'General Option', $wp_customize);
+    custom_heading('pt_projects_heading_general', 'pt_projects', 'General Options', $wp_customize);
 
     // Color
     $wp_customize->add_setting(
@@ -1328,7 +1764,7 @@ function theme_customize_register($wp_customize)
     );
 
     // ------------ Headings Options ------------
-    custom_heading('pt_projects_heading_headings', 'pt_projects', 'Headings Option', $wp_customize);
+    custom_heading('pt_projects_heading_headings', 'pt_projects', 'Headings Options', $wp_customize);
 
     // Alignment
     $wp_customize->add_setting(
@@ -1400,7 +1836,7 @@ function theme_customize_register($wp_customize)
     shortcut('pt_blog_general_color', '#blog-preview', $wp_customize);
 
     // ------------ General Options ------------
-    custom_heading('pt_blog_heading_general', 'pt_blog', 'General Option', $wp_customize);
+    custom_heading('pt_blog_heading_general', 'pt_blog', 'General Options', $wp_customize);
 
     // Color
     $wp_customize->add_setting(
@@ -1439,7 +1875,7 @@ function theme_customize_register($wp_customize)
     );
 
     // ------------ Headings Options ------------
-    custom_heading('pt_blog_heading_headings', 'pt_blog', 'Headings Option', $wp_customize);
+    custom_heading('pt_blog_heading_headings', 'pt_blog', 'Headings Options', $wp_customize);
 
     // Alignment
     $wp_customize->add_setting(
@@ -1511,7 +1947,7 @@ function theme_customize_register($wp_customize)
     shortcut('pt_contact_heading_headings', '#contact .container', $wp_customize);
 
     // ------------ General Options ------------
-    custom_heading('pt_contact_heading_general', 'pt_contact', 'General Option', $wp_customize);
+    custom_heading('pt_contact_heading_general', 'pt_contact', 'General Options', $wp_customize);
 
     // Background
     $wp_customize->add_setting(
@@ -1553,7 +1989,7 @@ function theme_customize_register($wp_customize)
     ));
 
     // ------------ Headings Options ------------
-    custom_heading('pt_contact_heading_headings', 'pt_contact', 'Headings Option', $wp_customize);
+    custom_heading('pt_contact_heading_headings', 'pt_contact', 'Headings Options', $wp_customize);
 
     // Alignment
     $wp_customize->add_setting(
@@ -1614,7 +2050,7 @@ function theme_customize_register($wp_customize)
     );
 
     // ------------ Content Options ------------
-    custom_heading('pt_contact_heading_content', 'pt_contact', 'Content Option', $wp_customize);
+    custom_heading('pt_contact_heading_content', 'pt_contact', 'Content Options', $wp_customize);
 
     // Description
     $wp_customize->add_setting('pt_contact_description', array(
@@ -1629,7 +2065,7 @@ function theme_customize_register($wp_customize)
             'section' => 'pt_contact',
             'settings' => 'pt_contact_description',
             'label' => __('Description', 'propaganda'),
-            'description' => __('Text for the description in the Contact section. &lt;br&gt; are accepted.', 'propaganda'),
+            'description' => __('Text for the description in the Contact section. &lt;br&gt;, bold and italic are accepted.', 'propaganda'),
         )
     );
 
@@ -1688,7 +2124,7 @@ function theme_customize_register($wp_customize)
     );
 
     // ------------ Contact Options ------------
-    custom_heading('pt_contact_heading_contact', 'pt_contact', 'Contact Option', $wp_customize);
+    custom_heading('pt_contact_heading_contact', 'pt_contact', 'Contact Options', $wp_customize);
 
     // Contact Form Shortcode ID
     $wp_customize->add_setting('pt_contact_cf_shortcode', array(
@@ -1719,7 +2155,7 @@ function theme_customize_register($wp_customize)
     shortcut('pt_marquee_general_color', '#marquee', $wp_customize);
 
     // ------------ General Options ------------
-    custom_heading('pt_marquee_heading_general', 'pt_marquee', 'General Option', $wp_customize);
+    custom_heading('pt_marquee_heading_general', 'pt_marquee', 'General Options', $wp_customize);
 
     // Color
     $wp_customize->add_setting(
@@ -1741,7 +2177,7 @@ function theme_customize_register($wp_customize)
     ));
 
     // ------------ Content Options ------------
-    custom_heading('pt_marquee_heading_content', 'pt_marquee', 'Content Option', $wp_customize);
+    custom_heading('pt_marquee_heading_content', 'pt_marquee', 'Content Options', $wp_customize);
 
     // Content
     $wp_customize->add_setting('pt_marquee_content', array(
@@ -1789,7 +2225,7 @@ function theme_customize_register($wp_customize)
     shortcut('pt_footer_general_color', 'footer .container', $wp_customize);
 
     // ------------ General Options ------------
-    custom_heading('pt_footer_heading_general', 'pt_footer', 'General Option', $wp_customize);
+    custom_heading('pt_footer_heading_general', 'pt_footer', 'General Options', $wp_customize);
 
     // Color
     $wp_customize->add_setting(
@@ -1811,7 +2247,7 @@ function theme_customize_register($wp_customize)
     ));
 
     // ------------ Menu Options ------------
-    custom_heading('pt_footer_heading_menu', 'pt_footer', 'Menu Option', $wp_customize);
+    custom_heading('pt_footer_heading_menu', 'pt_footer', 'Menu Options', $wp_customize);
 
     // Notice
     $wp_customize->add_setting('pt_footer_menu', array());

@@ -19,23 +19,9 @@
                     <?php endif; ?>
                 </div>
             <?php endif; ?>
-            <div class="socials">
-                <a href="mailto:thomaspericoi@gmail.com" class="btn-icon social">
-                    <i class="fas fa-envelope"></i>
-                </a>
-                <a href="tel:+33646258543" class="btn-icon social">
-                    <i class="fas fa-phone"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/thomas-pericoi/" rel="external" target="_blank" class="btn-icon social">
-                    <i class="fab fa-linkedin-in"></i>
-                </a>
-                <a href="https://github.com/ThomasPericoi" rel="external" target="_blank" class="btn-icon social">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://soundcloud.com/le_goupil" rel="external" target="_blank" class="btn-icon social">
-                    <i class="fab fa-soundcloud"></i></i>
-                </a>
-            </div>
+            <?php get_template_part('templates/block-socials', null, array(
+                'classes' => '',
+            )); ?>
         </div>
     </div>
 </section>

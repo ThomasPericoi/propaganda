@@ -17,7 +17,7 @@
                             $url = get_post_meta(get_the_ID(), 'project_url', true);
                             $label = get_post_meta(get_the_ID(), 'project_label', true);
                             $icon = get_post_meta(get_the_ID(), 'project_icon', true); ?>
-                            <a href="<?php echo $url ?>" class="grid-item project">
+                            <a href="<?php the_permalink(); ?>" class="grid-item project">
                                 <div class="icon" data-tooltip="<?php echo $label ?>">
                                     <i class="<?php echo $icon ?>"></i>
                                 </div>
@@ -52,7 +52,7 @@
                 if ($the_query->have_posts()) : ?>
                     <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
                         <div class="post-grid grid-<?php echo get_theme_mod('pt_blog_general_color', false) ? 'primary' : 'secondary'; ?> blog-list">
-                            <a href="/" class="grid-item post naked-link">
+                            <a href="<?php the_permalink(); ?>" class="grid-item post naked-link">
                                 <div class="background" style="background-image: url('<?php echo get_the_post_thumbnail_url() ?>');">
                                 </div>
                                 <div class="info">

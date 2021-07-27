@@ -56,7 +56,7 @@ class PT_Notice_Custom_Control extends WP_Customize_Control
             'code' => array(),
         );
     ?>
-        <div class="simple-notice-custom-control">
+        <div class="pt-simple-notice-custom-control">
             <?php if (!empty($this->label)) { ?>
                 <span class="customize-control-title"><?php echo esc_html($this->label); ?></span>
             <?php } ?>

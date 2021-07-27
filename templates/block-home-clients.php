@@ -6,7 +6,7 @@
             <h3><?php echo get_theme_mod('pt_clients_heading_subtitle', "What a title!") ?></h3>
         </div>
         <?php
-        $the_query = new WP_Query(array('post_type' => 'pt_client', 'posts_per_page' => 12));
+        $the_query = new WP_Query(array('post_type' => 'pt_client', 'posts_per_page' => get_theme_mod('pt_clients_items', "12")));
         if ($the_query->have_posts()) :
         ?>
             <div class="logo-grid grid-<?php echo get_theme_mod('pt_clients_general_color', false) ? 'primary' : 'secondary'; ?> clients-grid">

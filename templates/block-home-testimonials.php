@@ -7,7 +7,7 @@
         </div>
         <div class="swiper-slider testimonials testimonials-<?php echo get_theme_mod('pt_testimonials_general_color', false) ? 'primary' : 'secondary'; ?>">
             <?php
-            $the_query = new WP_Query(array('post_type' => 'pt_testimonial', 'posts_per_page' => 10));
+            $the_query = new WP_Query(array('post_type' => 'pt_testimonial', 'posts_per_page' => get_theme_mod('pt_testimonials_items', "12")));
             if ($the_query->have_posts()) :
             ?>
                 <div class="swiper-wrapper">

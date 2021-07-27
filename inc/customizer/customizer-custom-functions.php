@@ -26,8 +26,20 @@ function pt_sanitize_select($input, $setting)
 function pt_sanitize_textarea($input)
 {
     $allowed_html = array(
+        'b' => array(),
         'br' => array(),
-        'span' => array(),
+        'em' => array(),
+        'i' => array(),
+        'li' => array(
+            'class' => array(),
+        ),
+        'small' => array(
+            'data-tooltip' => array(),
+        ),
+        'span' => array(
+            'class' => array(),
+        ),
+        'strong' => array(),
     );
     return wp_kses($input, $allowed_html);
 }
