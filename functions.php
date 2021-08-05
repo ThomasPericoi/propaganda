@@ -55,12 +55,3 @@ add_theme_support('admin-bar', array('callback' => '__return_false'));
 
 // Add Customizer
 include(get_stylesheet_directory() . '/inc/customizer/customizer.php');
-
-function wpc_theme_support()
-{
-    add_theme_support('custom-logo', array(
-        'flex-height' => true,
-        'flex-width'  => true,
-    ));
-}
-add_action('after_setup_theme', 'wpc_theme_support');

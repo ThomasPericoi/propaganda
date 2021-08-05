@@ -5,6 +5,7 @@ function theme_customize_register($wp_customize)
     require get_template_directory() . '/inc/customizer/customizer-custom-functions.php';
     require get_template_directory() . '/inc/customizer/customizer-custom-controls.php';
 
+
     /* #0 FUNCTIONS
     --------------------------------------------------------------- */
 
@@ -45,6 +46,7 @@ function theme_customize_register($wp_customize)
         ));
     }
 
+
     /* #1 COLORS
     --------------------------------------------------------------- */
 
@@ -68,6 +70,7 @@ function theme_customize_register($wp_customize)
         'label' => 'Secondary Color',
     )));
 
+
     /* #2 THEME OPTIONS
     --------------------------------------------------------------- */
 
@@ -79,11 +82,67 @@ function theme_customize_register($wp_customize)
         )
     );
 
-    /* SOCIALS
+
+    /* GENERAL - PAGE TRANSITION
+    --------------------------------------------------------------- */
+    $wp_customize->add_section('pt_page_transition', array(
+        'panel' => 'pt_theme_options',
+        'title' => __('General - Page Transition', 'propaganda'),
+        'description' => __('Options related to the page transitions on every pages.', 'propaganda'),
+    ));
+
+    // ------------ General Options ------------
+    custom_heading('pt_page_transition_heading_general', 'pt_page_transition', 'General Options', $wp_customize);
+
+    // Enable page transitions
+    $wp_customize->add_setting(
+        'pt_page_transition_enabled',
+        array(
+            'default' => true,
+            'sanitize_callback' => 'pt_sanitize_checkbox'
+        )
+    );
+
+    $wp_customize->add_control(new PT_Toggle_Basic_Custom_Control(
+        $wp_customize,
+        'pt_page_transition_enabled',
+        array(
+            'section' => 'pt_page_transition',
+            'label' => __('Page transition?', 'propaganda'),
+            'description' => __('Enable the page transition between every page changes.'),
+        )
+    ));
+
+    // Color
+    $wp_customize->add_setting(
+        'pt_page_transition_color',
+        array(
+            'default' => 'white',
+            'sanitize_callback' => 'pt_sanitize_radio'
+        )
+    );
+
+    $wp_customize->add_control(
+        'pt_page_transition_color',
+        array(
+            'type' => 'radio',
+            'section' => 'pt_page_transition',
+            'label' => __('Color'),
+            'description' => __('Color of the page transition.'),
+            'choices' => array(
+                'white' => __('White'),
+                'primary' => __('Primary'),
+                'secondary' => __('Secondary')
+            )
+        )
+    );
+
+
+    /* GENERAL - SOCIALS
     --------------------------------------------------------------- */
     $wp_customize->add_section('pt_socials', array(
         'panel' => 'pt_theme_options',
-        'title' => __('Socials', 'propaganda'),
+        'title' => __('General - Socials', 'propaganda'),
         'description' => __('Options related to the Social Icons. Leave empty if you don\'t want to display it.', 'propaganda'),
     ));
 
@@ -113,11 +172,12 @@ function theme_customize_register($wp_customize)
         );
     }
 
-    /* HEADER
+
+    /* GENERAL - HEADER
     --------------------------------------------------------------- */
     $wp_customize->add_section('pt_header', array(
         'panel' => 'pt_theme_options',
-        'title' => __('Header', 'propaganda'),
+        'title' => __('General - Header', 'propaganda'),
         'description' => __('Options related to the Header.', 'propaganda'),
     ));
 
@@ -240,6 +300,7 @@ function theme_customize_register($wp_customize)
         )
     );
 
+
     // ------------ Menu Options ------------
     custom_heading('pt_header_heading_menu', 'pt_header', 'Menu Options', $wp_customize);
 
@@ -308,6 +369,76 @@ function theme_customize_register($wp_customize)
             'description' => __('Yes if the checkbox is checked.', 'propaganda'),
         )
     );
+
+
+    /* GENERAL - FOOTER
+    --------------------------------------------------------------- */
+    $wp_customize->add_section('pt_footer', array(
+        'panel' => 'pt_theme_options',
+        'title' => __('General - Footer', 'propaganda'),
+        'description' => __('Options related to the Footer.', 'propaganda'),
+    ));
+
+    // Shortcut
+    shortcut('pt_footer_general_color', 'footer .container', $wp_customize);
+
+    // ------------ General Options ------------
+    custom_heading('pt_footer_heading_general', 'pt_footer', 'General Options', $wp_customize);
+
+    // Color
+    $wp_customize->add_setting(
+        'pt_footer_general_color',
+        array(
+            'default' => false,
+            'sanitize_callback' => 'pt_sanitize_checkbox'
+        )
+    );
+
+    $wp_customize->add_control(new PT_Toggle_Color_Custom_Control(
+        $wp_customize,
+        'pt_footer_general_color',
+        array(
+            'section' => 'pt_footer',
+            'label' => __('General Color', 'propaganda'),
+            'description' => __('Color for the lists and the social buttons in the Footer.', 'propaganda'),
+        )
+    ));
+
+    // ------------ Menu Options ------------
+    custom_heading('pt_footer_heading_menu', 'pt_footer', 'Menu Options', $wp_customize);
+
+    // Notice
+    $wp_customize->add_setting('pt_footer_menu', array());
+
+    $wp_customize->add_control(new PT_Notice_Custom_Control(
+        $wp_customize,
+        'pt_footer_menu',
+        array(
+            'section' => 'pt_footer',
+            'description' => __('You can change the menus <a href="?autofocus[panel]=nav_menus">here</a>.', 'propaganda'),
+        )
+    ));
+
+    // Title 1 --> 3
+    for ($count = 1; $count <= 3; $count++) {
+
+        $wp_customize->add_setting('pt_footer_title_' . $count, array(
+            'default' => __('What a title!', 'propaganda'),
+            'sanitize_callback' => 'sanitize_text_field',
+        ));
+
+        $wp_customize->add_control(
+            'pt_footer_title_' . $count,
+            array(
+                'type' => 'text',
+                'section' => 'pt_footer',
+                'settings' => 'pt_footer_title_' . $count,
+                'label' => __('Column ' . $count . ' -  Title', 'propaganda'),
+                'description' => __('Title of the column ' . $count . ' in the Footer.', 'propaganda'),
+            )
+        );
+    }
+
 
     /* HOMEPAGE - HERO SECTION
     --------------------------------------------------------------- */
@@ -561,6 +692,7 @@ function theme_customize_register($wp_customize)
             'description' => __('Is the button\'s color "Primary" or "Secondary".', 'propaganda'),
         )
     ));
+
 
     /* HOMEPAGE - SKILLS SECTION
     --------------------------------------------------------------- */
@@ -970,6 +1102,7 @@ function theme_customize_register($wp_customize)
         )
     );
 
+
     /* HOMEPAGE - INFORMATIONS SECTION
     --------------------------------------------------------------- */
     $wp_customize->add_section('pt_informations', array(
@@ -1168,7 +1301,6 @@ function theme_customize_register($wp_customize)
     // Separator
     separator('pt_informations_content_separator_3', 'pt_informations', $wp_customize);
 
-
     // Column 1 - Title
     $wp_customize->add_setting('pt_informations_col_1_title', array(
         'default' => __('What a title!', 'propaganda'),
@@ -1317,6 +1449,7 @@ function theme_customize_register($wp_customize)
             )
         );
     }
+
 
     /* HOMEPAGE - BENEFITS SECTION
     --------------------------------------------------------------- */
@@ -1474,6 +1607,7 @@ function theme_customize_register($wp_customize)
         }
     }
 
+
     /* HOMEPAGE - CLIENTS SECTION
     --------------------------------------------------------------- */
     $wp_customize->add_section('pt_clients', array(
@@ -1502,7 +1636,7 @@ function theme_customize_register($wp_customize)
         'pt_clients_general_color',
         array(
             'section' => 'pt_clients',
-            'label' => __('Heading Color', 'propaganda'),
+            'label' => __('General Color', 'propaganda'),
             'description' => __('Color for the title h2 in the Clients section.', 'propaganda'),
         )
     ));
@@ -1584,6 +1718,7 @@ function theme_customize_register($wp_customize)
             'description' => __('Text for the subtitle h3 in the Clients section.', 'propaganda'),
         )
     );
+
 
     /* HOMEPAGE - TESTIMONIALS SECTION
     --------------------------------------------------------------- */
@@ -1695,6 +1830,7 @@ function theme_customize_register($wp_customize)
             'description' => __('Text for the subtitle h3 in the Testimonials section.', 'propaganda'),
         )
     );
+
 
     /* HOMEPAGE - PROJECTS SECTION
     --------------------------------------------------------------- */
@@ -1824,6 +1960,7 @@ function theme_customize_register($wp_customize)
         )
     );
 
+
     /* HOMEPAGE - BLOG SECTION
     --------------------------------------------------------------- */
     $wp_customize->add_section('pt_blog', array(
@@ -1934,6 +2071,7 @@ function theme_customize_register($wp_customize)
             'description' => __('Text for the subtitle h3 in the Blog section.', 'propaganda'),
         )
     );
+
 
     /* HOMEPAGE - CONTACT SECTION
     --------------------------------------------------------------- */
@@ -2143,6 +2281,7 @@ function theme_customize_register($wp_customize)
         )
     );
 
+
     /* HOMEPAGE - MARQUEE SECTION
     --------------------------------------------------------------- */
     $wp_customize->add_section('pt_marquee', array(
@@ -2213,23 +2352,24 @@ function theme_customize_register($wp_customize)
         )
     );
 
-    /* FOOTER
+
+    /* CONTENT - COMMENTS
     --------------------------------------------------------------- */
-    $wp_customize->add_section('pt_footer', array(
+    $wp_customize->add_section('pt_comments', array(
         'panel' => 'pt_theme_options',
-        'title' => __('Footer', 'propaganda'),
-        'description' => __('Options related to the Footer.', 'propaganda'),
+        'title' => __('Content - Comments', 'propaganda'),
+        'description' => __('Options related to Comments on all the content types.', 'propaganda'),
     ));
 
     // Shortcut
-    shortcut('pt_footer_general_color', 'footer .container', $wp_customize);
+    shortcut('pt_comments_general_color', '.inner-comments', $wp_customize);
 
     // ------------ General Options ------------
-    custom_heading('pt_footer_heading_general', 'pt_footer', 'General Options', $wp_customize);
+    custom_heading('pt_comments_heading_general', 'pt_comments', 'General Options', $wp_customize);
 
-    // Color
+    // General Color
     $wp_customize->add_setting(
-        'pt_footer_general_color',
+        'pt_comments_general_color',
         array(
             'default' => false,
             'sanitize_callback' => 'pt_sanitize_checkbox'
@@ -2238,47 +2378,285 @@ function theme_customize_register($wp_customize)
 
     $wp_customize->add_control(new PT_Toggle_Color_Custom_Control(
         $wp_customize,
-        'pt_footer_general_color',
+        'pt_comments_general_color',
         array(
-            'section' => 'pt_footer',
+            'section' => 'pt_comments',
             'label' => __('General Color', 'propaganda'),
-            'description' => __('Color for the lists and the social buttons in the Footer.', 'propaganda'),
+            'description' => __('Color of the elements in the Comments section.', 'propaganda'),
         )
     ));
 
-    // ------------ Menu Options ------------
-    custom_heading('pt_footer_heading_menu', 'pt_footer', 'Menu Options', $wp_customize);
 
-    // Notice
-    $wp_customize->add_setting('pt_footer_menu', array());
+    /* CONTENT - SINGLE PAGE
+    --------------------------------------------------------------- */
+    $wp_customize->add_section('pt_single_page', array(
+        'panel' => 'pt_theme_options',
+        'title' => __('Content - Single Page', 'propaganda'),
+        'description' => __('Options related to pages.', 'propaganda'),
+    ));
 
-    $wp_customize->add_control(new PT_Notice_Custom_Control(
-        $wp_customize,
-        'pt_footer_menu',
+    // Shortcut
+    shortcut('pt_single_page_background_color', '.page .inner-article', $wp_customize);
+
+    // ------------ Background Options ------------
+    custom_heading('pt_single_page_heading_general', 'pt_single_page', 'General Options', $wp_customize);
+
+    // Background Color
+    $wp_customize->add_setting(
+        'pt_single_page_background_color',
         array(
-            'section' => 'pt_footer',
-            'description' => __('You can change the menus <a href="?autofocus[panel]=nav_menus">here</a>.', 'propaganda'),
+            'default' => true,
+            'sanitize_callback' => 'pt_sanitize_checkbox'
+        )
+    );
+
+    $wp_customize->add_control(new PT_Toggle_Color_Custom_Control(
+        $wp_customize,
+        'pt_single_page_background_color',
+        array(
+            'section' => 'pt_single_page',
+            'label' => __('Background Color', 'propaganda'),
+            'description' => __('Color of the background of pages.', 'propaganda'),
         )
     ));
 
-    // Title 1 --> 3
-    for ($count = 1; $count <= 3; $count++) {
+    // Elements Color
+    $wp_customize->add_setting(
+        'pt_single_page_elements_color',
+        array(
+            'default' => true,
+            'sanitize_callback' => 'pt_sanitize_checkbox'
+        )
+    );
 
-        $wp_customize->add_setting('pt_footer_title_' . $count, array(
-            'default' => __('What a title!', 'propaganda'),
-            'sanitize_callback' => 'sanitize_text_field',
-        ));
+    $wp_customize->add_control(new PT_Toggle_Color_Custom_Control(
+        $wp_customize,
+        'pt_single_page_elements_color',
+        array(
+            'section' => 'pt_single_page',
+            'label' => __('Elements Color', 'propaganda'),
+            'description' => __('Color of all the elements of pages.', 'propaganda'),
+        )
+    ));
 
-        $wp_customize->add_control(
-            'pt_footer_title_' . $count,
-            array(
-                'type' => 'text',
-                'section' => 'pt_footer',
-                'settings' => 'pt_footer_title_' . $count,
-                'label' => __('Column ' . $count . ' -  Title', 'propaganda'),
-                'description' => __('Title of the column ' . $count . ' in the Footer.', 'propaganda'),
-            )
-        );
-    }
+
+    /* CONTENT - SINGLE POST
+    --------------------------------------------------------------- */
+    $wp_customize->add_section('pt_single_post', array(
+        'panel' => 'pt_theme_options',
+        'title' => __('Content - Single Post', 'propaganda'),
+        'description' => __('Options related to post articles.', 'propaganda'),
+    ));
+
+    // Shortcut
+    shortcut('pt_single_post_background_color', '.single-post .inner-article', $wp_customize);
+
+    // ------------ Background Options ------------
+    custom_heading('pt_single_post_heading_general', 'pt_single_post', 'General Options', $wp_customize);
+
+    // Background Color
+    $wp_customize->add_setting(
+        'pt_single_post_background_color',
+        array(
+            'default' => false,
+            'sanitize_callback' => 'pt_sanitize_checkbox'
+        )
+    );
+
+    $wp_customize->add_control(new PT_Toggle_Color_Custom_Control(
+        $wp_customize,
+        'pt_single_post_background_color',
+        array(
+            'section' => 'pt_single_post',
+            'label' => __('Background Color', 'propaganda'),
+            'description' => __('Color of the background of post articles.', 'propaganda'),
+        )
+    ));
+
+    // Elements Color
+    $wp_customize->add_setting(
+        'pt_single_post_elements_color',
+        array(
+            'default' => true,
+            'sanitize_callback' => 'pt_sanitize_checkbox'
+        )
+    );
+
+    $wp_customize->add_control(new PT_Toggle_Color_Custom_Control(
+        $wp_customize,
+        'pt_single_post_elements_color',
+        array(
+            'section' => 'pt_single_post',
+            'label' => __('Elements Color', 'propaganda'),
+            'description' => __('Color of all the elements of post articles, such as buttons or some titles.', 'propaganda'),
+        )
+    ));
+
+    // ------------ CTA Options ------------
+    custom_heading('pt_single_post_heading_cta', 'pt_single_post', 'CTA Section Options', $wp_customize);
+
+    // Title
+    $wp_customize->add_setting('pt_single_post_cta_title', array(
+        'default' => __('Check this out!', 'propaganda'),
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control(
+        'pt_single_post_cta_title',
+        array(
+            'type' => 'text',
+            'section' => 'pt_single_post',
+            'settings' => 'pt_single_post_cta_title',
+            'label' => __('Title', 'propaganda'),
+            'description' => __('Text for the title h3 of the CTA section in post articles.', 'propaganda'),
+        )
+    );
+
+    // Separator
+    separator('pt_single_post_cta_separator', 'pt_single_post', $wp_customize);
+
+    // Button Label
+    $wp_customize->add_setting('pt_single_post_button_label', array(
+        'default' => __('I lead somewhere', 'propaganda'),
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control(
+        'pt_single_post_button_label',
+        array(
+            'type' => 'text',
+            'section' => 'pt_single_post',
+            'settings' => 'pt_single_post_button_label',
+            'label' => __('Button Label', 'propaganda'),
+            'description' => __('Text for the button of the CTA section in post articles.', 'propaganda'),
+        )
+    );
+
+    // Button Link
+    $wp_customize->add_setting('pt_single_post_button_link', array(
+        'default' => __('#', 'propaganda'),
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control(
+        'pt_single_post_button_link',
+        array(
+            'type' => 'text',
+            'section' => 'pt_single_post',
+            'settings' => 'pt_single_post_button_link',
+            'label' => __('Button Link', 'propaganda'),
+            'description' => __('Link for the button of the CTA section in post articles.', 'propaganda'),
+        )
+    );
+
+    /* 404
+    --------------------------------------------------------------- */
+    $wp_customize->add_section('pt_404', array(
+        'panel' => 'pt_theme_options',
+        'title' => __('404', 'propaganda'),
+        'description' => __('Options related to the 404 page.', 'propaganda'),
+    ));
+
+    // Shortcut
+    shortcut('pt_404_general_color', '.error404 #error-404-hero .container', $wp_customize);
+
+    // ------------ General Options ------------
+    custom_heading('pt_404_heading_general', 'pt_404', 'General Options', $wp_customize);
+
+    // Elements Color
+    $wp_customize->add_setting(
+        'pt_404_general_color',
+        array(
+            'default' => true,
+            'sanitize_callback' => 'pt_sanitize_checkbox'
+        )
+    );
+
+    $wp_customize->add_control(new PT_Toggle_Color_Custom_Control(
+        $wp_customize,
+        'pt_404_general_color',
+        array(
+            'section' => 'pt_404',
+            'label' => __('General Color', 'propaganda'),
+            'description' => __('Color of all the elements of the 404 page.', 'propaganda'),
+        )
+    ));
+
+    // ------------ Content Options ------------
+    custom_heading('pt_404_heading_content', 'pt_404', 'Content Options', $wp_customize);
+
+    // Icon
+    $wp_customize->add_setting(
+        'pt_404_icon',
+        array(
+            'default' => 'anonymous',
+            'sanitize_callback' => 'pt_sanitize_select'
+        )
+    );
+
+    $wp_customize->add_control(
+        'pt_404_icon',
+        array(
+            'type' => 'select',
+            'section' => 'pt_404',
+            'label' => __('Icon'),
+            'description' => __('Icon displayed in the 404 page.'),
+            'choices' => $icons,
+        )
+    );
+
+    // Title
+    $wp_customize->add_setting('pt_404_title', array(
+        'default' => __('404!', 'propaganda'),
+        'sanitize_callback' => 'pt_sanitize_textarea',
+    ));
+
+    $wp_customize->add_control(
+        'pt_404_title',
+        array(
+            'type' => 'textarea',
+            'section' => 'pt_404',
+            'settings' => 'pt_404_title',
+            'label' => __('Title', 'propaganda'),
+            'description' => __('Text for the title h1 of the Hero of the 404 page. &lt;br&gt;, bold and italic are accepted.', 'propaganda'),
+        )
+    );
+
+    // Subtitle
+    $wp_customize->add_setting('pt_404_subtitle', array(
+        'default' => __('You\'re lost...', 'propaganda'),
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control(
+        'pt_404_subtitle',
+        array(
+            'type' => 'text',
+            'section' => 'pt_404',
+            'settings' => 'pt_404_subtitle',
+            'label' => __('Subtitle', 'propaganda'),
+            'description' => __('Text for the subtitle h2 of the Hero of the 404 page.', 'propaganda'),
+        )
+    );
+
+    // Separator
+    separator('pt_404_content_separator', 'pt_404', $wp_customize);
+
+    // Button Label
+    $wp_customize->add_setting('pt_404_button_label', array(
+        'default' => __('I lead to the homepage', 'propaganda'),
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control(
+        'pt_404_button_label',
+        array(
+            'type' => 'text',
+            'section' => 'pt_404',
+            'settings' => 'pt_404_button_label',
+            'label' => __('Button Label', 'propaganda'),
+            'description' => __('Text for the button in the hero of the 404 page.', 'propaganda'),
+        )
+    );
 }
 add_action('customize_register', 'theme_customize_register');

@@ -4,7 +4,7 @@
         <div class="col">
             <!-- Projects -->
             <section id="projects-preview">
-                <div class="heading-wrapper heading-<?php echo get_theme_mod('pt_projects_general_color', false) ? 'primary' : 'secondary'; ?> align-<?php echo get_theme_mod('pt_projects_heading_alignment', 'left') ?>">
+                <div class="heading-wrapper heading-<?php echo $args['color']; ?> align-<?php echo get_theme_mod('pt_projects_heading_alignment', 'left') ?>">
                     <h2><?php echo get_theme_mod('pt_projects_heading_title', "Interesting") ?></h2>
                     <h3><?php echo get_theme_mod('pt_projects_heading_subtitle', "What a title!") ?></h3>
                 </div>
@@ -12,7 +12,7 @@
                 $the_query = new WP_Query(array('post_type' => 'pt_project', 'posts_per_page' => get_theme_mod('pt_projects_items', "5")));
                 if ($the_query->have_posts()) :
                 ?>
-                    <div class="row-grid grid-<?php echo get_theme_mod('pt_projects_general_color', false) ? 'primary' : 'secondary'; ?> projects-list">
+                    <div class="row-grid grid-<?php echo $args['color']; ?> projects-list">
                         <?php while ($the_query->have_posts()) : $the_query->the_post();
                             $url = get_post_meta(get_the_ID(), 'project_url', true);
                             $label = get_post_meta(get_the_ID(), 'project_label', true);
@@ -30,7 +30,7 @@
                         wp_reset_postdata(); ?>
                     </div>
                     <div class="button-wrapper">
-                        <a href="archive-project.html" class="btn btn-<?php echo get_theme_mod('pt_projects_general_color', false) ? 'primary' : 'secondary'; ?>"><?php echo get_theme_mod('pt_projects_button_label', "Show me the rest!") ?></a>
+                        <a href="<?php bloginfo('url') ?>/projects" class="btn btn-<?php echo $args['color']; ?>"><?php echo get_theme_mod('pt_projects_button_label', "Show me the rest!") ?></a>
                     </div>
                 <?php else : ?>
                     <div>
@@ -43,7 +43,7 @@
         <div class="col">
             <!-- Blog -->
             <section id="blog-preview">
-                <div class="heading-wrapper heading-<?php echo get_theme_mod('pt_blog_general_color', false) ? 'primary' : 'secondary'; ?> align-<?php echo get_theme_mod('pt_blog_heading_alignment', 'left') ?>">
+                <div class="heading-wrapper heading-<?php echo $args['color']; ?> align-<?php echo get_theme_mod('pt_blog_heading_alignment', 'left') ?>">
                     <h2><?php echo get_theme_mod('pt_blog_heading_title', "Interesting") ?></h2>
                     <h3><?php echo get_theme_mod('pt_blog_heading_subtitle', "What a title!") ?></h3>
                 </div>
@@ -51,7 +51,7 @@
                 $the_query = new WP_Query(array('posts_per_page' => 1));
                 if ($the_query->have_posts()) : ?>
                     <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
-                        <div class="post-grid grid-<?php echo get_theme_mod('pt_blog_general_color', false) ? 'primary' : 'secondary'; ?> blog-list">
+                        <div class="post-grid grid-<?php echo $args['color']; ?> blog-list">
                             <a href="<?php the_permalink(); ?>" class="grid-item post naked-link">
                                 <div class="background" style="background-image: url('<?php echo get_the_post_thumbnail_url() ?>');">
                                 </div>
@@ -69,7 +69,7 @@
                     <?php endwhile; ?>
                     <?php wp_reset_postdata(); ?>
                     <div class="button-wrapper">
-                        <a href="archive-post.html" class="btn btn-<?php echo get_theme_mod('pt_blog_general_color', false) ? 'primary' : 'secondary'; ?>"><?php echo get_theme_mod('pt_blog_button_label', "Show me the rest!") ?></a>
+                        <a href="archive-post.html" class="btn btn-<?php echo $args['color']; ?>"><?php echo get_theme_mod('pt_blog_button_label', "Show me the rest!") ?></a>
                     </div>
                 <?php else : ?>
                     <p><?php echo __('No news from the world.', 'propaganda'); ?></p>
