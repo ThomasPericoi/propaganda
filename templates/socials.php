@@ -1,3 +1,4 @@
+<!-- Socials -->
 <div class="socials">
     <?php $socials_links = [
         "behance" => "fab fa-behance",

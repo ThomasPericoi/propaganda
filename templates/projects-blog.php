@@ -18,7 +18,7 @@
                             $label = get_post_meta(get_the_ID(), 'project_label', true);
                             $icon = get_post_meta(get_the_ID(), 'project_icon', true); ?>
                             <a href="<?php the_permalink(); ?>" class="grid-item project">
-                                <div class="icon" data-tooltip="<?php echo $label ?>">
+                                <div class="icon" data-tooltip="<?php echo $label; ?>">
                                     <i class="<?php echo $icon ?>"></i>
                                 </div>
                                 <h3 class="h5-size"><?php the_title(); ?></h3>
@@ -50,8 +50,8 @@
                 <?php
                 $the_query = new WP_Query(array('posts_per_page' => 1));
                 if ($the_query->have_posts()) : ?>
-                    <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
-                        <div class="post-grid grid-<?php echo $args['color']; ?> blog-list">
+                    <div class="post-grid grid-<?php echo $args['color']; ?> blog-list">
+                        <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
                             <a href="<?php the_permalink(); ?>" class="grid-item post naked-link">
                                 <div class="background" style="background-image: url('<?php echo get_the_post_thumbnail_url() ?>');">
                                 </div>
@@ -65,11 +65,11 @@
                                     <span class="link">View more</span>
                                 </div>
                             </a>
-                        </div>
-                    <?php endwhile; ?>
+                        <?php endwhile; ?>
+                    </div>
                     <?php wp_reset_postdata(); ?>
                     <div class="button-wrapper">
-                        <a href="archive-post.html" class="btn btn-<?php echo $args['color']; ?>"><?php echo get_theme_mod('pt_blog_button_label', "Show me the rest!") ?></a>
+                        <a href="<?php echo get_post_type_archive_link('post'); ?>" class="btn btn-<?php echo $args['color']; ?>"><?php echo get_theme_mod('pt_blog_button_label', "Show me the rest!") ?></a>
                     </div>
                 <?php else : ?>
                     <p><?php echo __('No news from the world.', 'propaganda'); ?></p>

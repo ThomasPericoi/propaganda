@@ -1,3 +1,4 @@
+<!-- Share -->
 <div class="socials share">
     <span>Share on:</span>
     <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $args['url']; ?>" rel="external" target="_blank" class="btn-icon btn-3d-<?php echo $args['color']; ?> social">

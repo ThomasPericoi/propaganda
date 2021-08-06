@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<article class="background-<?php echo get_theme_mod('pt_single_post_background_color', false) ? 'primary' : 'secondary'; ?>">
+<article class="background-<?php echo get_theme_mod('pt_single_post_background_color', true) ? 'primary' : 'secondary'; ?>">
     <div class="container">
         <div class="inner-article">
             <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
@@ -31,11 +31,13 @@
             comments_template();
         endif;
         ?>
-        <div class="inner-cta">
-            <h3 class="align-center"><?php echo get_theme_mod('pt_single_post_cta_title', "Check this out!") ?></h3>
-            <div class="button-wrapper">
-                <a href="<?php echo get_theme_mod('pt_single_post_button_link', "#") ?>" class="btn btn-<?php echo get_theme_mod('pt_single_post_elements_color', true) ? 'primary' : 'secondary'; ?>"><?php echo get_theme_mod('pt_single_post_button_label', "I lead somewhere") ?></a>
-            </div>
+        <div class="inner-outro">
+            <?php get_template_part('templates/outro', null, array(
+                'title' => get_theme_mod('pt_single_post_outro_title', "Check this out!"),
+                'color' => get_theme_mod('pt_single_post_elements_color', true) ? 'primary' : 'secondary',
+                'btn_link' => get_theme_mod('pt_single_post_button_link', "#"),
+                'btn_label' => get_theme_mod('pt_single_post_button_label', "I lead somewhere"),
+            )); ?>
         </div>
     </div>
 </article>

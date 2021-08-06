@@ -22,8 +22,8 @@
                                 <div class="domains">
                                     <?php
                                     foreach ($domains as $field) { ?>
-                                        <div class="domain" data-tooltip="<?php echo $field['domainLabel'] ?>">
-                                            <i class="<?php echo $field['domainIcon'] ?>"></i>
+                                        <div class="domain" data-tooltip="<?php echo $field['domainLabel']; ?>">
+                                            <i class="<?php echo $field['domainIcon']; ?>"></i>
                                         </div>
                                     <?php
                                     }

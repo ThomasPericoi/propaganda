@@ -1,3 +1,4 @@
+<!-- Page Transition -->
 <svg id="fader" class="background-<?php echo (get_theme_mod('pt_page_transition_color', 'white')); ?>"></svg>
 <script>
     fadeInPage();

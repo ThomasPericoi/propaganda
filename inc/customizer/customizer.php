@@ -440,6 +440,117 @@ function theme_customize_register($wp_customize)
     }
 
 
+    /* GENERAL - 404
+    --------------------------------------------------------------- */
+    $wp_customize->add_section('pt_404', array(
+        'panel' => 'pt_theme_options',
+        'title' => __('General - 404', 'propaganda'),
+        'description' => __('Options related to the 404 page.', 'propaganda'),
+    ));
+
+    // Shortcut
+    shortcut('pt_404_general_color', '.error404 #error-404-hero .container', $wp_customize);
+
+    // ------------ General Options ------------
+    custom_heading('pt_404_heading_general', 'pt_404', 'General Options', $wp_customize);
+
+    // Elements Color
+    $wp_customize->add_setting(
+        'pt_404_general_color',
+        array(
+            'default' => true,
+            'sanitize_callback' => 'pt_sanitize_checkbox'
+        )
+    );
+
+    $wp_customize->add_control(new PT_Toggle_Color_Custom_Control(
+        $wp_customize,
+        'pt_404_general_color',
+        array(
+            'section' => 'pt_404',
+            'label' => __('General Color', 'propaganda'),
+            'description' => __('Color of all the elements of the 404 page.', 'propaganda'),
+        )
+    ));
+
+    // ------------ Content Options ------------
+    custom_heading('pt_404_heading_content', 'pt_404', 'Content Options', $wp_customize);
+
+    // Icon
+    $wp_customize->add_setting(
+        'pt_404_icon',
+        array(
+            'default' => 'anonymous',
+            'sanitize_callback' => 'pt_sanitize_select'
+        )
+    );
+
+    $wp_customize->add_control(
+        'pt_404_icon',
+        array(
+            'type' => 'select',
+            'section' => 'pt_404',
+            'label' => __('Icon'),
+            'description' => __('Icon displayed in the 404 page.'),
+            'choices' => $icons,
+        )
+    );
+
+    // Title
+    $wp_customize->add_setting('pt_404_title', array(
+        'default' => __('404!', 'propaganda'),
+        'sanitize_callback' => 'pt_sanitize_textarea',
+    ));
+
+    $wp_customize->add_control(
+        'pt_404_title',
+        array(
+            'type' => 'textarea',
+            'section' => 'pt_404',
+            'settings' => 'pt_404_title',
+            'label' => __('Title', 'propaganda'),
+            'description' => __('Text for the title h1 of the Hero of the 404 page. &lt;br&gt;, bold and italic are accepted.', 'propaganda'),
+        )
+    );
+
+    // Subtitle
+    $wp_customize->add_setting('pt_404_subtitle', array(
+        'default' => __('You\'re lost...', 'propaganda'),
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control(
+        'pt_404_subtitle',
+        array(
+            'type' => 'text',
+            'section' => 'pt_404',
+            'settings' => 'pt_404_subtitle',
+            'label' => __('Subtitle', 'propaganda'),
+            'description' => __('Text for the subtitle h2 of the Hero of the 404 page.', 'propaganda'),
+        )
+    );
+
+    // Separator
+    separator('pt_404_content_separator', 'pt_404', $wp_customize);
+
+    // Button Label
+    $wp_customize->add_setting('pt_404_button_label', array(
+        'default' => __('I lead to the homepage', 'propaganda'),
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control(
+        'pt_404_button_label',
+        array(
+            'type' => 'text',
+            'section' => 'pt_404',
+            'settings' => 'pt_404_button_label',
+            'label' => __('Button Label', 'propaganda'),
+            'description' => __('Text for the button in the hero of the 404 page.', 'propaganda'),
+        )
+    );
+
+
     /* HOMEPAGE - HERO SECTION
     --------------------------------------------------------------- */
     $wp_customize->add_section('pt_hero', array(
@@ -2387,11 +2498,11 @@ function theme_customize_register($wp_customize)
     ));
 
 
-    /* CONTENT - SINGLE PAGE
+    /* PAGE - SINGLE
     --------------------------------------------------------------- */
     $wp_customize->add_section('pt_single_page', array(
         'panel' => 'pt_theme_options',
-        'title' => __('Content - Single Page', 'propaganda'),
+        'title' => __('Page - Single', 'propaganda'),
         'description' => __('Options related to pages.', 'propaganda'),
     ));
 
@@ -2439,12 +2550,139 @@ function theme_customize_register($wp_customize)
         )
     ));
 
+    /* POST - ARCHIVE
+    --------------------------------------------------------------- */
+    $wp_customize->add_section('pt_archive_post', array(
+        'panel' => 'pt_theme_options',
+        'title' => __('Post - Archive', 'propaganda'),
+        'description' => __('Options related to the Post archive page.', 'propaganda'),
+    ));
 
-    /* CONTENT - SINGLE POST
+    // Shortcut
+    shortcut('pt_archive_post_general_color', '#blog-content .container', $wp_customize);
+
+    // ------------ General Options ------------
+    custom_heading('pt_archive_post_heading_general', 'pt_archive_post', 'General Options', $wp_customize);
+
+    // Elements Color
+    $wp_customize->add_setting(
+        'pt_archive_post_general_color',
+        array(
+            'default' => false,
+            'sanitize_callback' => 'pt_sanitize_checkbox'
+        )
+    );
+
+    $wp_customize->add_control(new PT_Toggle_Color_Custom_Control(
+        $wp_customize,
+        'pt_archive_post_general_color',
+        array(
+            'section' => 'pt_archive_post',
+            'label' => __('General Color', 'propaganda'),
+            'description' => __('Color of all the elements of the Post archive page.', 'propaganda'),
+        )
+    ));
+
+    // ------------ Intro Options ------------
+    custom_heading('pt_archive_post_heading_intro', 'pt_archive_post', 'Intro Options', $wp_customize);
+
+    // Title
+    $wp_customize->add_setting('pt_archive_post_title', array(
+        'default' => __('Blog', 'propaganda'),
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control(
+        'pt_archive_post_title',
+        array(
+            'type' => 'text',
+            'section' => 'pt_archive_post',
+            'settings' => 'pt_archive_post_title',
+            'label' => __('Title', 'propaganda'),
+            'description' => __('Text for the title h1 of the Hero of the Post archive page.', 'propaganda'),
+        )
+    );
+
+    // Subtitle
+    $wp_customize->add_setting('pt_archive_post_subtitle', array(
+        'default' => __('This is where the posts belong.', 'propaganda'),
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control(
+        'pt_archive_post_subtitle',
+        array(
+            'type' => 'text',
+            'section' => 'pt_archive_post',
+            'settings' => 'pt_archive_post_subtitle',
+            'label' => __('Subtitle', 'propaganda'),
+            'description' => __('Text for the subtitle h2 of the Hero of the Post archive page.', 'propaganda'),
+        )
+    );
+
+    // ------------ Outro Options ------------
+    custom_heading('pt_archive_post_heading_outro', 'pt_archive_post', 'Outro Section Options', $wp_customize);
+
+    // Title
+    $wp_customize->add_setting('pt_archive_post_outro_title', array(
+        'default' => __('Check this out!', 'propaganda'),
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control(
+        'pt_archive_post_outro_title',
+        array(
+            'type' => 'text',
+            'section' => 'pt_archive_post',
+            'settings' => 'pt_archive_post_outro_title',
+            'label' => __('Title', 'propaganda'),
+            'description' => __('Text for the title h3 of the Outro section of the Post archive page.', 'propaganda'),
+        )
+    );
+
+    // Separator
+    separator('pt_archive_post_outro_separator', 'pt_archive_post', $wp_customize);
+
+    // Button Label
+    $wp_customize->add_setting('pt_archive_post_button_label', array(
+        'default' => __('I lead somewhere', 'propaganda'),
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control(
+        'pt_archive_post_button_label',
+        array(
+            'type' => 'text',
+            'section' => 'pt_archive_post',
+            'settings' => 'pt_archive_post_button_label',
+            'label' => __('Button Label', 'propaganda'),
+            'description' => __('Text for the button of the Outro section of the Post archive page.', 'propaganda'),
+        )
+    );
+
+    // Button Link
+    $wp_customize->add_setting('pt_archive_post_button_link', array(
+        'default' => __('#', 'propaganda'),
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control(
+        'pt_archive_post_button_link',
+        array(
+            'type' => 'text',
+            'section' => 'pt_archive_post',
+            'settings' => 'pt_archive_post_button_link',
+            'label' => __('Button Link', 'propaganda'),
+            'description' => __('Link for the button of the Outro section of the Post archive page.', 'propaganda'),
+        )
+    );
+
+
+    /* POST - SINGLE
     --------------------------------------------------------------- */
     $wp_customize->add_section('pt_single_post', array(
         'panel' => 'pt_theme_options',
-        'title' => __('Content - Single Post', 'propaganda'),
+        'title' => __('Post - Single', 'propaganda'),
         'description' => __('Options related to post articles.', 'propaganda'),
     ));
 
@@ -2492,23 +2730,23 @@ function theme_customize_register($wp_customize)
         )
     ));
 
-    // ------------ CTA Options ------------
-    custom_heading('pt_single_post_heading_cta', 'pt_single_post', 'CTA Section Options', $wp_customize);
+    // ------------ Outro Options ------------
+    custom_heading('pt_single_post_heading_outro', 'pt_single_post', 'Outro Section Options', $wp_customize);
 
     // Title
-    $wp_customize->add_setting('pt_single_post_cta_title', array(
+    $wp_customize->add_setting('pt_single_post_outro_title', array(
         'default' => __('Check this out!', 'propaganda'),
         'sanitize_callback' => 'sanitize_text_field',
     ));
 
     $wp_customize->add_control(
-        'pt_single_post_cta_title',
+        'pt_single_post_outro_title',
         array(
             'type' => 'text',
             'section' => 'pt_single_post',
-            'settings' => 'pt_single_post_cta_title',
+            'settings' => 'pt_single_post_outro_title',
             'label' => __('Title', 'propaganda'),
-            'description' => __('Text for the title h3 of the CTA section in post articles.', 'propaganda'),
+            'description' => __('Text for the title h3 of the Outro section in post articles.', 'propaganda'),
         )
     );
 
@@ -2528,7 +2766,7 @@ function theme_customize_register($wp_customize)
             'section' => 'pt_single_post',
             'settings' => 'pt_single_post_button_label',
             'label' => __('Button Label', 'propaganda'),
-            'description' => __('Text for the button of the CTA section in post articles.', 'propaganda'),
+            'description' => __('Text for the button of the Outro section in post articles.', 'propaganda'),
         )
     );
 
@@ -2545,27 +2783,28 @@ function theme_customize_register($wp_customize)
             'section' => 'pt_single_post',
             'settings' => 'pt_single_post_button_link',
             'label' => __('Button Link', 'propaganda'),
-            'description' => __('Link for the button of the CTA section in post articles.', 'propaganda'),
+            'description' => __('Link for the button of the Outro section in post articles.', 'propaganda'),
         )
     );
 
-    /* 404
+
+    /* PROJECT - ARCHIVE
     --------------------------------------------------------------- */
-    $wp_customize->add_section('pt_404', array(
+    $wp_customize->add_section('pt_archive_project', array(
         'panel' => 'pt_theme_options',
-        'title' => __('404', 'propaganda'),
-        'description' => __('Options related to the 404 page.', 'propaganda'),
+        'title' => __('Project - Archive', 'propaganda'),
+        'description' => __('Options related to the Project archive page.', 'propaganda'),
     ));
 
     // Shortcut
-    shortcut('pt_404_general_color', '.error404 #error-404-hero .container', $wp_customize);
+    shortcut('pt_archive_project_general_color', '#projects-content .container', $wp_customize);
 
     // ------------ General Options ------------
-    custom_heading('pt_404_heading_general', 'pt_404', 'General Options', $wp_customize);
+    custom_heading('pt_archive_project_heading_general', 'pt_archive_project', 'General Options', $wp_customize);
 
     // Elements Color
     $wp_customize->add_setting(
-        'pt_404_general_color',
+        'pt_archive_project_general_color',
         array(
             'default' => true,
             'sanitize_callback' => 'pt_sanitize_checkbox'
@@ -2574,88 +2813,105 @@ function theme_customize_register($wp_customize)
 
     $wp_customize->add_control(new PT_Toggle_Color_Custom_Control(
         $wp_customize,
-        'pt_404_general_color',
+        'pt_archive_project_general_color',
         array(
-            'section' => 'pt_404',
+            'section' => 'pt_archive_project',
             'label' => __('General Color', 'propaganda'),
-            'description' => __('Color of all the elements of the 404 page.', 'propaganda'),
+            'description' => __('Color of all the elements of the Project archive page.', 'propaganda'),
         )
     ));
 
-    // ------------ Content Options ------------
-    custom_heading('pt_404_heading_content', 'pt_404', 'Content Options', $wp_customize);
-
-    // Icon
-    $wp_customize->add_setting(
-        'pt_404_icon',
-        array(
-            'default' => 'anonymous',
-            'sanitize_callback' => 'pt_sanitize_select'
-        )
-    );
-
-    $wp_customize->add_control(
-        'pt_404_icon',
-        array(
-            'type' => 'select',
-            'section' => 'pt_404',
-            'label' => __('Icon'),
-            'description' => __('Icon displayed in the 404 page.'),
-            'choices' => $icons,
-        )
-    );
+    // ------------ Intro Options ------------
+    custom_heading('pt_archive_project_heading_intro', 'pt_archive_project', 'Intro Options', $wp_customize);
 
     // Title
-    $wp_customize->add_setting('pt_404_title', array(
-        'default' => __('404!', 'propaganda'),
-        'sanitize_callback' => 'pt_sanitize_textarea',
+    $wp_customize->add_setting('pt_archive_project_title', array(
+        'default' => __('Projects', 'propaganda'),
+        'sanitize_callback' => 'sanitize_text_field',
     ));
 
     $wp_customize->add_control(
-        'pt_404_title',
+        'pt_archive_project_title',
         array(
-            'type' => 'textarea',
-            'section' => 'pt_404',
-            'settings' => 'pt_404_title',
+            'type' => 'text',
+            'section' => 'pt_archive_project',
+            'settings' => 'pt_archive_project_title',
             'label' => __('Title', 'propaganda'),
-            'description' => __('Text for the title h1 of the Hero of the 404 page. &lt;br&gt;, bold and italic are accepted.', 'propaganda'),
+            'description' => __('Text for the title h1 of the Hero of the Project archive page.', 'propaganda'),
         )
     );
 
     // Subtitle
-    $wp_customize->add_setting('pt_404_subtitle', array(
-        'default' => __('You\'re lost...', 'propaganda'),
+    $wp_customize->add_setting('pt_archive_project_subtitle', array(
+        'default' => __('My personal projects, finished or not.', 'propaganda'),
         'sanitize_callback' => 'sanitize_text_field',
     ));
 
     $wp_customize->add_control(
-        'pt_404_subtitle',
+        'pt_archive_project_subtitle',
         array(
             'type' => 'text',
-            'section' => 'pt_404',
-            'settings' => 'pt_404_subtitle',
+            'section' => 'pt_archive_project',
+            'settings' => 'pt_archive_project_subtitle',
             'label' => __('Subtitle', 'propaganda'),
-            'description' => __('Text for the subtitle h2 of the Hero of the 404 page.', 'propaganda'),
+            'description' => __('Text for the subtitle h2 of the Hero of the Project archive page.', 'propaganda'),
+        )
+    );
+
+    // ------------ Outro Options ------------
+    custom_heading('pt_archive_project_heading_outro', 'pt_archive_project', 'Outro Section Options', $wp_customize);
+
+    // Title
+    $wp_customize->add_setting('pt_archive_project_outro_title', array(
+        'default' => __('Check this out!', 'propaganda'),
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control(
+        'pt_archive_project_outro_title',
+        array(
+            'type' => 'text',
+            'section' => 'pt_archive_project',
+            'settings' => 'pt_archive_project_outro_title',
+            'label' => __('Title', 'propaganda'),
+            'description' => __('Text for the title h3 of the Outro section of the Project archive page.', 'propaganda'),
         )
     );
 
     // Separator
-    separator('pt_404_content_separator', 'pt_404', $wp_customize);
+    separator('pt_archive_project_outro_separator', 'pt_archive_project', $wp_customize);
 
     // Button Label
-    $wp_customize->add_setting('pt_404_button_label', array(
-        'default' => __('I lead to the homepage', 'propaganda'),
+    $wp_customize->add_setting('pt_archive_project_button_label', array(
+        'default' => __('I lead somewhere', 'propaganda'),
         'sanitize_callback' => 'sanitize_text_field',
     ));
 
     $wp_customize->add_control(
-        'pt_404_button_label',
+        'pt_archive_project_button_label',
         array(
             'type' => 'text',
-            'section' => 'pt_404',
-            'settings' => 'pt_404_button_label',
+            'section' => 'pt_archive_project',
+            'settings' => 'pt_archive_project_button_label',
             'label' => __('Button Label', 'propaganda'),
-            'description' => __('Text for the button in the hero of the 404 page.', 'propaganda'),
+            'description' => __('Text for the button of the Outro section of the Project archive page.', 'propaganda'),
+        )
+    );
+
+    // Button Link
+    $wp_customize->add_setting('pt_archive_project_button_link', array(
+        'default' => __('#', 'propaganda'),
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control(
+        'pt_archive_project_button_link',
+        array(
+            'type' => 'text',
+            'section' => 'pt_archive_project',
+            'settings' => 'pt_archive_project_button_link',
+            'label' => __('Button Link', 'propaganda'),
+            'description' => __('Link for the button of the Outro section of the Project archive page.', 'propaganda'),
         )
     );
 }
