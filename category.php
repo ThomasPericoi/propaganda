@@ -1,14 +1,16 @@
 <?php get_header(); ?>
 
+<?php $cat = get_the_category(); ?>
+
 <?php get_template_part('templates/intro', null, array(
-    'title' => get_theme_mod('pt_archive_post_title', "Blog"),
-    'text' => get_theme_mod('pt_archive_post_subtitle', "This is where the posts belong."),
+    'title' => $cat[0]->cat_name,
+    'text' => $cat[0]->category_description,
 )); ?>
 
 <div id="blog-content">
     <div class="container">
         <?php
-        $the_query = new WP_Query(array('posts_per_page' => -1));
+        $the_query = new WP_Query(array('cat' => $cat[0]->term_id));
         if ($the_query->have_posts()) : ?>
             <div class="post-grid grid-<?php echo get_theme_mod('pt_archive_post_general_color', true) ? 'primary' : 'secondary'; ?> blog-list">
                 <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>

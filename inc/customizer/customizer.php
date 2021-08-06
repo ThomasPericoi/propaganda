@@ -2683,7 +2683,7 @@ function theme_customize_register($wp_customize)
     $wp_customize->add_section('pt_single_post', array(
         'panel' => 'pt_theme_options',
         'title' => __('Post - Single', 'propaganda'),
-        'description' => __('Options related to post articles.', 'propaganda'),
+        'description' => __('Options related to Post articles.', 'propaganda'),
     ));
 
     // Shortcut
@@ -2707,7 +2707,7 @@ function theme_customize_register($wp_customize)
         array(
             'section' => 'pt_single_post',
             'label' => __('Background Color', 'propaganda'),
-            'description' => __('Color of the background of post articles.', 'propaganda'),
+            'description' => __('Color of the background of Post articles.', 'propaganda'),
         )
     ));
 
@@ -2726,7 +2726,7 @@ function theme_customize_register($wp_customize)
         array(
             'section' => 'pt_single_post',
             'label' => __('Elements Color', 'propaganda'),
-            'description' => __('Color of all the elements of post articles, such as buttons or some titles.', 'propaganda'),
+            'description' => __('Color of all the elements of Post articles, such as buttons or some titles.', 'propaganda'),
         )
     ));
 
@@ -2746,7 +2746,7 @@ function theme_customize_register($wp_customize)
             'section' => 'pt_single_post',
             'settings' => 'pt_single_post_outro_title',
             'label' => __('Title', 'propaganda'),
-            'description' => __('Text for the title h3 of the Outro section in post articles.', 'propaganda'),
+            'description' => __('Text for the title h3 of the Outro section in Post articles.', 'propaganda'),
         )
     );
 
@@ -2766,7 +2766,7 @@ function theme_customize_register($wp_customize)
             'section' => 'pt_single_post',
             'settings' => 'pt_single_post_button_label',
             'label' => __('Button Label', 'propaganda'),
-            'description' => __('Text for the button of the Outro section in post articles.', 'propaganda'),
+            'description' => __('Text for the button of the Outro section in Post articles.', 'propaganda'),
         )
     );
 
@@ -2783,7 +2783,7 @@ function theme_customize_register($wp_customize)
             'section' => 'pt_single_post',
             'settings' => 'pt_single_post_button_link',
             'label' => __('Button Link', 'propaganda'),
-            'description' => __('Link for the button of the Outro section in post articles.', 'propaganda'),
+            'description' => __('Link for the button of the Outro section in Post articles.', 'propaganda'),
         )
     );
 
