@@ -19,7 +19,8 @@
 
         for (var i = 0; i < anchors.length; i += 1) {
             if (anchors[i].hostname !== window.location.hostname ||
-                anchors[i].pathname === window.location.pathname) {
+                anchors[i].pathname === window.location.pathname ||
+                anchors[i].target === "_blank") {
                 continue;
             }
             anchors[i].addEventListener('click', function(event) {

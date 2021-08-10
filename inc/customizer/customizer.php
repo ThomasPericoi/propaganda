@@ -2244,7 +2244,7 @@ function theme_customize_register($wp_customize)
     $wp_customize->add_setting(
         'pt_contact_heading_alignment',
         array(
-            'default' => 'left',
+            'default' => 'center',
             'sanitize_callback' => 'pt_sanitize_radio'
         )
     );

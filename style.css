@@ -8,6 +8,7 @@ Requires at least: 5.0
 Version: 1.0
 */
 
+
 /* #Imports
 --------------------------------------------------------------- */
 
@@ -39,6 +40,119 @@ Version: 1.0
         --border-width-classic: 5px;
         --border-width-big: 8px;
     }
+}
+
+
+/* =WordPress Core
+-------------------------------------------------------------- */
+.alignnone {
+    margin: 5px 20px 20px 0;
+}
+
+.aligncenter,
+div.aligncenter {
+    display: block;
+    margin: 5px auto 5px auto;
+}
+
+.alignright {
+    float: right;
+    margin: 5px 0 20px 20px;
+}
+
+.alignleft {
+    float: left;
+    margin: 5px 20px 20px 0;
+}
+
+a img.alignright {
+    float: right;
+    margin: 5px 0 20px 20px;
+}
+
+a img.alignnone {
+    margin: 5px 20px 20px 0;
+}
+
+a img.alignleft {
+    float: left;
+    margin: 5px 20px 20px 0;
+}
+
+a img.aligncenter {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.wp-caption {
+    background: #fff;
+    border: 1px solid #f0f0f0;
+    max-width: 96%;
+    /* Image does not overflow the content area */
+    padding: 5px 3px 10px;
+    text-align: center;
+}
+
+.wp-caption.alignnone {
+    margin: 5px 20px 20px 0;
+}
+
+.wp-caption.alignleft {
+    margin: 5px 20px 20px 0;
+}
+
+.wp-caption.alignright {
+    margin: 5px 0 20px 20px;
+}
+
+.wp-caption img {
+    border: 0 none;
+    height: auto;
+    margin: 0;
+    max-width: 98.5%;
+    padding: 0;
+    width: auto;
+}
+
+.wp-caption p.wp-caption-text {
+    font-size: 11px;
+    line-height: 17px;
+    margin: 0;
+    padding: 0 4px 5px;
+}
+
+/* Text meant only for screen readers. */
+.screen-reader-text {
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute !important;
+    width: 1px;
+    word-wrap: normal !important;
+    /* Many screen reader and browser combinations announce broken words as they would appear visually. */
+}
+
+.screen-reader-text:focus {
+    background-color: #eee;
+    clip: auto !important;
+    clip-path: none;
+    color: #444;
+    display: block;
+    font-size: 1em;
+    height: auto;
+    left: 5px;
+    line-height: normal;
+    padding: 15px 23px 14px;
+    text-decoration: none;
+    top: 5px;
+    width: auto;
+    z-index: 100000;
+    /* Above WP toolbar. */
 }
 
 
@@ -286,7 +400,7 @@ h2,
 
 h3,
 .h3-size {
-    font-size: 21px;
+    font-size: 22px;
 }
 
 @media screen and (min-width: 767px) {
@@ -307,7 +421,7 @@ h3,
 
 h4,
 .h4-size {
-    font-size: 18px;
+    font-size: 20px;
 }
 
 @media screen and (min-width: 767px) {
@@ -405,8 +519,10 @@ a {
     color: var(--secondary);
 }
 
-code {
+pre {
     padding: var(--spacing-inner-small);
+    white-space: pre-wrap;
+    word-wrap: break-word;
     background: #f5f5f5;
     border: var(--border-width-classic) var(--black) solid;
 }
@@ -830,14 +946,16 @@ article {
 /* #Element - List
 --------------------------------------------------------------- */
 
-ul.list li {
+ul.list li,
+article ul li {
     position: relative;
     padding-left: 30px;
     margin: 6px 0;
     line-height: 1.7;
 }
 
-ul.list li:after {
+ul.list li:after,
+article ul li:after {
     content: "";
     width: 10px;
     height: 10px;
@@ -851,20 +969,25 @@ ul.list li:after {
     transition: background-color ease 250ms;
 }
 
-ul.list.list-primary li:after {
+ul.list.list-primary li:after,
+article .inner-primary ul li:after {
     background-color: var(--primary);
 }
 
-ul.list.list-secondary li:after {
+ul.list.list-secondary li:after,
+article .inner-secondary ul li:after {
     background-color: var(--secondary);
 }
 
 @media screen and (min-width: 767px) {
-    ul.list li {
+
+    ul.list li,
+    article ul li {
         padding-left: 35px;
     }
 
-    ul.list li:after {
+    ul.list li:after,
+    article ul li:after {
         width: 10px;
         height: 10px;
         top: 7px;
@@ -873,6 +996,34 @@ ul.list.list-secondary li:after {
 
 ul.list li:hover:after {
     background-color: var(--black);
+}
+
+ol.list,
+article ol {
+    list-style: none;
+    counter-reset: ol-list;
+}
+
+ol.list li,
+article ol li {
+    counter-increment: ol-list;
+}
+
+ol.list li:before,
+article ol li:before {
+    content: counter(ol-list) ". ";
+    font-size: 1.1em;
+    font-weight: 700;
+}
+
+ol.list.list-primary li:before,
+article .inner-primary ol li:before {
+    color: var(--primary);
+}
+
+ol.list.list-secondary li:before,
+article .inner-secondary ol li:before {
+    color: var(--secondary);
 }
 
 
@@ -1317,10 +1468,6 @@ form.form-secondary .btn {
 
 .card-grid .grid-item h4 {
     margin: var(--spacing-inner-small) auto;
-}
-
-.card-grid .grid-item p {
-    font-weight: 600;
 }
 
 
@@ -1900,18 +2047,18 @@ div.outro {
 --------------------------------------------------------------- */
 
 #hp-hero .svg-background {
-    filter: blur(2px) grayscale(0);
+    filter: blur(0) grayscale(0);
     transition: filter ease 350ms;
-}
-
-@media screen and (min-width: 767px) {
-    #hp-hero .svg-background {
-        filter: blur(0) grayscale(0);
-    }
 }
 
 #hp-hero:hover .svg-background {
     filter: blur(2px) grayscale(0.25);
+}
+
+@media screen and (min-color-index:0) and(-webkit-min-device-pixel-ratio:0) {
+    #hp-hero .svg-background {
+        filter: blur(2px) grayscale(0);
+    }
 }
 
 #hp-hero .button-wrapper {
@@ -2176,6 +2323,10 @@ article header .intro {
     border: var(--border-width-classic) var(--black) solid;
 }
 
+.content img.no-border {
+    border: 0;
+}
+
 .content>*:not(:last-child) {
     margin-bottom: calc(var(--spacing-inner-classic));
 }
@@ -2307,7 +2458,8 @@ article.client header .domains-secondary .domain[data-tooltip]:hover i {
 --------------------------------------------------------------- */
 
 article.project header .subject {
-    font-weight: 700;
+    font-weight: 800;
+    font-style: italic;
 }
 
 @media screen and (min-width: 767px) {

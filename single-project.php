@@ -2,7 +2,7 @@
 
 <article class="project background-<?php echo get_theme_mod('pt_single_project_background_color', true) ? 'primary' : 'secondary'; ?>">
     <div class="container">
-        <div class="inner-article">
+        <div class="inner-article inner-<?php echo get_theme_mod('pt_single_project_elements_color', true) ? 'primary' : 'secondary'; ?>">
             <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
                     <?php
                     $url = get_post_meta(get_the_ID(), 'project_url', true);
