@@ -285,7 +285,7 @@ function theme_customize_register($wp_customize)
 
     // Logo HTML
     $wp_customize->add_setting('pt_header_logo_html', array(
-        'default' => __('Alan<span>Turing</span>.com', 'propaganda'),
+        'default' => __('Propaganda <span>Theme</span>', 'propaganda'),
         'sanitize_callback' => 'pt_sanitize_textarea',
     ));
 
@@ -2244,7 +2244,7 @@ function theme_customize_register($wp_customize)
     $wp_customize->add_setting(
         'pt_contact_heading_alignment',
         array(
-            'default' => 'center',
+            'default' => 'left',
             'sanitize_callback' => 'pt_sanitize_radio'
         )
     );
@@ -2683,7 +2683,7 @@ function theme_customize_register($wp_customize)
     $wp_customize->add_section('pt_single_post', array(
         'panel' => 'pt_theme_options',
         'title' => __('Post - Single', 'propaganda'),
-        'description' => __('Options related to Post articles.', 'propaganda'),
+        'description' => __('Options related to Client articles.', 'propaganda'),
     ));
 
     // Shortcut
@@ -2751,7 +2751,7 @@ function theme_customize_register($wp_customize)
     );
 
     // Separator
-    separator('pt_single_post_cta_separator', 'pt_single_post', $wp_customize);
+    separator('pt_single_post_outro_separator', 'pt_single_post', $wp_customize);
 
     // Button Label
     $wp_customize->add_setting('pt_single_post_button_label', array(
@@ -2784,6 +2784,136 @@ function theme_customize_register($wp_customize)
             'settings' => 'pt_single_post_button_link',
             'label' => __('Button Link', 'propaganda'),
             'description' => __('Link for the button of the Outro section in Post articles.', 'propaganda'),
+        )
+    );
+
+
+    /* CLIENT - SINGLE
+    --------------------------------------------------------------- */
+    $wp_customize->add_section('pt_single_client', array(
+        'panel' => 'pt_theme_options',
+        'title' => __('Client - Single', 'propaganda'),
+        'description' => __('Options related to Client pages.', 'propaganda'),
+    ));
+
+    // Shortcut
+    shortcut('pt_single_client_background_color', '.client .inner-article', $wp_customize);
+
+    // ------------ General Options ------------
+    custom_heading('pt_single_client_heading_general', 'pt_single_client', 'General Options', $wp_customize);
+
+    // Background Color
+    $wp_customize->add_setting(
+        'pt_single_client_background_color',
+        array(
+            'default' => false,
+            'sanitize_callback' => 'pt_sanitize_checkbox'
+        )
+    );
+
+    $wp_customize->add_control(new PT_Toggle_Color_Custom_Control(
+        $wp_customize,
+        'pt_single_client_background_color',
+        array(
+            'section' => 'pt_single_client',
+            'label' => __('Background Color', 'propaganda'),
+            'description' => __('Color of the background of Client pages.', 'propaganda'),
+        )
+    ));
+
+    // Elements Color
+    $wp_customize->add_setting(
+        'pt_single_client_elements_color',
+        array(
+            'default' => true,
+            'sanitize_callback' => 'pt_sanitize_checkbox'
+        )
+    );
+
+    $wp_customize->add_control(new PT_Toggle_Color_Custom_Control(
+        $wp_customize,
+        'pt_single_client_elements_color',
+        array(
+            'section' => 'pt_single_client',
+            'label' => __('Elements Color', 'propaganda'),
+            'description' => __('Color of all the elements of Client pages, such as buttons or some titles.', 'propaganda'),
+        )
+    ));
+
+    // ------------ Intro Options ------------
+    custom_heading('pt_single_client_heading_intro', 'pt_single_client', 'Intro Options', $wp_customize);
+
+    // Button Label
+    $wp_customize->add_setting('pt_single_client_intro_button_label', array(
+        'default' => __('See the result', 'propaganda'),
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control(
+        'pt_single_client_intro_button_label',
+        array(
+            'type' => 'text',
+            'section' => 'pt_single_client',
+            'settings' => 'pt_single_client_intro_button_label',
+            'label' => __('Button Label', 'propaganda'),
+            'description' => __('Text for the button of the Intro section in Client pages.', 'propaganda'),
+        )
+    );
+
+    // ------------ Outro Options ------------
+    custom_heading('pt_single_client_heading_outro', 'pt_single_client', 'Outro Section Options', $wp_customize);
+
+    // Title
+    $wp_customize->add_setting('pt_single_client_outro_title', array(
+        'default' => __('Check this out!', 'propaganda'),
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control(
+        'pt_single_client_outro_title',
+        array(
+            'type' => 'text',
+            'section' => 'pt_single_client',
+            'settings' => 'pt_single_client_outro_title',
+            'label' => __('Title', 'propaganda'),
+            'description' => __('Text for the title h3 of the Outro section in Client pages.', 'propaganda'),
+        )
+    );
+
+    // Separator
+    separator('pt_single_client_outro_separator', 'pt_single_client', $wp_customize);
+
+    // Button Label
+    $wp_customize->add_setting('pt_single_client_button_label', array(
+        'default' => __('I lead somewhere', 'propaganda'),
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control(
+        'pt_single_client_button_label',
+        array(
+            'type' => 'text',
+            'section' => 'pt_single_client',
+            'settings' => 'pt_single_client_button_label',
+            'label' => __('Button Label', 'propaganda'),
+            'description' => __('Text for the button of the Outro section in Client pages.', 'propaganda'),
+        )
+    );
+
+    // Button Link
+    $wp_customize->add_setting('pt_single_client_button_link', array(
+        'default' => __('#', 'propaganda'),
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control(
+        'pt_single_client_button_link',
+        array(
+            'type' => 'text',
+            'section' => 'pt_single_client',
+            'settings' => 'pt_single_client_button_link',
+            'label' => __('Button Link', 'propaganda'),
+            'description' => __('Link for the button of the Outro section in Client pages.', 'propaganda'),
         )
     );
 
@@ -2912,6 +3042,136 @@ function theme_customize_register($wp_customize)
             'settings' => 'pt_archive_project_button_link',
             'label' => __('Button Link', 'propaganda'),
             'description' => __('Link for the button of the Outro section of the Project archive page.', 'propaganda'),
+        )
+    );
+
+
+    /* PROJECT - SINGLE
+    --------------------------------------------------------------- */
+    $wp_customize->add_section('pt_single_project', array(
+        'panel' => 'pt_theme_options',
+        'title' => __('Project - Single', 'propaganda'),
+        'description' => __('Options related to Project pages.', 'propaganda'),
+    ));
+
+    // Shortcut
+    shortcut('pt_single_project_background_color', '.project .inner-article', $wp_customize);
+
+    // ------------ General Options ------------
+    custom_heading('pt_single_project_heading_general', 'pt_single_project', 'General Options', $wp_customize);
+
+    // Background Color
+    $wp_customize->add_setting(
+        'pt_single_project_background_color',
+        array(
+            'default' => false,
+            'sanitize_callback' => 'pt_sanitize_checkbox'
+        )
+    );
+
+    $wp_customize->add_control(new PT_Toggle_Color_Custom_Control(
+        $wp_customize,
+        'pt_single_project_background_color',
+        array(
+            'section' => 'pt_single_project',
+            'label' => __('Background Color', 'propaganda'),
+            'description' => __('Color of the background of Project pages.', 'propaganda'),
+        )
+    ));
+
+    // Elements Color
+    $wp_customize->add_setting(
+        'pt_single_project_elements_color',
+        array(
+            'default' => true,
+            'sanitize_callback' => 'pt_sanitize_checkbox'
+        )
+    );
+
+    $wp_customize->add_control(new PT_Toggle_Color_Custom_Control(
+        $wp_customize,
+        'pt_single_project_elements_color',
+        array(
+            'section' => 'pt_single_project',
+            'label' => __('Elements Color', 'propaganda'),
+            'description' => __('Color of all the elements of Project pages, such as buttons or some titles.', 'propaganda'),
+        )
+    ));
+
+    // ------------ Intro Options ------------
+    custom_heading('pt_single_project_heading_intro', 'pt_single_project', 'Intro Options', $wp_customize);
+
+    // Button Label
+    $wp_customize->add_setting('pt_single_project_intro_button_label', array(
+        'default' => __('See the result', 'propaganda'),
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control(
+        'pt_single_project_intro_button_label',
+        array(
+            'type' => 'text',
+            'section' => 'pt_single_project',
+            'settings' => 'pt_single_project_intro_button_label',
+            'label' => __('Button Label', 'propaganda'),
+            'description' => __('Text for the button of the Intro section in Project pages.', 'propaganda'),
+        )
+    );
+
+    // ------------ Outro Options ------------
+    custom_heading('pt_single_project_heading_outro', 'pt_single_project', 'Outro Section Options', $wp_customize);
+
+    // Title
+    $wp_customize->add_setting('pt_single_project_outro_title', array(
+        'default' => __('Check this out!', 'propaganda'),
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control(
+        'pt_single_project_outro_title',
+        array(
+            'type' => 'text',
+            'section' => 'pt_single_project',
+            'settings' => 'pt_single_project_outro_title',
+            'label' => __('Title', 'propaganda'),
+            'description' => __('Text for the title h3 of the Outro section in Project pages.', 'propaganda'),
+        )
+    );
+
+    // Separator
+    separator('pt_single_project_outro_separator', 'pt_single_project', $wp_customize);
+
+    // Button Label
+    $wp_customize->add_setting('pt_single_project_button_label', array(
+        'default' => __('I lead somewhere', 'propaganda'),
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control(
+        'pt_single_project_button_label',
+        array(
+            'type' => 'text',
+            'section' => 'pt_single_project',
+            'settings' => 'pt_single_project_button_label',
+            'label' => __('Button Label', 'propaganda'),
+            'description' => __('Text for the button of the Outro section in Project pages.', 'propaganda'),
+        )
+    );
+
+    // Button Link
+    $wp_customize->add_setting('pt_single_project_button_link', array(
+        'default' => __('#', 'propaganda'),
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control(
+        'pt_single_project_button_link',
+        array(
+            'type' => 'text',
+            'section' => 'pt_single_project',
+            'settings' => 'pt_single_project_button_link',
+            'label' => __('Button Link', 'propaganda'),
+            'description' => __('Link for the button of the Outro section in Project pages.', 'propaganda'),
         )
     );
 }

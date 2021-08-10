@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<article class="background-<?php echo get_theme_mod('pt_single_post_background_color', true) ? 'primary' : 'secondary'; ?>">
+<article class="post background-<?php echo get_theme_mod('pt_single_post_background_color', true) ? 'primary' : 'secondary'; ?>">
     <div class="container">
         <div class="inner-article">
             <?php if (have_posts()) : while (have_posts()) : the_post(); ?>

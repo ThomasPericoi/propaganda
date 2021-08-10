@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <?php get_template_part('templates/hero', null, array(
-    'color' => get_theme_mod('pt_archive_project_general_color', false) ? 'primary' : 'secondary',
+    'color' => get_theme_mod('pt_archive_project_general_color', true) ? 'primary' : 'secondary',
     'title' => get_theme_mod('pt_archive_project_title', "Projects"),
     'subtitle' => get_theme_mod('pt_archive_project_subtitle', "My personal projects, finished or not."),
 )); ?>
@@ -9,11 +9,10 @@
 <div id="projects-content">
     <div class="container">
         <?php
-        $the_query = new WP_Query(array('post_type' => 'pt_project'));
-        if ($the_query->have_posts()) :
+        if (have_posts()) :
         ?>
-            <div class="logo-grid grid-<?php echo get_theme_mod('pt_archive_project_general_color', false) ? 'primary' : 'secondary'; ?> project-grid">
-                <?php while ($the_query->have_posts()) : $the_query->the_post();
+            <div class="logo-grid grid-<?php echo get_theme_mod('pt_archive_project_general_color', true) ? 'primary' : 'secondary'; ?> project-grid">
+                <?php while (have_posts()) : the_post();
                     $url = get_post_meta(get_the_ID(), 'project_url', true);
                     $label = get_post_meta(get_the_ID(), 'project_label', true);
                     $icon = get_post_meta(get_the_ID(), 'project_icon', true); ?>
@@ -50,7 +49,7 @@
         <?php endif; ?>
 
         <?php get_template_part('templates/outro', null, array(
-            'title' => get_theme_mod('pt_archive_project_cta_title', "Check this out!"),
+            'title' => get_theme_mod('pt_archive_project_outro_title', "Check this out!"),
             'color' => get_theme_mod('pt_archive_project_general_color', true) ? 'primary' : 'secondary',
             'btn_link' => get_theme_mod('pt_archive_project_button_link', "#"),
             'btn_label' => get_theme_mod('pt_archive_project_button_label', "I lead somewhere"),

@@ -6,7 +6,7 @@
         'transform-origin' => 'center',
     )); ?>
     <div class="container">
-        <h2 class="subtitle subtitle-<?php echo get_theme_mod('pt_contact_heading_alignment', 'left') ?> subtitle-<?php echo get_theme_mod('pt_contact_general_color', false) ? 'primary' : 'secondary'; ?>"><?php echo get_theme_mod('pt_contact_heading_title', "Interesting") ?></h2>
+        <h2 class="subtitle subtitle-<?php echo get_theme_mod('pt_contact_heading_alignment', 'center') ?> subtitle-<?php echo get_theme_mod('pt_contact_general_color', false) ? 'primary' : 'secondary'; ?>"><?php echo get_theme_mod('pt_contact_heading_title', "Interesting") ?></h2>
         <div class="inner-wrapper">
             <div class="col-2-inner">
                 <div class="col">

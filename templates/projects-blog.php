@@ -9,7 +9,7 @@
                     <h3><?php echo get_theme_mod('pt_projects_heading_subtitle', "What a title!") ?></h3>
                 </div>
                 <?php
-                $the_query = new WP_Query(array('post_type' => 'pt_project', 'posts_per_page' => get_theme_mod('pt_projects_items', "5")));
+                $the_query = new WP_Query(array('post_type' => 'project', 'posts_per_page' => get_theme_mod('pt_projects_items', "5")));
                 if ($the_query->have_posts()) :
                 ?>
                     <div class="row-grid grid-<?php echo $args['color']; ?> projects-list">
@@ -34,7 +34,7 @@
                     </div>
                 <?php else : ?>
                     <div>
-                        <p><?php echo __('No project done apparently', 'propaganda'); ?></p>
+                        <p><?php echo __('No project done apparently.', 'propaganda'); ?></p>
                     </div>
                 <?php endif; ?>
             </section>

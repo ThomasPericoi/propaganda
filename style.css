@@ -1883,7 +1883,7 @@ footer #copyrights {
 /* #Block - Intro
 --------------------------------------------------------------- */
 
-.intro {
+div.intro {
     padding: var(--spacing-between) 0;
 }
 
@@ -1891,7 +1891,7 @@ footer #copyrights {
 /* #Block - Outro
 --------------------------------------------------------------- */
 
-.outro {
+div.outro {
     padding: var(--spacing-between) 0;
 }
 
@@ -1900,8 +1900,14 @@ footer #copyrights {
 --------------------------------------------------------------- */
 
 #hp-hero .svg-background {
-    filter: blur(0) grayscale(0);
+    filter: blur(2px) grayscale(0);
     transition: filter ease 350ms;
+}
+
+@media screen and (min-width: 767px) {
+    #hp-hero .svg-background {
+        filter: blur(0) grayscale(0);
+    }
 }
 
 #hp-hero:hover .svg-background {
@@ -2131,6 +2137,20 @@ article header .featured-image {
     border: var(--border-width-big) var(--black) solid;
 }
 
+article header .featured-image img {
+    width: 100%;
+}
+
+article header .logo {
+    max-width: 400px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+article header .logo img {
+    width: 100%;
+}
+
 article header .socials span {
     display: none;
     text-transform: uppercase;
@@ -2141,6 +2161,11 @@ article header .socials span {
     article header .socials span {
         display: initial;
     }
+}
+
+article header .intro {
+    text-align: center;
+    font-weight: 700;
 }
 
 .content p {
@@ -2222,4 +2247,73 @@ article .inner-comments .comments-login-form input[type="text"] {
 
 article .inner-comments .comments-login-form .btn {
     margin-top: 16px;
+}
+
+
+/* #Single Client
+--------------------------------------------------------------- */
+
+article.client header>*:not(:first-child),
+article.project header>*:not(:first-child) {
+    margin-top: calc(var(--spacing-inner-classic));
+    margin-bottom: 0;
+}
+
+article.client header .domains {
+    margin-bottom: -7px;
+    display: flex;
+    justify-content: center;
+}
+
+@media screen and (min-width: 767px) {
+    article.client header .domains {
+        margin-top: 10px;
+        margin-right: -7px;
+        margin-bottom: 0;
+        justify-content: flex-end;
+    }
+}
+
+article.client header .domains .domain {
+    margin: 0 7px;
+}
+
+article.client header .domains-primary .domain[data-tooltip]:hover i {
+    color: var(--primary);
+}
+
+article.client header .domains-secondary .domain[data-tooltip]:hover i {
+    color: var(--secondary);
+}
+
+@media screen and (min-width: 767px) {
+
+    article.client header .col:nth-child(2),
+    article.project header .col:nth-child(2) {
+        text-align: left;
+    }
+}
+
+
+/* #Archive Project
+--------------------------------------------------------------- */
+
+#projects-content .project-grid {
+    padding-top: var(--spacing-between);
+}
+
+
+/* #Single Project
+--------------------------------------------------------------- */
+
+article.project header .subject {
+    font-weight: 700;
+}
+
+@media screen and (min-width: 767px) {
+    article.project header .subject {
+        max-width: 350px;
+        margin-left: auto;
+        text-align: right;
+    }
 }

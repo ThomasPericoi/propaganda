@@ -19,7 +19,7 @@
         <div class="container">
             <div class="inner-header">
                 <?php if (get_theme_mod('pt_header_logo_is_html', true)) : ?>
-                    <a href="<?php bloginfo('url') ?>" class="sitename h3-size naked-link logo-<?php echo get_theme_mod('pt_header_general_color', false) ? 'primary' : 'secondary'; ?>"><?php echo get_theme_mod('pt_header_logo_html', 'Alan <span>Turing</span>'); ?></a>
+                    <a href="<?php bloginfo('url') ?>" class="sitename h3-size naked-link logo-<?php echo get_theme_mod('pt_header_general_color', false) ? 'primary' : 'secondary'; ?>"><?php echo get_theme_mod('pt_header_logo_html', 'Propaganda <span>Theme</span>'); ?></a>
                 <?php else : ?>
                     <a href="<?php bloginfo('url') ?>"><img class="undraggable" src="<?php echo get_theme_mod('pt_header_logo'); ?>" style="width:<?php echo get_theme_mod('pt_header_logo_width', '200'); ?>px;" alt="<?php bloginfo('name') ?> Logo"></a>
                 <?php endif; ?>
