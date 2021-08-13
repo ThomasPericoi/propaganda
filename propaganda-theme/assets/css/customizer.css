@@ -1,0 +1,178 @@
+:root {
+    --black: #090909;
+    --white: #fffffb;
+    --wordpress-color-hover: #2271b1;
+    --wordpress-background-hover: #3582c4;
+    --customizer-gray: #50575e;
+}
+
+/* #Heading
+--------------------------------------------------------------- */
+
+.pt-heading-custom-control {
+    font-size: 16px;
+    text-align: center;
+    background-color: lightgrey;
+    border: 2px solid var(--customizer-gray);
+}
+
+/* #Alignment Radios
+--------------------------------------------------------------- */
+
+.pt-alignment-custom-control:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.pt-alignment-custom-control .radio-buttons {
+    display: inline-block;
+    border: 2px solid lightgrey;
+}
+
+.pt-alignment-custom-control label {
+    float: left;
+    cursor: pointer;
+}
+
+.pt-alignment-custom-control label>input {
+    display: none;
+}
+
+.pt-alignment-custom-control label span {
+    margin: 0;
+    padding: 5px 20px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.pt-alignment-custom-control label span:hover {
+    color: var(--wordpress-color-hover);
+}
+
+.pt-alignment-custom-control label>input:checked+span {
+    color: var(--white);
+    background-color: var(--wordpress-background-hover);
+}
+
+.pt-alignment-custom-control label>input:checked+span:hover {
+    color: var(--white);
+}
+
+/* #Toggles
+--------------------------------------------------------------- */
+
+.pt-toggle-control .customize-control-title {
+    display: inline-block;
+}
+
+.pt-toggle-control .toggle {
+    position: relative;
+    float: right;
+}
+
+.pt-toggle-control .toggle input[type="checkbox"] {
+    display: none;
+}
+
+.pt-toggle-control .toggle label {
+    padding: 0;
+    margin: 0;
+    display: block;
+    border: 2px solid lightgrey;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.pt-toggle-control .toggle .inner {
+    width: 200%;
+    margin-left: -100%;
+    display: block;
+    transition: margin 0.25s ease-in 0s;
+}
+
+.pt-toggle-control .toggle .inner:before,
+.pt-toggle-control .toggle .inner:after {
+    width: 50%;
+    height: 22px;
+    padding: 0;
+    display: block;
+    float: left;
+    line-height: 22px;
+    font-size: 14px;
+    color: var(--white);
+    box-sizing: border-box;
+}
+
+.pt-toggle-control .toggle .inner:before {
+    padding-left: 8px;
+    color: var(--white);
+    background-color: var(--wordpress-background-hover);
+}
+
+.pt-toggle-control .toggle .inner:after {
+    padding-right: 8px;
+    color: var(--customizer-gray);
+    text-align: right;
+    background-color: var(--white);
+}
+
+.pt-toggle-control .toggle .switch {
+    width: 16px;
+    margin: 3px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    display: block;
+    background-color: var(--white);
+    border: 2px solid lightgrey;
+    border-radius: 20px;
+    transition: all 0.25s ease-in 0s;
+}
+
+.pt-toggle-control input[type="checkbox"]:checked+label .inner {
+    margin-left: 0;
+}
+
+.pt-toggle-control input[type="checkbox"]:checked+label .switch {
+    right: 0px;
+}
+
+/* #Toggle Basic
+--------------------------------------------------------------- */
+
+.pt-toggle-basic-control .toggle {
+    width: 65px;
+}
+
+.pt-toggle-basic-control .toggle .inner:before {
+    content: "ON";
+}
+
+.pt-toggle-basic-control .toggle .inner:after {
+    content: "OFF";
+}
+
+.pt-toggle-basic-control .toggle .switch {
+    right: 39px;
+}
+
+/* #Toggle Colors
+--------------------------------------------------------------- */
+
+.pt-toggle-colors-control .toggle {
+    width: 100px;
+}
+
+.pt-toggle-colors-control .toggle .inner:before {
+    content: "Primary";
+}
+
+.pt-toggle-colors-control .toggle .inner:after {
+    content: "Secondary";
+}
+
+.pt-toggle-colors-control .toggle .switch {
+    right: 74px;
+}
