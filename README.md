@@ -6,7 +6,7 @@ A simple and fast portfolio theme for Wordpress.
 
 ## Installation
 
-In the folder, there is a theme and a plugin. 
+In the folder, there is a theme and a plugin. Make sure that they are both zipped before upload theme to Wordpress.
 They worked together, so be sure to install both of them. The plugin is here to handle the "post types", such as "Client", "Project" and "Testimonial". Why is it in a plugin? In case  you switch theme that this content isn't lost.
 
 The theme can be fully customized via the Customizer.
