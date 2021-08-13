@@ -1,4 +1,4 @@
-![Propaganda Theme Logo](https://github.com/ThomasPericoi/Propaganda/blob/master/propaganda.svg?raw=true)
+![Propaganda Theme Logo](https://raw.githubusercontent.com/ThomasPericoi/Propaganda/main/propaganda.svg)
 
 # propaganda
 
