@@ -1860,30 +1860,22 @@ footer #copyrights {
     display: inline-block;
     font-weight: 800;
     white-space: nowrap;
-    animation: marquee 45s infinite linear;
+    animation: marquee 20s infinite linear;
 }
 
-#marquee:hover {
+@media screen and (min-width: 767px) {
+    #marquee span {
+        animation: marquee 45s infinite linear;
+    }
+}
+
+#marquee:hover span {
     animation-play-state: paused;
 }
 
 @keyframes marquee {
     to {
         transform: translateX(-100%);
-    }
-}
-
-#memphis {
-    animation: round 20s infinite linear;
-}
-
-@keyframes round {
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: translateX(360deg);
     }
 }
 
