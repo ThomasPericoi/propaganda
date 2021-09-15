@@ -370,6 +370,28 @@ function theme_customize_register($wp_customize)
         )
     );
 
+    // Separator
+    separator('pt_header_button_separator', 'pt_header', $wp_customize);
+
+    // Button Animation
+    $wp_customize->add_setting(
+        'pt_header_button_animation',
+        array(
+            'default' => false,
+            'sanitize_callback' => 'pt_sanitize_checkbox'
+        )
+    );
+
+    $wp_customize->add_control(new PT_Toggle_Basic_Custom_Control(
+        $wp_customize,
+        'pt_header_button_animation',
+        array(
+            'section' => 'pt_header',
+            'label' => __('Animate the button?', 'propaganda'),
+            'description' => __('Enable the bounce animation of the button.'),
+        )
+    ));
+
 
     /* GENERAL - FOOTER
     --------------------------------------------------------------- */

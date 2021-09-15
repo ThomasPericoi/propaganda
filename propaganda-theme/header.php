@@ -25,7 +25,7 @@
                 <?php endif; ?>
                 <div id="top-menu">
                     <?php wp_nav_menu(array('theme_location' => 'header-menu', 'depth' => 1)); ?>
-                    <a href="<?php echo get_theme_mod('pt_header_button_link', '#') ?>" class="btn btn-<?php echo get_theme_mod('pt_header_general_color', false) ? 'primary' : 'secondary'; ?>" <?php if (get_theme_mod('pt_header_button_external')) : ?> rel="external" target="_blank" <?php endif; ?>><?php echo get_theme_mod('pt_header_button_label', 'Click me!') ?></a>
+                    <a href="<?php echo get_theme_mod('pt_header_button_link', '#') ?>" class="btn btn-<?php echo get_theme_mod('pt_header_general_color', false) ? 'primary' : 'secondary'; ?> <?php echo get_theme_mod('pt_header_button_animation', false) ? 'bounce' : ''; ?>" <?php if (get_theme_mod('pt_header_button_external')) : ?> rel="external" target="_blank" <?php endif; ?>><?php echo get_theme_mod('pt_header_button_label', 'Click me!') ?></a>
                 </div>
                 <button class="btn btn-<?php echo get_theme_mod('pt_header_general_color', false) ? 'primary' : 'secondary'; ?> clickToReveal">Menu</button>
             </div>
