@@ -6,19 +6,21 @@ $(document).ready(function () {
     // General - Enable ASCII Printer on random
     printAsciiRandom();
 
-    // General - Change page name on blur
-    originalTitle = $(document).find("title").text();
+    // General - Change page name on blur (not on mobile)
+    if (!isMobile()) {
+        originalTitle = $(document).find("title").text();
 
-    $(window).focus(function () {
-        document.title = originalTitle;
-    });
-
-    $(window).blur(function () {
-        document.title = 'Hey, come back!';
-        setTimeout(function () {
+        $(window).focus(function () {
             document.title = originalTitle;
-        }, 3500);
-    });
+        });
+
+        $(window).blur(function () {
+            document.title = 'Hey, come back!';
+            setTimeout(function () {
+                document.title = originalTitle;
+            }, 3500);
+        });
+    }
 
     // Header - Menu
     $("header .clickToReveal").click(function () {
