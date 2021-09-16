@@ -49,6 +49,14 @@ $(document).ready(function () {
         $("#hp-skills .toBeRevealed").slideToggle(250);
     });
 
+    $("#hp-skills .grid-item").click(function () {
+        $("#hp-skills .clickToReveal").hide(250);
+        $("#hp-skills .toBeRevealed").show(250);
+        $('html, body').animate({
+            scrollTop: $("#extra-skills").offset().top
+        }, 250);
+    });
+
     // Testimonials - Slider
     var swiper = new Swiper('.testimonials.swiper-slider', {
         autoHeight: true,

@@ -1775,6 +1775,7 @@ main {
 }
 
 @keyframes bounce {
+
     from,
     90%,
     92%,
@@ -2141,6 +2142,10 @@ div.outro {
 
 /* #Homepage - Skills
 --------------------------------------------------------------- */
+
+#hp-skills .grid-item {
+    cursor: pointer;
+}
 
 #hp-skills .grid-item .icon {
     width: 70px;
