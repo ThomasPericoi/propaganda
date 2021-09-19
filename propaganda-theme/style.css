@@ -945,7 +945,7 @@ article {
 --------------------------------------------------------------- */
 
 ul.list li,
-article ul li {
+article ul li:after:not(.blocks-gallery-item) {
     position: relative;
     padding-left: 30px;
     margin: 6px 0;
@@ -953,7 +953,7 @@ article ul li {
 }
 
 ul.list li:after,
-article ul li:after {
+article ul li:after:after:not(.blocks-gallery-item) {
     content: "";
     width: 10px;
     height: 10px;
@@ -980,12 +980,12 @@ article .inner-secondary ul li:after {
 @media screen and (min-width: 767px) {
 
     ul.list li,
-    article ul li {
+    article ul li:after:not(.blocks-gallery-item) {
         padding-left: 35px;
     }
 
     ul.list li:after,
-    article ul li:after {
+    article ul li:after:after:not(.blocks-gallery-item) {
         width: 10px;
         height: 10px;
         top: 7px;
@@ -2351,7 +2351,7 @@ article header .intro {
     font-weight: 700;
 }
 
-.content p {
+.content p:not([class]) {
     text-align: justify;
 }
 
