@@ -945,20 +945,20 @@ article {
 --------------------------------------------------------------- */
 
 ul.list li,
-article ul li:after:not(.blocks-gallery-item) {
-    position: relative;
+article ul li:not(.blocks-gallery-item) {
+	position: relative;
+	margin: 6px 0;
     padding-left: 30px;
-    margin: 6px 0;
-    line-height: 1.7;
+	line-height: 1.7;
 }
 
 ul.list li:after,
-article ul li:after:after:not(.blocks-gallery-item) {
+article ul li:not(.blocks-gallery-item):after {
     content: "";
     width: 10px;
     height: 10px;
     position: absolute;
-    top: 4px;
+    top: 6px;
     left: 0;
     display: block;
     border: var(--border-width-classic) var(--black) solid;
@@ -978,14 +978,13 @@ article .inner-secondary ul li:after {
 }
 
 @media screen and (min-width: 767px) {
-
     ul.list li,
-    article ul li:after:not(.blocks-gallery-item) {
+    article ul li:not(.blocks-gallery-item) {
         padding-left: 35px;
     }
 
     ul.list li:after,
-    article ul li:after:after:not(.blocks-gallery-item) {
+    article ul li:not(.blocks-gallery-item):after {
         width: 10px;
         height: 10px;
         top: 7px;
@@ -1119,6 +1118,7 @@ main section:not(.toggleActivated) .clickToReveal {
     font-family: var(--serif);
     font-weight: 700;
     line-height: 1.6;
+    color: var(--black);
     background: none;
     cursor: pointer;
     overflow: hidden;
