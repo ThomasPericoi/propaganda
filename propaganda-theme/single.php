@@ -39,6 +39,27 @@
                 'btn_label' => get_theme_mod('pt_single_post_button_label', "I lead somewhere"),
             )); ?>
         </div>
+        <?php
+        $related = get_posts(array(
+            'category__in' => wp_get_post_categories($post->ID),
+            'numberposts' => 3,
+            'post__not_in' => array($post->ID)
+        ));
+        if ($related) : ?>
+            <div class="inner-related">
+                <h2 class="related-title">
+                    <?php echo __('Related Posts', 'propaganda'); ?>
+                </h2>
+                <div class="post-grid grid-<?php echo get_theme_mod('pt_single_post_elements_color', true) ? 'primary' : 'secondary'; ?> blog-list">
+                    <?php
+                    foreach ($related as $post) {
+                        setup_postdata($post); ?>
+                        <?php get_template_part('templates/post-single', null, array()); ?>
+                    <?php }
+                    wp_reset_postdata(); ?>
+                </div>
+            </div>
+        <?php endif; ?>
     </div>
 </article>
 
