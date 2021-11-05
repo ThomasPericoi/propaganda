@@ -946,10 +946,10 @@ article {
 
 ul.list li,
 article ul li:not(.blocks-gallery-item) {
-	position: relative;
-	margin: 6px 0;
+    position: relative;
+    margin: 6px 0;
     padding-left: 30px;
-	line-height: 1.7;
+    line-height: 1.7;
 }
 
 ul.list li:after,
@@ -978,6 +978,7 @@ article .inner-secondary ul li:after {
 }
 
 @media screen and (min-width: 767px) {
+
     ul.list li,
     article ul li:not(.blocks-gallery-item) {
         padding-left: 35px;
@@ -1675,8 +1676,8 @@ form.form-secondary .btn {
 }
 
 #top-menu .menu {
-    display: flex;
     margin: 0 45px;
+    display: flex;
 }
 
 @media screen and (max-width: 1200px) {
@@ -2074,6 +2075,48 @@ div.outro {
     padding: var(--spacing-between) 0;
 }
 
+
+/* #Block - Categories Menu
+--------------------------------------------------------------- */
+
+.categories .container {
+    padding-bottom: var(--spacing-between);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+@media screen and (min-width: 767px) {
+    .categories .container {
+        flex-direction: row;
+    }
+}
+
+.categories .container .menu-item {
+    margin: 0 15px;
+    padding: var(--spacing-inner-small) 0;
+    position: relative;
+    color: var(--black);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.categories .container .menu-item:after {
+    content: "";
+    width: 100%;
+    height: var(--border-width-classic);
+    display: block;
+    background-color: var(--black);
+    transition: transform 250ms ease-in-out;
+    transform: scaleX(0);
+    transform-origin: 100% 50%;
+}
+
+.categories .container .menu-item:hover:after {
+    transform: scaleX(1);
+    transform-origin: 0 50%;
+}
 
 /* #Homepage - Hero
 --------------------------------------------------------------- */

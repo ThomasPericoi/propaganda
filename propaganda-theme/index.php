@@ -5,6 +5,20 @@
     'text' => get_theme_mod('pt_archive_post_subtitle', "This is where the posts belong."),
 )); ?>
 
+<div class="categories">
+    <div class="container">
+        <?php
+        $categories = get_categories(array(
+            'orderby' => 'name',
+            'order'   => 'ASC'
+        ));
+        foreach ($categories as $category) {
+            echo '<a class="menu-item" href="' . get_category_link($category->term_id) . '">' . $category->name . '</a>';
+        }
+        ?>
+    </div>
+</div>
+
 <div id="blog-content">
     <div class="container">
         <?php
