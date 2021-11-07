@@ -2809,6 +2809,48 @@ function theme_customize_register($wp_customize)
         )
     );
 
+    // ------------ Related Posts Options ------------
+    custom_heading('pt_single_post_heading_related', 'pt_single_post', 'Related Posts Options', $wp_customize);
+
+    // Enable Related Posts
+    $wp_customize->add_setting(
+        'pt_single_post_related',
+        array(
+            'default' => true,
+            'sanitize_callback' => 'pt_sanitize_checkbox'
+        )
+    );
+
+    $wp_customize->add_control(new PT_Toggle_Basic_Custom_Control(
+        $wp_customize,
+        'pt_single_post_related',
+        array(
+            'section' => 'pt_single_post',
+            'label' => __('Related Posts?', 'propaganda'),
+            'description' => __('Display the related posts in Post articles.'),
+        )
+    ));
+
+    // Separator
+    separator('pt_single_post_related_separator', 'pt_single_post', $wp_customize);
+
+    // Title
+    $wp_customize->add_setting('pt_single_post_related_title', array(
+        'default' => __('Related Posts', 'propaganda'),
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control(
+        'pt_single_post_related_title',
+        array(
+            'type' => 'text',
+            'section' => 'pt_single_post',
+            'settings' => 'pt_single_post_related_title',
+            'label' => __('Title', 'propaganda'),
+            'description' => __('Text for the title h2 of the Related Posts section in Post articles.', 'propaganda'),
+        )
+    );
+
 
     /* CLIENT - SINGLE
     --------------------------------------------------------------- */
