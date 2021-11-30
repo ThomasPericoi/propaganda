@@ -10,17 +10,17 @@
             for ($count = 1; $count <= $items; $count++) { ?>
                 <div class="grid-item skill <?php if ($count > 4) : ?>toBeRevealed<?php endif; ?>" <?php if (get_theme_mod('pt_skills_content_' . $count . '_pill', '')) : ?>data-pill="<?php echo get_theme_mod('pt_skills_content_' . $count . '_pill', ''); ?>" <?php endif; ?>>
                     <div class="icon">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/icons/<?php echo get_theme_mod('pt_skills_content_' . $count . '_icon', 'origami') ?>.svg" class="undraggable" alt="">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/icons/<?php echo get_theme_mod('pt_skills_content_' . $count . '_icon', 'origami'); ?>.svg" alt="<?php echo str_replace("-", " ", get_theme_mod('pt_skills_content_' . $count . '_icon', 'origami')); ?> icon" class="undraggable">
                     </div>
-                    <h4><?php echo get_theme_mod('pt_skills_content_' . $count . '_title', 'Origami') ?></h4>
+                    <h4><?php echo get_theme_mod('pt_skills_content_' . $count . '_title', 'Origami'); ?></h4>
                 </div>
             <?php } ?>
         </div>
 
         <?php if (get_theme_mod('pt_skills_subsection_displayed', true)) : ?>
             <div id="extra-skills" class="toBeRevealed">
-                <div class="heading-wrapper align-<?php echo get_theme_mod('pt_skills_heading_alignment', 'left') ?>">
-                    <h3><?php echo get_theme_mod('pt_skills_subsection_subtitle', "What a title!") ?></h3>
+                <div class="heading-wrapper align-<?php echo get_theme_mod('pt_skills_heading_alignment', 'left'); ?>">
+                    <h3><?php echo get_theme_mod('pt_skills_subsection_subtitle', "What a title!"); ?></h3>
                 </div>
                 <div class="col-2">
                     <div class="col">

@@ -18,7 +18,7 @@
                         <li><a href="tel:<?php echo get_theme_mod('pt_contact_phone', "118 712") ?>" class="naked-link">Phone: <?php echo get_theme_mod('pt_contact_phone', "+33646258543") ?></a></li>
                     </ul>
                     <div class="icon">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/icons/<?php echo get_theme_mod('pt_contact_icon', 'anonymous') ?>.svg" class="undraggable">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/icons/<?php echo get_theme_mod('pt_contact_icon', 'anonymous') ?>.svg" alt="<?php echo str_replace("-", " ", get_theme_mod('pt_contact_icon', 'anonymous')); ?> icon" class="undraggable">
                     </div>
                 </div>
                 <div class="col">
