@@ -35,9 +35,11 @@
                                 <a href="<?php the_permalink(); ?>" class="btn-icon link">
                                     <i class="fas fa-info"></i>
                                 </a>
-                                <a href="<?php echo $url ?>" rel="external" target="_blank" class="btn-icon link">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
+                                <?php if ($url) : ?>
+                                    <a href="<?php echo $url ?>" rel="external" target="_blank" class="btn-icon link">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>
