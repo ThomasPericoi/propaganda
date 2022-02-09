@@ -4,9 +4,9 @@
         <div class="col">
             <!-- Projects -->
             <section id="projects-preview">
-                <div class="heading-wrapper heading-<?php echo $args['color']; ?> align-<?php echo get_theme_mod('pt_projects_heading_alignment', 'left') ?>">
-                    <h2><?php echo get_theme_mod('pt_projects_heading_title', "Interesting") ?></h2>
-                    <h3><?php echo get_theme_mod('pt_projects_heading_subtitle', "What a title!") ?></h3>
+                <div class="heading-wrapper heading-<?php echo $args['color']; ?> align-<?php echo get_theme_mod('pt_projects_heading_alignment', 'left'); ?>">
+                    <h2><?php echo get_theme_mod('pt_projects_heading_title', "Interesting"); ?></h2>
+                    <h3><?php echo get_theme_mod('pt_projects_heading_subtitle', "What a title!"); ?></h3>
                 </div>
                 <?php
                 $the_query = new WP_Query(array('post_type' => 'project', 'posts_per_page' => get_theme_mod('pt_projects_items', "5")));
@@ -19,7 +19,7 @@
                             $icon = get_post_meta(get_the_ID(), 'project_icon', true); ?>
                             <a href="<?php the_permalink(); ?>" class="grid-item project">
                                 <div class="icon" data-tooltip="<?php echo $label; ?>">
-                                    <i class="<?php echo $icon ?>"></i>
+                                    <i class="<?php echo $icon; ?>"></i>
                                 </div>
                                 <h3 class="h5-size"><?php the_title(); ?></h3>
                                 <div class="link">
@@ -30,7 +30,7 @@
                         wp_reset_postdata(); ?>
                     </div>
                     <div class="button-wrapper">
-                        <a href="<?php bloginfo('url') ?>/projects" class="btn btn-<?php echo $args['color']; ?>"><?php echo get_theme_mod('pt_projects_button_label', "Show me the rest!") ?></a>
+                        <a href="<?php bloginfo('url'); ?>/projects" class="btn btn-<?php echo $args['color']; ?>"><?php echo get_theme_mod('pt_projects_button_label', "Show me the rest!"); ?></a>
                     </div>
                 <?php else : ?>
                     <div>
@@ -43,9 +43,9 @@
         <div class="col">
             <!-- Blog -->
             <section id="blog-preview">
-                <div class="heading-wrapper heading-<?php echo $args['color']; ?> align-<?php echo get_theme_mod('pt_blog_heading_alignment', 'left') ?>">
-                    <h2><?php echo get_theme_mod('pt_blog_heading_title', "Interesting") ?></h2>
-                    <h3><?php echo get_theme_mod('pt_blog_heading_subtitle', "What a title!") ?></h3>
+                <div class="heading-wrapper heading-<?php echo $args['color']; ?> align-<?php echo get_theme_mod('pt_blog_heading_alignment', 'left'); ?>">
+                    <h2><?php echo get_theme_mod('pt_blog_heading_title', "Interesting"); ?></h2>
+                    <h3><?php echo get_theme_mod('pt_blog_heading_subtitle', "What a title!"); ?></h3>
                 </div>
                 <?php
                 $the_query = new WP_Query(array('posts_per_page' => 1));
@@ -53,7 +53,7 @@
                     <div class="post-grid grid-<?php echo $args['color']; ?> blog-list">
                         <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
                             <a href="<?php the_permalink(); ?>" class="grid-item post naked-link">
-                                <div class="background" style="background-image: url('<?php echo get_the_post_thumbnail_url() ?>');">
+                                <div class="background" style="background-image: url('<?php echo get_the_post_thumbnail_url(); ?>');">
                                 </div>
                                 <div class="info">
                                     <span class="category"><?php $cat = get_the_category();

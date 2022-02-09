@@ -1,6 +1,6 @@
 <!-- Post Single -->
 <a href="<?php the_permalink(); ?>" class="grid-item post naked-link">
-    <div class="background" style="background-image: url('<?php echo get_the_post_thumbnail_url() ?>');">
+    <div class="background" style="background-image: url('<?php echo get_the_post_thumbnail_url(); ?>');">
     </div>
     <div class="info">
         <span class="category"><?php $cat = get_the_category();

@@ -4,7 +4,7 @@ if (post_password_required())
     return;
 ?>
 
-<div id="comments" class="inner-comments inner-comments-<?php echo get_theme_mod('pt_comments_general_color', false) ? 'primary' : 'secondary' ?>">
+<div id="comments" class="inner-comments inner-comments-<?php echo get_theme_mod('pt_comments_general_color', false) ? 'primary' : 'secondary'; ?>">
     <?php if (have_comments()) : ?>
         <h2 class="comments-title">
             <?php echo __('Comment(s)', 'propaganda'); ?>

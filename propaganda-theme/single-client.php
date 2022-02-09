@@ -30,12 +30,12 @@
                                 </div>
                             </div>
                             <div class="col">
-                                <a href="<?php echo $url ?>" rel="external" target="_blank" class="btn btn-<?php echo get_theme_mod('pt_single_client_elements_color', true) ? 'primary' : 'secondary'; ?>">
+                                <a href="<?php echo $url; ?>" rel="external" target="_blank" class="btn btn-<?php echo get_theme_mod('pt_single_client_elements_color', true) ? 'primary' : 'secondary'; ?>">
                                     <?php echo get_theme_mod('pt_single_client_intro_button_label', "See the result"); ?>
                                 </a>
                             </div>
                         </div>
-                        <p class="intro"><?php echo $intro ?></p>
+                        <p class="intro"><?php echo $intro; ?></p>
                     </header>
                     <div class="content">
                         <?php the_content(); ?>

@@ -55,3 +55,4 @@ add_theme_support('admin-bar', array('callback' => '__return_false'));
 
 // Add Customizer
 include(get_stylesheet_directory() . '/inc/customizer/customizer.php');
+

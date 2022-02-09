@@ -1,8 +1,8 @@
 <svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%' class="svg-background" style="transform:scale(2);">
     <defs>
-        <pattern id='memphis-1' patternUnits='userSpaceOnUse' width='100' height='100' transform-origin='<?php echo $args['transform-origin'] ?>'>
+        <pattern id='memphis-1' patternUnits='userSpaceOnUse' width='100' height='100' transform-origin='<?php echo $args['transform-origin']; ?>'>
             <?php if ($args['animated']) : ?>
-                <animateTransform attributeType="xml" attributeName="patternTransform" type="rotate" from="0" to="360" begin="0" dur="<?php echo $args['animation-duration'] ?>s" repeatCount="indefinite"></animateTransform>
+                <animateTransform attributeType="xml" attributeName="patternTransform" type="rotate" from="0" to="360" begin="0" dur="<?php echo $args['animation-duration']; ?>s" repeatCount="indefinite"></animateTransform>
             <?php endif; ?>
             <rect x='0' y='0' width='100%' height='100%' fill='var(--white)' />
             <path d='M100.16 24.75a2.93 2.93 0 11.04 5.86 2.93 2.93 0 01-2.95-2.91 2.92 2.92 0 012.9-2.95zm-100 0a2.93 2.93 0 11.04 5.86 2.93 2.93 0 01-2.95-2.91 2.92 2.92 0 012.9-2.95zm9.57 53.18c1.6 0 2.9 1.3 2.9 2.9a2.95 2.95 0 01-2.95 2.96 2.9 2.9 0 01-2.9-2.9 2.95 2.95 0 012.95-2.96zm58.57-2.51a2.93 2.93 0 11.04 5.86 2.93 2.93 0 11-.04-5.86zM49.45 4.4a2.93 2.93 0 11.04 5.86 2.93 2.93 0 01-.04-5.86zM21.66 49.6l2.95 2.91-2.9 2.95-2.95-2.9zm43.55-12.85s2.9 1.3 2.9 2.9v.05c0 1.6-1.3 2.9-2.9 2.9h-.04c-1.6 0-2.9-2.9-2.9-2.9z' stroke-width='1' stroke='none' fill='var(--primary)' />

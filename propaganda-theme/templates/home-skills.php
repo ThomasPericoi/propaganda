@@ -1,9 +1,9 @@
 <!-- Skills -->
 <section id="hp-skills" class="<?php if (!get_theme_mod('pt_skills_expanded', false)) : ?>toggleActivated<?php endif; ?>">
     <div class="container">
-        <div class="heading-wrapper heading-<?php echo get_theme_mod('pt_skills_general_color', false) ? 'primary' : 'secondary'; ?> align-<?php echo get_theme_mod('pt_skills_heading_alignment', 'left') ?>">
-            <h2><?php echo get_theme_mod('pt_skills_heading_title', "Interesting") ?></h2>
-            <h3><?php echo get_theme_mod('pt_skills_heading_subtitle', "What a title!") ?></h3>
+        <div class="heading-wrapper heading-<?php echo get_theme_mod('pt_skills_general_color', false) ? 'primary' : 'secondary'; ?> align-<?php echo get_theme_mod('pt_skills_heading_alignment', 'left'); ?>">
+            <h2><?php echo get_theme_mod('pt_skills_heading_title', "Interesting"); ?></h2>
+            <h3><?php echo get_theme_mod('pt_skills_heading_subtitle', "What a title!"); ?></h3>
         </div>
         <div class="card-grid card-grid-framed card-grid-<?php echo get_theme_mod('pt_skills_general_color', false) ? 'primary' : 'secondary'; ?> skills-grid">
             <?php $items = get_theme_mod('pt_skills_grid_items', "8");
@@ -26,18 +26,18 @@
                     <div class="col">
                         <?php $items = get_theme_mod('pt_skills_subsection_col_1_grid_items', "4");
                         for ($count = 1; $count <= $items; $count++) { ?>
-                            <h4 class="color-<?php echo get_theme_mod('pt_skills_general_color', false) ? 'primary' : 'secondary'; ?>"><?php echo get_theme_mod('pt_skills_subsection_col_1_items' . $count . '_list_title', 'IT Languages') ?></h4>
+                            <h4 class="color-<?php echo get_theme_mod('pt_skills_general_color', false) ? 'primary' : 'secondary'; ?>"><?php echo get_theme_mod('pt_skills_subsection_col_1_items' . $count . '_list_title', 'IT Languages'); ?></h4>
                             <ul class="list list-<?php echo !get_theme_mod('pt_skills_general_color', false) ? 'primary' : 'secondary'; ?>">
-                                <?php echo get_theme_mod('pt_skills_subsection_col_1_items' . $count . '_list_elements', '<li>HTML</li><li>PHP</li>') ?>
+                                <?php echo get_theme_mod('pt_skills_subsection_col_1_items' . $count . '_list_elements', '<li>HTML</li><li>PHP</li>'); ?>
                             </ul>
                         <?php } ?>
                     </div>
                     <div class="col">
                         <?php $items = get_theme_mod('pt_skills_subsection_col_2_grid_items', "3");
                         for ($count = 1; $count <= $items; $count++) { ?>
-                            <h4 class="color-<?php echo get_theme_mod('pt_skills_general_color', false) ? 'primary' : 'secondary'; ?>"><?php echo get_theme_mod('pt_skills_subsection_col_2_items' . $count . '_list_title', 'IT Languages') ?></h4>
+                            <h4 class="color-<?php echo get_theme_mod('pt_skills_general_color', false) ? 'primary' : 'secondary'; ?>"><?php echo get_theme_mod('pt_skills_subsection_col_2_items' . $count . '_list_title', 'IT Languages'); ?></h4>
                             <ul class="list list-<?php echo !get_theme_mod('pt_skills_general_color', false) ? 'primary' : 'secondary'; ?>">
-                                <?php echo get_theme_mod('pt_skills_subsection_col_2_items' . $count . '_list_elements', '<li>HTML</li><li>PHP</li>') ?>
+                                <?php echo get_theme_mod('pt_skills_subsection_col_2_items' . $count . '_list_elements', '<li>HTML</li><li>PHP</li>'); ?>
                             </ul>
                         <?php } ?>
                         <?php if (get_theme_mod('pt_skills_cf_displayed', false)) : ?>
@@ -50,7 +50,7 @@
         <?php endif; ?>
 
         <button class="h3-size naked-btn clickToReveal">
-            <?php echo get_theme_mod('pt_skills_button_label', "Interesting") ?>
+            <?php echo get_theme_mod('pt_skills_button_label', "Interesting"); ?>
         </button>
     </div>
 </section>

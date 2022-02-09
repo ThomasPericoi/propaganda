@@ -150,7 +150,6 @@ a img.aligncenter {
     top: 5px;
     width: auto;
     z-index: 100000;
-    /* Above WP toolbar. */
 }
 
 
@@ -2123,7 +2122,7 @@ div.outro {
 --------------------------------------------------------------- */
 
 #hp-hero .svg-background {
-    filter: blur(0) grayscale(0);
+    filter: blur(1px) grayscale(0);
     transition: filter ease 350ms;
 }
 
@@ -2131,9 +2130,9 @@ div.outro {
     filter: blur(2px) grayscale(0.25);
 }
 
-@media screen and (min-color-index:0) and(-webkit-min-device-pixel-ratio:0) {
+@media screen and (min-width: 767px) {
     #hp-hero .svg-background {
-        filter: blur(2px) grayscale(0);
+        filter: blur(0) grayscale(0);
     }
 }
 

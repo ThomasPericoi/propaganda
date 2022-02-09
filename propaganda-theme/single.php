@@ -48,7 +48,7 @@
         if ($related && get_theme_mod('pt_single_post_related', true)) : ?>
             <div class="inner-related">
                 <h2 class="related-title">
-                    <?php echo get_theme_mod('pt_single_post_related_title', 'Related Posts') ?>
+                    <?php echo get_theme_mod('pt_single_post_related_title', 'Related Posts'); ?>
                 </h2>
                 <div class="post-grid grid-<?php echo get_theme_mod('pt_single_post_elements_color', true) ? 'primary' : 'secondary'; ?> blog-list">
                     <?php

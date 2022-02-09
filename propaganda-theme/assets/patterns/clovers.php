@@ -1,8 +1,8 @@
 <svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%' class="svg-background" style="transform:scale(2);">
     <defs>
-        <pattern id='clovers' patternUnits='userSpaceOnUse' width='20' height='20' transform-origin='<?php echo $args['transform-origin'] ?>'>
+        <pattern id='clovers' patternUnits='userSpaceOnUse' width='20' height='20' transform-origin='<?php echo $args['transform-origin']; ?>'>
             <?php if ($args['animated']) : ?>
-                <animateTransform attributeType="xml" attributeName="patternTransform" type="rotate" from="0" to="360" begin="0" dur="<?php echo $args['animation-duration'] ?>s" repeatCount="indefinite"></animateTransform>
+                <animateTransform attributeType="xml" attributeName="patternTransform" type="rotate" from="0" to="360" begin="0" dur="<?php echo $args['animation-duration']; ?>s" repeatCount="indefinite"></animateTransform>
             <?php endif; ?>
             <rect x='0' y='0' width='100%' height='100%' fill='var(--secondary)' />
             <path d='M18.822 18.717s.077-1.396-.737-2.21c-.813-.813-2.21-.736-2.21-.736s-.076 1.396.737 2.21c.814.813 2.21.736 2.21.736zm0-17.643s-1.396-.077-2.21.736c-.813.814-.736 2.21-.736 2.21s1.396.077 2.21-.736c.813-.814.736-2.21.736-2.21zM3.389 17.98c.813-.813.736-2.21.736-2.21s-1.396-.076-2.21.737c-.813.814-.736 2.21-.736 2.21s1.396.077 2.21-.737zm.736-13.96s.077-1.396-.736-2.21c-.814-.813-2.21-.736-2.21-.736s-.077 1.396.736 2.21c.814.813 2.21.736 2.21.736z' stroke-linecap='square' stroke-width='1' stroke='var(--white)' fill='none' />
