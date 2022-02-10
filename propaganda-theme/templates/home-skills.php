@@ -6,7 +6,7 @@
             <h3><?php echo get_theme_mod('pt_skills_heading_subtitle', "What a title!"); ?></h3>
         </div>
         <div class="card-grid card-grid-framed card-grid-<?php echo get_theme_mod('pt_skills_general_color', false) ? 'primary' : 'secondary'; ?> skills-grid">
-            <?php $items = get_theme_mod('pt_skills_grid_items', "8");
+            <?php $items = get_theme_mod('pt_skills_grid_items', 8);
             for ($count = 1; $count <= $items; $count++) { ?>
                 <div class="grid-item skill <?php if ($count > 4) : ?>toBeRevealed<?php endif; ?>" <?php if (get_theme_mod('pt_skills_content_' . $count . '_pill', '')) : ?>data-pill="<?php echo get_theme_mod('pt_skills_content_' . $count . '_pill', ''); ?>" <?php endif; ?>>
                     <div class="icon">
@@ -41,7 +41,7 @@
                             </ul>
                         <?php } ?>
                         <?php if (get_theme_mod('pt_skills_cf_displayed', false)) : ?>
-                            <?php $shortcodeSkills = "[contact-form-7 id=\"" . get_theme_mod('pt_skills_cf_shortcode', "1") . "\" html_class=\"form-" . (get_theme_mod('pt_skills_general_color', false) ? 'primary' : 'secondary') . "\"]";
+                            <?php $shortcodeSkills = "[contact-form-7 id=\"" . get_theme_mod('pt_skills_cf_shortcode', 1) . "\" html_class=\"form-" . (get_theme_mod('pt_skills_general_color', false) ? 'primary' : 'secondary') . "\"]";
                             echo do_shortcode($shortcodeSkills); ?>
                         <?php endif; ?>
                     </div>

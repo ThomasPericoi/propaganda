@@ -10,7 +10,9 @@
 <div id="blog-content">
     <div class="container">
         <?php
-        $the_query = new WP_Query(array('cat' => $cat[0]->term_id));
+        $the_query = new WP_Query(array(
+            'cat' => $cat[0]->term_id
+        ));
         if ($the_query->have_posts()) : ?>
             <div class="post-grid grid-<?php echo get_theme_mod('pt_archive_post_general_color', true) ? 'primary' : 'secondary'; ?> blog-list">
                 <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>

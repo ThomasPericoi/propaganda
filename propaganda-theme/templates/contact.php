@@ -22,7 +22,7 @@
                     </div>
                 </div>
                 <div class="col">
-                    <?php $shortcodeContact = "[contact-form-7 id=\"" . get_theme_mod('pt_contact_cf_shortcode', "1") . "\" html_class=\"form-" . (get_theme_mod('pt_contact_general_color', false) ? 'primary' : 'secondary') . "\"]";
+                    <?php $shortcodeContact = "[contact-form-7 id=\"" . get_theme_mod('pt_contact_cf_shortcode', 1) . "\" html_class=\"form-" . (get_theme_mod('pt_contact_general_color', false) ? 'primary' : 'secondary') . "\"]";
                     echo do_shortcode($shortcodeContact); ?>
                 </div>
             </div>

@@ -19,7 +19,7 @@
                     <div class="col">
                         <h4 class="h3-size"><?php echo get_theme_mod('pt_informations_col_1_title', "What a title!"); ?></h4>
                         <ul class="list list-<?php echo !get_theme_mod('pt_informations_block_color', false) ? 'primary' : 'secondary'; ?>">
-                            <?php $items = get_theme_mod('pt_informations_col_1_grid_item', "1");
+                            <?php $items = get_theme_mod('pt_informations_col_1_grid_item', 1);
                             for ($count = 1; $count <= $items; $count++) { ?>
                                 <li>
                                     <a href="<?php echo get_theme_mod('pt_informations_col_1_content_' . $count . '_link', ''); ?>" rel="external" target="_blank" class="naked-link">
@@ -32,7 +32,7 @@
                     <div class="col">
                         <h4 class="h3-size"><?php echo get_theme_mod('pt_informations_col_2_title', "What a title!"); ?></h4>
                         <ul class="list list-<?php echo !get_theme_mod('pt_informations_block_color', false) ? 'primary' : 'secondary'; ?>">
-                            <?php $items = get_theme_mod('pt_informations_col_2_grid_item', "1");
+                            <?php $items = get_theme_mod('pt_informations_col_2_grid_item', 1);
                             for ($count = 1; $count <= $items; $count++) { ?>
                                 <li>
                                     <a href="<?php echo get_theme_mod('pt_informations_col_2_content_' . $count . '_link', ''); ?>" rel="external" target="_blank" class="naked-link">
