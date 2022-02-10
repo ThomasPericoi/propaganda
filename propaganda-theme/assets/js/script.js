@@ -5,7 +5,7 @@ $(document).ready(function () {
 
     // General - Enable ASCII Printer on random
     printAsciiRandom();
-
+    
     // General - Change page name on blur (not on mobile)
     if (!isMobile()) {
         originalTitle = $(document).find("title").text();

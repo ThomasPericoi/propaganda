@@ -8,6 +8,8 @@
 
 <?php get_template_part('templates/home-benefits'); ?>
 
+<?php get_template_part('templates/home-notifications'); ?>
+
 <?php get_template_part('templates/home-clients'); ?>
 
 <?php get_template_part('templates/home-testimonials'); ?>

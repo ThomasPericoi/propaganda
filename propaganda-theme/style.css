@@ -2059,6 +2059,35 @@ footer #copyrights {
 }
 
 
+/* #Block - Notification
+--------------------------------------------------------------- */
+
+.notification .inner-wrapper {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: var(--spacing-inner-classic);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    border: var(--border-width-big) var(--black) solid;
+}
+
+.notification .inner-wrapper .btn {
+    margin-top: var(--spacing-inner-classic);
+}
+
+@media screen and (min-width: 767px) {
+    .notification .inner-wrapper {
+        flex-direction: row;
+    }
+
+    .notification .inner-wrapper .btn {
+        margin-top: 0;
+    }
+}
+
+
 /* #Block - Intro
 --------------------------------------------------------------- */
 

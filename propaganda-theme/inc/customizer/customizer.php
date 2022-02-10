@@ -78,7 +78,7 @@ function theme_customize_register($wp_customize)
         'pt_theme_options',
         array(
             'title' => __('Theme Options', 'propaganda'),
-            'description' => __('Theme Modifications like color scheme, theme texts and layout preferences can be done here', 'propaganda'),
+            'description' => __('Theme Modifications like color scheme, theme texts and layout preferences can be done here.', 'propaganda'),
         )
     );
 
@@ -157,7 +157,7 @@ function theme_customize_register($wp_customize)
 
     foreach ($socials as $value) {
         $wp_customize->add_setting('pt_socials_' . $value, array(
-            'default' => __('', 'propaganda'),
+            'default' => '',
             'sanitize_callback' => 'pt_sanitize_textarea',
         ));
 
@@ -189,7 +189,7 @@ function theme_customize_register($wp_customize)
 
     // Position 
     $wp_customize->add_setting('pt_header_position', array(
-        'default' => __(false, 'propaganda'),
+        'default' => false,
         'sanitize_callback' => 'pt_sanitize_checkbox',
     ));
 
@@ -349,13 +349,13 @@ function theme_customize_register($wp_customize)
             'section' => 'pt_header',
             'settings' => 'pt_header_button_link',
             'label' => __('Button Link', 'propaganda'),
-            'description' => __('Link for the button in the header', 'propaganda'),
+            'description' => __('Link for the button in the Header', 'propaganda'),
         )
     );
 
     // Button Link External
     $wp_customize->add_setting('pt_header_button_external', array(
-        'default' => __(false, 'propaganda'),
+        'default' => false,
         'sanitize_callback' => 'pt_sanitize_checkbox',
     ));
 
@@ -587,6 +587,25 @@ function theme_customize_register($wp_customize)
     // ------------ General Options ------------
     custom_heading('pt_hero_heading_general', 'pt_hero', 'General Options', $wp_customize);
 
+    // Display the Section
+    $wp_customize->add_setting(
+        'pt_hero_displayed',
+        array(
+            'default' => true,
+            'sanitize_callback' => 'pt_sanitize_checkbox'
+        )
+    );
+
+    $wp_customize->add_control(new PT_Toggle_Basic_Custom_Control(
+        $wp_customize,
+        'pt_hero_displayed',
+        array(
+            'section' => 'pt_hero',
+            'label' => __('Display the whole section', 'propaganda'),
+            'description' => __('Display the section on the homepage.', 'propaganda'),
+        )
+    ));
+
     // Background
     $wp_customize->add_setting(
         'pt_hero_background',
@@ -602,7 +621,7 @@ function theme_customize_register($wp_customize)
             'type' => 'select',
             'section' => 'pt_hero',
             'label' => __('Background Pattern', 'propaganda'),
-            'description' => __('Background pattern for the Hero', 'propaganda'),
+            'description' => __('Background pattern for the Hero.', 'propaganda'),
             'choices' => $svg_patterns,
         )
     );
@@ -622,7 +641,7 @@ function theme_customize_register($wp_customize)
         array(
             'section' => 'pt_hero',
             'label' => __('Animate the background?', 'propaganda'),
-            'description' => __('Enable the animation of the rotation of the background', 'propaganda'),
+            'description' => __('Enable the animation of the rotation of the background.', 'propaganda'),
         )
     ));
 
@@ -681,7 +700,7 @@ function theme_customize_register($wp_customize)
         array(
             'section' => 'pt_hero',
             'label' => __('Alignment', 'propaganda'),
-            'description' => __('Alignment for the elements in the Hero', 'propaganda'),
+            'description' => __('Alignment for the elements in the Hero.', 'propaganda'),
             'choices' => array(
                 'left' => __('Left', 'propaganda'),
                 'center' => __('Center', 'propaganda'),
@@ -780,7 +799,7 @@ function theme_customize_register($wp_customize)
                 'section' => 'pt_hero',
                 'settings' => 'pt_hero_button_link_' . $count,
                 'label' => __('Button  ' . $count . ' Link', 'propaganda'),
-                'description' => __('Link for the Button ' . $count . ' in the Hero', 'propaganda'),
+                'description' => __('Link for the Button ' . $count . ' in the Hero.', 'propaganda'),
             )
         );
 
@@ -840,6 +859,25 @@ function theme_customize_register($wp_customize)
 
     // ------------ General Options ------------
     custom_heading('pt_skills_heading_general', 'pt_skills', 'General Options', $wp_customize);
+
+    // Display the Section
+    $wp_customize->add_setting(
+        'pt_skills_displayed',
+        array(
+            'default' => true,
+            'sanitize_callback' => 'pt_sanitize_checkbox'
+        )
+    );
+
+    $wp_customize->add_control(new PT_Toggle_Basic_Custom_Control(
+        $wp_customize,
+        'pt_skills_displayed',
+        array(
+            'section' => 'pt_skills',
+            'label' => __('Display the whole section', 'propaganda'),
+            'description' => __('Display the section on the homepage', 'propaganda'),
+        )
+    ));
 
     // Color
     $wp_customize->add_setting(
@@ -1250,6 +1288,25 @@ function theme_customize_register($wp_customize)
     // ------------ General Options ------------
     custom_heading('pt_informations_heading_general', 'pt_informations', 'General Options', $wp_customize);
 
+    // Display the Section
+    $wp_customize->add_setting(
+        'pt_informations_displayed',
+        array(
+            'default' => true,
+            'sanitize_callback' => 'pt_sanitize_checkbox'
+        )
+    );
+
+    $wp_customize->add_control(new PT_Toggle_Basic_Custom_Control(
+        $wp_customize,
+        'pt_informations_displayed',
+        array(
+            'section' => 'pt_informations',
+            'label' => __('Display the whole section', 'propaganda'),
+            'description' => __('Display the section on the homepage.', 'propaganda'),
+        )
+    ));
+
     // Block Color
     $wp_customize->add_setting(
         'pt_informations_block_color',
@@ -1595,6 +1652,28 @@ function theme_customize_register($wp_customize)
     // Shortcut
     shortcut('pt_benefits_heading_alignment', '#hp-benefits .container', $wp_customize);
 
+    // ------------ General Options ------------
+    custom_heading('pt_benefits_heading_general', 'pt_benefits', 'General Options', $wp_customize);
+
+    // Display the Section
+    $wp_customize->add_setting(
+        'pt_benefits_displayed',
+        array(
+            'default' => true,
+            'sanitize_callback' => 'pt_sanitize_checkbox'
+        )
+    );
+
+    $wp_customize->add_control(new PT_Toggle_Basic_Custom_Control(
+        $wp_customize,
+        'pt_benefits_displayed',
+        array(
+            'section' => 'pt_benefits',
+            'label' => __('Display the whole section', 'propaganda'),
+            'description' => __('Display the section on the homepage.', 'propaganda'),
+        )
+    ));
+
     // ------------ Headings Options ------------
     custom_heading('pt_benefits_heading_headings', 'pt_benefits', 'Headings Options', $wp_customize);
 
@@ -1741,6 +1820,152 @@ function theme_customize_register($wp_customize)
     }
 
 
+    /* HOMEPAGE - NOTIFICATION SECTION
+    --------------------------------------------------------------- */
+    $wp_customize->add_section('pt_notification', array(
+        'panel' => 'pt_theme_options',
+        'title' => __('Homepage - Notification Section', 'propaganda'),
+        'description' => __('Options related to the Notification section on the homepage.', 'propaganda'),
+    ));
+
+    // Shortcut
+    shortcut('pt_notification_heading_general', '#hp-notification .container', $wp_customize);
+
+    // ------------ General Options ------------
+    custom_heading('pt_notification_heading_general', 'pt_notification', 'General Options', $wp_customize);
+
+    // Display the Section
+    $wp_customize->add_setting(
+        'pt_notification_displayed',
+        array(
+            'default' => true,
+            'sanitize_callback' => 'pt_sanitize_checkbox'
+        )
+    );
+
+    $wp_customize->add_control(new PT_Toggle_Basic_Custom_Control(
+        $wp_customize,
+        'pt_notification_displayed',
+        array(
+            'section' => 'pt_notification',
+            'label' => __('Display the whole section', 'propaganda'),
+            'description' => __('Display the section on the homepage.', 'propaganda'),
+        )
+    ));
+
+    // Background Color
+    $wp_customize->add_setting(
+        'pt_notification_background_color',
+        array(
+            'default' => false,
+            'sanitize_callback' => 'pt_sanitize_checkbox'
+        )
+    );
+
+    $wp_customize->add_control(new PT_Toggle_Color_Custom_Control(
+        $wp_customize,
+        'pt_notification_background_color',
+        array(
+            'section' => 'pt_notification',
+            'label' => __('Background Color', 'propaganda'),
+            'description' => __('Color of the background of the Notification section.', 'propaganda'),
+        )
+    ));
+
+    // ------------ Content Options ------------
+    custom_heading('pt_notification_heading_content', 'pt_notification', 'Content Options', $wp_customize);
+
+    // Content
+    $wp_customize->add_setting('pt_notification_content', array(
+        'default' => __('I\'d really like you to see this!', 'propaganda'),
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control(
+        'pt_notification_content',
+        array(
+            'type' => 'text',
+            'section' => 'pt_notification',
+            'settings' => 'pt_notification_content',
+            'label' => __('Content', 'propaganda'),
+            'description' => __('Text for the Notification section.', 'propaganda'),
+        )
+    );
+
+    // Separator
+    separator('pt_notification_separator', 'pt_notification', $wp_customize);
+
+    // Button Label
+    $wp_customize->add_setting('pt_notification_button_label', array(
+        'default' => __('Click me!', 'propaganda'),
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control(
+        'pt_notification_button_label',
+        array(
+            'type' => 'text',
+            'section' => 'pt_notification',
+            'settings' => 'pt_notification_button_label',
+            'label' => __('Button Label', 'propaganda'),
+            'description' => __('Text for the button in the Notification section.', 'propaganda'),
+        )
+    );
+
+    // Button Link
+    $wp_customize->add_setting('pt_notification_button_link', array(
+        'default' => '#',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control(
+        'pt_notification_button_link',
+        array(
+            'type' => 'text',
+            'section' => 'pt_notification',
+            'settings' => 'pt_notification_button_link',
+            'label' => __('Button Link', 'propaganda'),
+            'description' => __('Link for the button in the Notification section.', 'propaganda'),
+        )
+    );
+
+    // Button Link External
+    $wp_customize->add_setting('pt_notification_button_external', array(
+        'default' => false,
+        'sanitize_callback' => 'pt_sanitize_checkbox',
+    ));
+
+    $wp_customize->add_control(
+        'pt_notification_button_external',
+        array(
+            'type' => 'checkbox',
+            'section' => 'pt_notification',
+            'settings' => 'pt_notification_button_external',
+            'label' => __('Is this button external?', 'propaganda'),
+            'description' => __('Yes if the checkbox is checked.', 'propaganda'),
+        )
+    );
+
+    // Button Color
+    $wp_customize->add_setting(
+        'pt_notification_button_color',
+        array(
+            'default' => true,
+            'sanitize_callback' => 'pt_sanitize_checkbox'
+        )
+    );
+
+    $wp_customize->add_control(new PT_Toggle_Color_Custom_Control(
+        $wp_customize,
+        'pt_notification_button_color',
+        array(
+            'section' => 'pt_notification',
+            'label' => __('Button Color', 'propaganda'),
+            'description' => __('Color of the button in the Notification section.', 'propaganda'),
+        )
+    ));
+
+
     /* HOMEPAGE - CLIENTS SECTION
     --------------------------------------------------------------- */
     $wp_customize->add_section('pt_clients', array(
@@ -1754,6 +1979,25 @@ function theme_customize_register($wp_customize)
 
     // ------------ General Options ------------
     custom_heading('pt_clients_heading_general', 'pt_clients', 'General Options', $wp_customize);
+
+    // Display the Section
+    $wp_customize->add_setting(
+        'pt_clients_displayed',
+        array(
+            'default' => true,
+            'sanitize_callback' => 'pt_sanitize_checkbox'
+        )
+    );
+
+    $wp_customize->add_control(new PT_Toggle_Basic_Custom_Control(
+        $wp_customize,
+        'pt_clients_displayed',
+        array(
+            'section' => 'pt_clients',
+            'label' => __('Display the whole section', 'propaganda'),
+            'description' => __('Display the section on the homepage.', 'propaganda'),
+        )
+    ));
 
     // Color
     $wp_customize->add_setting(
@@ -1869,6 +2113,25 @@ function theme_customize_register($wp_customize)
 
     // ------------ General Options ------------
     custom_heading('pt_testimonials_heading_general', 'pt_testimonials', 'General Options', $wp_customize);
+
+    // Display the Section
+    $wp_customize->add_setting(
+        'pt_testimonials_displayed',
+        array(
+            'default' => true,
+            'sanitize_callback' => 'pt_sanitize_checkbox'
+        )
+    );
+
+    $wp_customize->add_control(new PT_Toggle_Basic_Custom_Control(
+        $wp_customize,
+        'pt_testimonials_displayed',
+        array(
+            'section' => 'pt_testimonials',
+            'label' => __('Display the whole section', 'propaganda'),
+            'description' => __('Display the section on the homepage.', 'propaganda'),
+        )
+    ));
 
     // Color
     $wp_customize->add_setting(
@@ -2244,7 +2507,7 @@ function theme_customize_register($wp_customize)
             'type' => 'select',
             'section' => 'pt_contact',
             'label' => __('Background Pattern', 'propaganda'),
-            'description' => __('Background pattern for the Contact', 'propaganda'),
+            'description' => __('Background pattern for the Contact.', 'propaganda'),
             'choices' => $svg_patterns,
         )
     );
@@ -2398,7 +2661,7 @@ function theme_customize_register($wp_customize)
             'type' => 'select',
             'section' => 'pt_contact',
             'label' => __('Icon', 'propaganda'),
-            'description' => __('Icon displayed in the Contact section', 'propaganda'),
+            'description' => __('Icon displayed in the Contact section.', 'propaganda'),
             'choices' => $icons,
         )
     );
@@ -2437,6 +2700,25 @@ function theme_customize_register($wp_customize)
 
     // ------------ General Options ------------
     custom_heading('pt_marquee_heading_general', 'pt_marquee', 'General Options', $wp_customize);
+
+    // Display the Section
+    $wp_customize->add_setting(
+        'pt_marquee_displayed',
+        array(
+            'default' => true,
+            'sanitize_callback' => 'pt_sanitize_checkbox'
+        )
+    );
+
+    $wp_customize->add_control(new PT_Toggle_Basic_Custom_Control(
+        $wp_customize,
+        'pt_marquee_displayed',
+        array(
+            'section' => 'pt_marquee',
+            'label' => __('Display the whole section', 'propaganda'),
+            'description' => __('Display the section on the homepage.', 'propaganda'),
+        )
+    ));
 
     // Color
     $wp_customize->add_setting(
@@ -2479,7 +2761,7 @@ function theme_customize_register($wp_customize)
 
     // Uppercase
     $wp_customize->add_setting('pt_marquee_content_uppercase', array(
-        'default' => __(false, 'propaganda'),
+        'default' => false,
         'sanitize_callback' => 'pt_sanitize_checkbox',
     ));
 
@@ -2693,7 +2975,7 @@ function theme_customize_register($wp_customize)
 
     // Button Link
     $wp_customize->add_setting('pt_archive_post_button_link', array(
-        'default' => __('#', 'propaganda'),
+        'default' => '#',
         'sanitize_callback' => 'sanitize_text_field',
     ));
 
@@ -2803,7 +3085,7 @@ function theme_customize_register($wp_customize)
 
     // Button Link
     $wp_customize->add_setting('pt_single_post_button_link', array(
-        'default' => __('#', 'propaganda'),
+        'default' => '#',
         'sanitize_callback' => 'sanitize_text_field',
     ));
 
@@ -2975,7 +3257,7 @@ function theme_customize_register($wp_customize)
 
     // Button Link
     $wp_customize->add_setting('pt_single_client_button_link', array(
-        'default' => __('#', 'propaganda'),
+        'default' => '#',
         'sanitize_callback' => 'sanitize_text_field',
     ));
 
@@ -3103,7 +3385,7 @@ function theme_customize_register($wp_customize)
 
     // Button Link
     $wp_customize->add_setting('pt_archive_project_button_link', array(
-        'default' => __('#', 'propaganda'),
+        'default' => '#',
         'sanitize_callback' => 'sanitize_text_field',
     ));
 
@@ -3233,7 +3515,7 @@ function theme_customize_register($wp_customize)
 
     // Button Link
     $wp_customize->add_setting('pt_single_project_button_link', array(
-        'default' => __('#', 'propaganda'),
+        'default' => '#',
         'sanitize_callback' => 'sanitize_text_field',
     ));
 
