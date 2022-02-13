@@ -24,7 +24,7 @@
                             </div>
                             <div class="col">
                                 <a href="<?php echo $url; ?>" rel="external" target="_blank" class="btn btn-<?php echo get_theme_mod('pt_single_project_elements_color', true) ? 'primary' : 'secondary'; ?>">
-                                    <?php echo get_theme_mod('pt_single_project_intro_button_label', "See the result"); ?>
+                                    <?php echo get_theme_mod('pt_single_project_intro_button_label', "Посмотреть результат"); ?>
                                 </a>
                             </div>
                         </div>
@@ -38,10 +38,10 @@
         </div>
         <div class="inner-outro">
             <?php get_template_part('templates/outro', null, array(
-                'title' => get_theme_mod('pt_single_project_outro_title', "Check this out!"),
+                'title' => get_theme_mod('pt_single_project_outro_title', "Вы должны увидеть это"),
                 'color' => get_theme_mod('pt_single_project_elements_color', true) ? 'primary' : 'secondary',
                 'btn_link' => get_theme_mod('pt_single_project_button_link', "#"),
-                'btn_label' => get_theme_mod('pt_single_project_button_label', "I lead somewhere"),
+                'btn_label' => get_theme_mod('pt_single_project_button_label', "я куда-то веду"),
             )); ?>
         </div>
     </div>

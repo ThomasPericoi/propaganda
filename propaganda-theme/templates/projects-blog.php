@@ -5,8 +5,8 @@
             <!-- Projects -->
             <section id="projects-preview">
                 <div class="heading-wrapper heading-<?php echo $args['color']; ?> align-<?php echo get_theme_mod('pt_projects_heading_alignment', 'left'); ?>">
-                    <h2><?php echo get_theme_mod('pt_projects_heading_title', "Interesting"); ?></h2>
-                    <h3><?php echo get_theme_mod('pt_projects_heading_subtitle', "What a title!"); ?></h3>
+                    <h2><?php echo get_theme_mod('pt_projects_heading_title', "Проекты"); ?></h2>
+                    <h3><?php echo get_theme_mod('pt_projects_heading_subtitle', "Каковы ваши достижения"); ?></h3>
                 </div>
                 <?php
                 $the_query = new WP_Query(array(
@@ -33,11 +33,11 @@
                         wp_reset_postdata(); ?>
                     </div>
                     <div class="button-wrapper">
-                        <a href="<?php bloginfo('url'); ?>/projects" class="btn btn-<?php echo $args['color']; ?>"><?php echo get_theme_mod('pt_projects_button_label', "Show me the rest!"); ?></a>
+                        <a href="<?php bloginfo('url'); ?>/projects" class="btn btn-<?php echo $args['color']; ?>"><?php echo get_theme_mod('pt_projects_button_label', "Посмотреть еще"); ?></a>
                     </div>
                 <?php else : ?>
                     <div>
-                        <p><?php echo __('No project done apparently.', 'propaganda'); ?></p>
+                        <p><?php echo __('опять пусто товарищ', 'propaganda'); ?></p>
                     </div>
                 <?php endif; ?>
             </section>
@@ -47,8 +47,8 @@
             <!-- Blog -->
             <section id="blog-preview">
                 <div class="heading-wrapper heading-<?php echo $args['color']; ?> align-<?php echo get_theme_mod('pt_blog_heading_alignment', 'left'); ?>">
-                    <h2><?php echo get_theme_mod('pt_blog_heading_title', "Interesting"); ?></h2>
-                    <h3><?php echo get_theme_mod('pt_blog_heading_subtitle', "What a title!"); ?></h3>
+                    <h2><?php echo get_theme_mod('pt_blog_heading_title', "Блог"); ?></h2>
+                    <h3><?php echo get_theme_mod('pt_blog_heading_subtitle', "Здесь вы будете размещать свои отчеты"); ?></h3>
                 </div>
                 <?php
                 $the_query = new WP_Query(array(
@@ -67,17 +67,17 @@
                                     <p class="excerpt">
                                         <?php echo get_the_excerpt(); ?>
                                     </p>
-                                    <span class="link">View more</span>
+                                    <span class="link"><?php echo __('Read more', 'propaganda'); ?></span>
                                 </div>
                             </a>
                         <?php endwhile; ?>
                     </div>
                     <?php wp_reset_postdata(); ?>
                     <div class="button-wrapper">
-                        <a href="<?php echo get_post_type_archive_link('post'); ?>" class="btn btn-<?php echo $args['color']; ?>"><?php echo get_theme_mod('pt_blog_button_label', "Show me the rest!") ?></a>
+                        <a href="<?php echo get_post_type_archive_link('post'); ?>" class="btn btn-<?php echo $args['color']; ?>"><?php echo get_theme_mod('pt_blog_button_label', "Покажи мне остальные!") ?></a>
                     </div>
                 <?php else : ?>
-                    <p><?php echo __('No news from the world.', 'propaganda'); ?></p>
+                    <p><?php echo __('Тишина радио', 'propaganda'); ?></p>
                 <?php endif; ?>
             </section>
         </div>

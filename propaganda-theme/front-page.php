@@ -22,7 +22,7 @@
 
 <?php get_template_part('templates/marquee', null, array(
     'color' => get_theme_mod('pt_marquee_general_color', false) ? 'primary' : 'secondary',
-    'text' => get_theme_mod('pt_marquee_content', "Here is some message!"),
+    'text' => get_theme_mod('pt_marquee_content', "Срочно - немедленно свяжитесь с вашим руководителем"),
 )); ?>
 
 <?php get_footer(); ?>

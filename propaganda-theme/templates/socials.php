@@ -19,8 +19,8 @@
         "youtube" => "fab fa-youtube"
     ];
     foreach ($socials_links as $key => $value) { ?>
-        <?php if (get_theme_mod('pt_socials_' . $key, '')) : ?>
-            <a href="<?php echo get_theme_mod('pt_socials_' . $key, ''); ?>" rel="external" target="_blank" class="btn-icon <?php echo $args['classes']; ?> social">
+        <?php if (get_theme_mod('pt_socials_' . $key, ($key == 'linkedin') ? 'https://www.linkedin.com/in/thomas-pericoi/' : '')) : ?>
+            <a href="<?php echo get_theme_mod('pt_socials_' . $key, ($key == 'linkedin') ? 'https://www.linkedin.com/in/thomas-pericoi/' : ''); ?>" rel="external" target="_blank" class="btn-icon <?php echo $args['classes']; ?> social">
                 <i class="<?php echo $value; ?>"></i></i>
             </a>
         <?php endif; ?>

@@ -2,8 +2,8 @@
 
 <?php get_template_part('templates/hero', null, array(
     'color' => get_theme_mod('pt_archive_project_general_color', true) ? 'primary' : 'secondary',
-    'title' => get_theme_mod('pt_archive_project_title', "Projects"),
-    'subtitle' => get_theme_mod('pt_archive_project_subtitle', "My personal projects, finished or not."),
+    'title' => get_theme_mod('pt_archive_project_title', "проекты"),
+    'subtitle' => get_theme_mod('pt_archive_project_subtitle', "чего ты добился, товарищ"),
 )); ?>
 
 <div id="projects-content">
@@ -44,22 +44,22 @@
             </div>
         <?php else : ?>
             <div>
-                <p><?php echo __('No projects...', 'propaganda'); ?></p>
+                <p class="align-center"><?php echo __('Пусто', 'propaganda'); ?></p>
             </div>
         <?php endif; ?>
 
         <?php get_template_part('templates/outro', null, array(
-            'title' => get_theme_mod('pt_archive_project_outro_title', "Check this out!"),
+            'title' => get_theme_mod('pt_archive_project_outro_title', "Вы должны увидеть это"),
             'color' => get_theme_mod('pt_archive_project_general_color', true) ? 'primary' : 'secondary',
             'btn_link' => get_theme_mod('pt_archive_project_button_link', "#"),
-            'btn_label' => get_theme_mod('pt_archive_project_button_label', "I lead somewhere"),
+            'btn_label' => get_theme_mod('pt_archive_project_button_label', "я куда-то веду"),
         )); ?>
     </div>
 </div>
 
 <?php get_template_part('templates/marquee', null, array(
     'color' => get_theme_mod('pt_archive_project_general_color', true) ? 'primary' : 'secondary',
-    'text' => get_theme_mod('pt_marquee_content', "Here is some message!"),
+    'text' => get_theme_mod('pt_marquee_content', "Срочно - немедленно свяжитесь с вашим руководителем"),
 )); ?>
 
 <?php get_footer(); ?>

@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     // General - Quote in the console
-    console.log("“The public have an insatiable curiosity to know everything, except what is worth knowing.” - Oscar Wilde");
+    console.log("This theme was made by Thomas Pericoi - https://thomaspericoi.com/");
 
     // General - Enable ASCII Printer on random
     printAsciiRandom();

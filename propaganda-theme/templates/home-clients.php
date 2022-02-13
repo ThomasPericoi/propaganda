@@ -3,8 +3,8 @@
     <section id="hp-clients">
         <div class="container">
             <div class="heading-wrapper heading-<?php echo get_theme_mod('pt_clients_general_color', false) ? 'primary' : 'secondary'; ?> align-<?php echo get_theme_mod('pt_clients_heading_alignment', 'left'); ?>">
-                <h2><?php echo get_theme_mod('pt_clients_heading_title', "Interesting"); ?></h2>
-                <h3><?php echo get_theme_mod('pt_clients_heading_subtitle', "What a title!"); ?></h3>
+                <h2><?php echo get_theme_mod('pt_clients_heading_title', "Клиенты"); ?></h2>
+                <h3><?php echo get_theme_mod('pt_clients_heading_subtitle', "На кого ты работаешь?!"); ?></h3>
             </div>
             <?php
             $the_query = new WP_Query(array(
@@ -53,7 +53,7 @@
                 </div>
             <?php else : ?>
                 <div>
-                    <p><?php echo __('No client... Time to search some!', 'propaganda'); ?></p>
+                    <p><?php echo __('Нет клиента... Время поискать!', 'propaganda'); ?></p>
                 </div>
             <?php endif; ?>
         </div>

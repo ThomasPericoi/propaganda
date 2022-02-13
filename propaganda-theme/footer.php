@@ -5,15 +5,15 @@
     <div class="container">
         <div class="col-3-inner">
             <div class="col">
-                <h3 class="h6-size"><?php echo get_theme_mod('pt_footer_title_1', "What a title!"); ?></h3>
+                <h3 class="h6-size"><?php echo get_theme_mod('pt_footer_title_1', "Полезные ссылки"); ?></h3>
                 <?php wp_nav_menu(array('menu_class' => 'list list-' . (get_theme_mod('pt_footer_general_color', false) ? 'primary' : 'secondary'), 'theme_location' => 'footer-menu-1', 'depth' => 1)); ?>
             </div>
             <div class="col">
-                <h3 class="h6-size"><?php echo get_theme_mod('pt_footer_title_2', "What a title!"); ?></h3>
+                <h3 class="h6-size"><?php echo get_theme_mod('pt_footer_title_2', "Полезные ссылки"); ?></h3>
                 <?php wp_nav_menu(array('menu_class' => 'list list-' . (get_theme_mod('pt_footer_general_color', false) ? 'primary' : 'secondary'), 'theme_location' => 'footer-menu-2', 'depth' => 1)); ?>
             </div>
             <div class="col">
-                <h3 class="h6-size"><?php echo get_theme_mod('pt_footer_title_3', "What a title!"); ?></h3>
+                <h3 class="h6-size"><?php echo get_theme_mod('pt_footer_title_3', "Полезные ссылки"); ?></h3>
                 <?php wp_nav_menu(array('menu_class' => 'list list-' . (get_theme_mod('pt_footer_general_color', false) ? 'primary' : 'secondary'), 'theme_location' => 'footer-menu-3', 'depth' => 1)); ?>
             </div>
         </div>

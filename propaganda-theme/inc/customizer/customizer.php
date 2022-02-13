@@ -27,7 +27,7 @@ function theme_customize_register($wp_customize)
             $id,
             array(
                 'section' => $section,
-                'label' => __($label, 'propaganda'),
+                'label' => __($label, 'propaganda-customizer-instruction'),
             )
         ));
     }
@@ -57,7 +57,7 @@ function theme_customize_register($wp_customize)
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'primary_color', array(
         'section' => 'colors',
         'settings' => 'primary_color',
-        'label' => __('Primary Color', 'propaganda'),
+        'label' => __('Primary Color', 'propaganda-customizer-instruction'),
     )));
 
     $wp_customize->add_setting('secondary_color', array(
@@ -67,7 +67,7 @@ function theme_customize_register($wp_customize)
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'secondary_color', array(
         'section' => 'colors',
         'settings' => 'secondary_color',
-        'label' => __('Secondary Color', 'propaganda'),
+        'label' => __('Secondary Color', 'propaganda-customizer-instruction'),
     )));
 
 
@@ -77,8 +77,8 @@ function theme_customize_register($wp_customize)
     $wp_customize->add_panel(
         'pt_theme_options',
         array(
-            'title' => __('Theme Options', 'propaganda'),
-            'description' => __('Theme Modifications like color scheme, theme texts and layout preferences can be done here.', 'propaganda'),
+            'title' => __('Theme Options', 'propaganda-customizer-instruction'),
+            'description' => __('Theme Modifications like color scheme, theme texts and layout preferences can be done here.', 'propaganda-customizer-instruction'),
         )
     );
 
@@ -87,8 +87,8 @@ function theme_customize_register($wp_customize)
     --------------------------------------------------------------- */
     $wp_customize->add_section('pt_page_transition', array(
         'panel' => 'pt_theme_options',
-        'title' => __('General - Page Transition', 'propaganda'),
-        'description' => __('Options related to the page transitions on every pages.', 'propaganda'),
+        'title' => __('General - Page Transition', 'propaganda-customizer-instruction'),
+        'description' => __('Options related to the page transitions on every pages.', 'propaganda-customizer-instruction'),
     ));
 
     // ------------ General Options ------------
@@ -108,8 +108,8 @@ function theme_customize_register($wp_customize)
         'pt_page_transition_enabled',
         array(
             'section' => 'pt_page_transition',
-            'label' => __('Page transition?', 'propaganda'),
-            'description' => __('Enable the page transition between every page changes.', 'propaganda'),
+            'label' => __('Page transition?', 'propaganda-customizer-instruction'),
+            'description' => __('Enable the page transition between every page changes.', 'propaganda-customizer-instruction'),
         )
     ));
 
@@ -127,12 +127,12 @@ function theme_customize_register($wp_customize)
         array(
             'type' => 'radio',
             'section' => 'pt_page_transition',
-            'label' => __('Color', 'propaganda'),
-            'description' => __('Color of the page transition.', 'propaganda'),
+            'label' => __('Color', 'propaganda-customizer-instruction'),
+            'description' => __('Color of the page transition.', 'propaganda-customizer-instruction'),
             'choices' => array(
-                'white' => __('White', 'propaganda'),
-                'primary' => __('Primary', 'propaganda'),
-                'secondary' => __('Secondary', 'propaganda')
+                'white' => __('White', 'propaganda-customizer-instruction'),
+                'primary' => __('Primary', 'propaganda-customizer-instruction'),
+                'secondary' => __('Secondary', 'propaganda-customizer-instruction')
             )
         )
     );
@@ -142,8 +142,8 @@ function theme_customize_register($wp_customize)
     --------------------------------------------------------------- */
     $wp_customize->add_section('pt_socials', array(
         'panel' => 'pt_theme_options',
-        'title' => __('General - Socials', 'propaganda'),
-        'description' => __('Options related to the Social Icons. Leave empty if you don\'t want to display it.', 'propaganda'),
+        'title' => __('General - Socials', 'propaganda-customizer-instruction'),
+        'description' => __('Options related to the Social Icons. Leave empty if you don\'t want to display it.', 'propaganda-customizer-instruction'),
     ));
 
     // Shortcut
@@ -157,7 +157,7 @@ function theme_customize_register($wp_customize)
 
     foreach ($socials as $value) {
         $wp_customize->add_setting('pt_socials_' . $value, array(
-            'default' => '',
+            'default' => ($value == 'linkedin') ? 'https://www.linkedin.com/in/thomas-pericoi/' : '',
             'sanitize_callback' => 'pt_sanitize_textarea',
         ));
 
@@ -167,7 +167,7 @@ function theme_customize_register($wp_customize)
                 'type' => 'url',
                 'section' => 'pt_socials',
                 'settings' => 'pt_socials_' . $value,
-                'label' => __(ucfirst($value), 'propaganda'),
+                'label' => __(ucfirst($value), 'propaganda-customizer-instruction'),
             )
         );
     }
@@ -177,8 +177,8 @@ function theme_customize_register($wp_customize)
     --------------------------------------------------------------- */
     $wp_customize->add_section('pt_header', array(
         'panel' => 'pt_theme_options',
-        'title' => __('General - Header', 'propaganda'),
-        'description' => __('Options related to the Header.', 'propaganda'),
+        'title' => __('General - Header', 'propaganda-customizer-instruction'),
+        'description' => __('Options related to the Header.', 'propaganda-customizer-instruction'),
     ));
 
     // Shortcut
@@ -189,7 +189,7 @@ function theme_customize_register($wp_customize)
 
     // Position 
     $wp_customize->add_setting('pt_header_position', array(
-        'default' => false,
+        'default' => true,
         'sanitize_callback' => 'pt_sanitize_checkbox',
     ));
 
@@ -199,8 +199,8 @@ function theme_customize_register($wp_customize)
             'type' => 'checkbox',
             'section' => 'pt_header',
             'settings' => 'pt_header_position',
-            'label' => __('Is the Header fixed?', 'propaganda'),
-            'description' => __('Yes if the checkbox is checked.', 'propaganda'),
+            'label' => __('Is the Header fixed?', 'propaganda-customizer-instruction'),
+            'description' => __('Yes if the checkbox is checked.', 'propaganda-customizer-instruction'),
         )
     );
 
@@ -218,8 +218,8 @@ function theme_customize_register($wp_customize)
         'pt_header_general_color',
         array(
             'section' => 'pt_header',
-            'label' => __('General Color', 'propaganda'),
-            'description' => __('Color for the logo and the button in the Header.', 'propaganda'),
+            'label' => __('General Color', 'propaganda-customizer-instruction'),
+            'description' => __('Color for the logo and the button in the Header.', 'propaganda-customizer-instruction'),
         )
     ));
 
@@ -237,19 +237,19 @@ function theme_customize_register($wp_customize)
         array(
             'section' => 'pt_header',
             'settings' => 'pt_header_logo',
-            'label' => 'Upload Logo',
-            'description' => __('Logo for the website, in the Header and the Footer.', 'propaganda'),
+            'label' => __('Upload Logo', 'propaganda-customizer-instruction'),
+            'description' => __('Logo for the website, in the Header and the Footer.', 'propaganda-customizer-instruction'),
             'button_labels' => array(
-                'select' => 'Select Logo',
-                'remove' => 'Remove Logo',
-                'change' => 'Change Logo',
+                'select' => __('Select Logo', 'propaganda-customizer-instruction'),
+                'remove' => __('Remove Logo', 'propaganda-customizer-instruction'),
+                'change' => __('Change Logo', 'propaganda-customizer-instruction'),
             ),
         )
     ));
 
-    // Animation Duration
+    // Logo Width
     $wp_customize->add_setting('pt_header_logo_width', array(
-        'default' => __('200', 'propaganda'),
+        'default' => 250,
         'sanitize_callback' => 'sanitize_text_field',
     ));
 
@@ -259,8 +259,8 @@ function theme_customize_register($wp_customize)
             'type' => 'number',
             'section' => 'pt_header',
             'settings' => 'pt_header_logo_width',
-            'label' => __('Width of the logo', 'propaganda'),
-            'description' => __('Width (in pixels) of the image logo in the Header.', 'propaganda'),
+            'label' => __('Width of the logo', 'propaganda-customizer-instruction'),
+            'description' => __('Width (in pixels) of the image logo in the Header.', 'propaganda-customizer-instruction'),
         )
     );
 
@@ -278,14 +278,14 @@ function theme_customize_register($wp_customize)
         'pt_header_logo_is_html',
         array(
             'section' => 'pt_header',
-            'label' => __('Do you want the logo in HTML?', 'propaganda'),
-            'description' => __('Enable the logo in HTML and hide the logo image.', 'propaganda'),
+            'label' => __('Do you want the logo in HTML?', 'propaganda-customizer-instruction'),
+            'description' => __('Enable the logo in HTML and hide the logo image.', 'propaganda-customizer-instruction'),
         )
     ));
 
     // Logo HTML
     $wp_customize->add_setting('pt_header_logo_html', array(
-        'default' => __('Propaganda <span>Theme</span>', 'propaganda'),
+        'default' => 'пропаганда <span>шаблоны</span>',
         'sanitize_callback' => 'pt_sanitize_textarea',
     ));
 
@@ -295,8 +295,8 @@ function theme_customize_register($wp_customize)
             'type' => 'textarea',
             'section' => 'pt_header',
             'settings' => 'pt_header_logo_html',
-            'label' => __('Logo HTML', 'propaganda'),
-            'description' => __('Write whatever you want. Put the characters you want highlighted bewteen &lt;span&gt;&lt;/span&gt;.', 'propaganda'),
+            'label' => __('Logo HTML', 'propaganda-customizer-instruction'),
+            'description' => __('Write whatever you want. Put the characters you want highlighted bewteen &lt;span&gt;&lt;/span&gt;.', 'propaganda-customizer-instruction'),
         )
     );
 
@@ -312,7 +312,7 @@ function theme_customize_register($wp_customize)
         'pt_header_menu',
         array(
             'section' => 'pt_header',
-            'description' => __('You can change the menu <a href="?autofocus[panel]=nav_menus">here</a>.', 'propaganda'),
+            'description' => __('You can change the menu <a href="?autofocus[panel]=nav_menus">here</a>.', 'propaganda-customizer-instruction'),
         )
     ));
 
@@ -321,7 +321,7 @@ function theme_customize_register($wp_customize)
 
     // Button Label
     $wp_customize->add_setting('pt_header_button_label', array(
-        'default' => __('Click me!', 'propaganda'),
+        'default' => 'Нажми на меня!',
         'sanitize_callback' => 'sanitize_text_field',
     ));
 
@@ -331,8 +331,8 @@ function theme_customize_register($wp_customize)
             'type' => 'text',
             'section' => 'pt_header',
             'settings' => 'pt_header_button_label',
-            'label' => __('Button Label', 'propaganda'),
-            'description' => __('Text for the button in the Header.', 'propaganda'),
+            'label' => __('Button Label', 'propaganda-customizer-instruction'),
+            'description' => __('Text for the button in the Header.', 'propaganda-customizer-instruction'),
         )
     );
 
@@ -348,8 +348,8 @@ function theme_customize_register($wp_customize)
             'type' => 'text',
             'section' => 'pt_header',
             'settings' => 'pt_header_button_link',
-            'label' => __('Button Link', 'propaganda'),
-            'description' => __('Link for the button in the Header', 'propaganda'),
+            'label' => __('Button Link', 'propaganda-customizer-instruction'),
+            'description' => __('Link for the button in the Header', 'propaganda-customizer-instruction'),
         )
     );
 
@@ -365,13 +365,33 @@ function theme_customize_register($wp_customize)
             'type' => 'checkbox',
             'section' => 'pt_header',
             'settings' => 'pt_header_button_external',
-            'label' => __('Is this button external?', 'propaganda'),
-            'description' => __('Yes if the checkbox is checked.', 'propaganda'),
+            'label' => __('Is this button external?', 'propaganda-customizer-instruction'),
+            'description' => __('Yes if the checkbox is checked.', 'propaganda-customizer-instruction'),
         )
     );
 
     // Separator
     separator('pt_header_button_separator', 'pt_header', $wp_customize);
+
+    // Mobile Button Label
+    $wp_customize->add_setting('pt_header_mobile_button_label', array(
+        'default' => 'Меню',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control(
+        'pt_header_mobile_button_label',
+        array(
+            'type' => 'text',
+            'section' => 'pt_header',
+            'settings' => 'pt_header_mobile_button_label',
+            'label' => __('Mobile Button Label', 'propaganda-customizer-instruction'),
+            'description' => __('Text for the button on mobile in the Header (for the menu).', 'propaganda-customizer-instruction'),
+        )
+    );
+
+    // Separator
+    separator('pt_header_button_separator_1', 'pt_header', $wp_customize);
 
     // Button Animation
     $wp_customize->add_setting(
@@ -387,8 +407,8 @@ function theme_customize_register($wp_customize)
         'pt_header_button_animation',
         array(
             'section' => 'pt_header',
-            'label' => __('Animate the button?', 'propaganda'),
-            'description' => __('Enable the bounce animation of the button.', 'propaganda'),
+            'label' => __('Animate the button?', 'propaganda-customizer-instruction'),
+            'description' => __('Enable the bounce animation of the button.', 'propaganda-customizer-instruction'),
         )
     ));
 
@@ -397,8 +417,8 @@ function theme_customize_register($wp_customize)
     --------------------------------------------------------------- */
     $wp_customize->add_section('pt_footer', array(
         'panel' => 'pt_theme_options',
-        'title' => __('General - Footer', 'propaganda'),
-        'description' => __('Options related to the Footer.', 'propaganda'),
+        'title' => __('General - Footer', 'propaganda-customizer-instruction'),
+        'description' => __('Options related to the Footer.', 'propaganda-customizer-instruction'),
     ));
 
     // Shortcut
@@ -421,8 +441,8 @@ function theme_customize_register($wp_customize)
         'pt_footer_general_color',
         array(
             'section' => 'pt_footer',
-            'label' => __('General Color', 'propaganda'),
-            'description' => __('Color for the lists and the social buttons in the Footer.', 'propaganda'),
+            'label' => __('General Color', 'propaganda-customizer-instruction'),
+            'description' => __('Color for the lists and the social buttons in the Footer.', 'propaganda-customizer-instruction'),
         )
     ));
 
@@ -437,7 +457,7 @@ function theme_customize_register($wp_customize)
         'pt_footer_menu',
         array(
             'section' => 'pt_footer',
-            'description' => __('You can change the menus <a href="?autofocus[panel]=nav_menus">here</a>.', 'propaganda'),
+            'description' => __('You can change the menus <a href="?autofocus[panel]=nav_menus">here</a>.', 'propaganda-customizer-instruction'),
         )
     ));
 
@@ -445,7 +465,7 @@ function theme_customize_register($wp_customize)
     for ($count = 1; $count <= 3; $count++) {
 
         $wp_customize->add_setting('pt_footer_title_' . $count, array(
-            'default' => __('What a title!', 'propaganda'),
+            'default' => 'Полезные ссылки',
             'sanitize_callback' => 'sanitize_text_field',
         ));
 
@@ -455,8 +475,8 @@ function theme_customize_register($wp_customize)
                 'type' => 'text',
                 'section' => 'pt_footer',
                 'settings' => 'pt_footer_title_' . $count,
-                'label' => __('Column ' . $count . ' -  Title', 'propaganda'),
-                'description' => __('Title of the column ' . $count . ' in the Footer.', 'propaganda'),
+                'label' => __('Column ' . $count . ' -  Title', 'propaganda-customizer-instruction'),
+                'description' => __('Title of the column ' . $count . ' in the Footer.', 'propaganda-customizer-instruction'),
             )
         );
     }
@@ -466,8 +486,8 @@ function theme_customize_register($wp_customize)
     --------------------------------------------------------------- */
     $wp_customize->add_section('pt_404', array(
         'panel' => 'pt_theme_options',
-        'title' => __('General - 404', 'propaganda'),
-        'description' => __('Options related to the 404 page.', 'propaganda'),
+        'title' => __('General - 404', 'propaganda-customizer-instruction'),
+        'description' => __('Options related to the 404 page.', 'propaganda-customizer-instruction'),
     ));
 
     // Shortcut
@@ -490,8 +510,8 @@ function theme_customize_register($wp_customize)
         'pt_404_general_color',
         array(
             'section' => 'pt_404',
-            'label' => __('General Color', 'propaganda'),
-            'description' => __('Color of all the elements of the 404 page.', 'propaganda'),
+            'label' => __('General Color', 'propaganda-customizer-instruction'),
+            'description' => __('Color of all the elements of the 404 page.', 'propaganda-customizer-instruction'),
         )
     ));
 
@@ -502,7 +522,7 @@ function theme_customize_register($wp_customize)
     $wp_customize->add_setting(
         'pt_404_icon',
         array(
-            'default' => 'anonymous',
+            'default' => 'whistle',
             'sanitize_callback' => 'pt_sanitize_select'
         )
     );
@@ -512,15 +532,15 @@ function theme_customize_register($wp_customize)
         array(
             'type' => 'select',
             'section' => 'pt_404',
-            'label' => __('Icon', 'propaganda'),
-            'description' => __('Icon displayed in the 404 page.', 'propaganda'),
+            'label' => __('Icon', 'propaganda-customizer-instruction'),
+            'description' => __('Icon displayed in the 404 page.', 'propaganda-customizer-instruction'),
             'choices' => $icons,
         )
     );
 
     // Title
     $wp_customize->add_setting('pt_404_title', array(
-        'default' => __('404!', 'propaganda'),
+        'default' => '404§',
         'sanitize_callback' => 'pt_sanitize_textarea',
     ));
 
@@ -530,14 +550,14 @@ function theme_customize_register($wp_customize)
             'type' => 'textarea',
             'section' => 'pt_404',
             'settings' => 'pt_404_title',
-            'label' => __('Title', 'propaganda'),
-            'description' => __('Text for the title h1 of the Hero of the 404 page. &lt;br&gt;, bold and italic are accepted.', 'propaganda'),
+            'label' => __('Title', 'propaganda-customizer-instruction'),
+            'description' => __('Text for the title h1 of the Hero of the 404 page. &lt;br&gt;, bold and italic are accepted.', 'propaganda-customizer-instruction'),
         )
     );
 
     // Subtitle
     $wp_customize->add_setting('pt_404_subtitle', array(
-        'default' => __('You\'re lost...', 'propaganda'),
+        'default' => 'ты потерялся',
         'sanitize_callback' => 'sanitize_text_field',
     ));
 
@@ -547,8 +567,8 @@ function theme_customize_register($wp_customize)
             'type' => 'text',
             'section' => 'pt_404',
             'settings' => 'pt_404_subtitle',
-            'label' => __('Subtitle', 'propaganda'),
-            'description' => __('Text for the subtitle h2 of the Hero of the 404 page.', 'propaganda'),
+            'label' => __('Subtitle', 'propaganda-customizer-instruction'),
+            'description' => __('Text for the subtitle h2 of the Hero of the 404 page.', 'propaganda-customizer-instruction'),
         )
     );
 
@@ -557,7 +577,7 @@ function theme_customize_register($wp_customize)
 
     // Button Label
     $wp_customize->add_setting('pt_404_button_label', array(
-        'default' => __('I lead to the homepage', 'propaganda'),
+        'default' => 'я веду на главную',
         'sanitize_callback' => 'sanitize_text_field',
     ));
 
@@ -567,8 +587,8 @@ function theme_customize_register($wp_customize)
             'type' => 'text',
             'section' => 'pt_404',
             'settings' => 'pt_404_button_label',
-            'label' => __('Button Label', 'propaganda'),
-            'description' => __('Text for the button in the hero of the 404 page.', 'propaganda'),
+            'label' => __('Button Label', 'propaganda-customizer-instruction'),
+            'description' => __('Text for the button in the hero of the 404 page.', 'propaganda-customizer-instruction'),
         )
     );
 
@@ -577,8 +597,8 @@ function theme_customize_register($wp_customize)
     --------------------------------------------------------------- */
     $wp_customize->add_section('pt_hero', array(
         'panel' => 'pt_theme_options',
-        'title' => __('Homepage - Hero Section', 'propaganda'),
-        'description' => __('Options related to the Hero section on the homepage.', 'propaganda'),
+        'title' => __('Homepage - Hero Section', 'propaganda-customizer-instruction'),
+        'description' => __('Options related to the Hero section on the homepage.', 'propaganda-customizer-instruction'),
     ));
 
     // Shortcut
@@ -601,8 +621,8 @@ function theme_customize_register($wp_customize)
         'pt_hero_displayed',
         array(
             'section' => 'pt_hero',
-            'label' => __('Display the whole section', 'propaganda'),
-            'description' => __('Display the section on the homepage.', 'propaganda'),
+            'label' => __('Display the whole section', 'propaganda-customizer-instruction'),
+            'description' => __('Display the section on the homepage.', 'propaganda-customizer-instruction'),
         )
     ));
 
@@ -610,7 +630,7 @@ function theme_customize_register($wp_customize)
     $wp_customize->add_setting(
         'pt_hero_background',
         array(
-            'default' => 'fish-scales',
+            'default' => 'ichimatu',
             'sanitize_callback' => 'pt_sanitize_select'
         )
     );
@@ -620,8 +640,8 @@ function theme_customize_register($wp_customize)
         array(
             'type' => 'select',
             'section' => 'pt_hero',
-            'label' => __('Background Pattern', 'propaganda'),
-            'description' => __('Background pattern for the Hero.', 'propaganda'),
+            'label' => __('Background Pattern', 'propaganda-customizer-instruction'),
+            'description' => __('Background pattern for the Hero.', 'propaganda-customizer-instruction'),
             'choices' => $svg_patterns,
         )
     );
@@ -630,7 +650,7 @@ function theme_customize_register($wp_customize)
     $wp_customize->add_setting(
         'pt_hero_background_animation',
         array(
-            'default' => false,
+            'default' => true,
             'sanitize_callback' => 'pt_sanitize_checkbox'
         )
     );
@@ -640,8 +660,8 @@ function theme_customize_register($wp_customize)
         'pt_hero_background_animation',
         array(
             'section' => 'pt_hero',
-            'label' => __('Animate the background?', 'propaganda'),
-            'description' => __('Enable the animation of the rotation of the background.', 'propaganda'),
+            'label' => __('Animate the background?', 'propaganda-customizer-instruction'),
+            'description' => __('Enable the animation of the rotation of the background.', 'propaganda-customizer-instruction'),
         )
     ));
 
@@ -657,8 +677,8 @@ function theme_customize_register($wp_customize)
             'type' => 'number',
             'section' => 'pt_hero',
             'settings' => 'pt_hero_background_duration',
-            'label' => __('Duration of the background animation', 'propaganda'),
-            'description' => __('Number for the duration of the animation for a full circle (in seconds).', 'propaganda'),
+            'label' => __('Duration of the background animation', 'propaganda-customizer-instruction'),
+            'description' => __('Number for the duration of the animation for a full circle (in seconds).', 'propaganda-customizer-instruction'),
         )
     );
 
@@ -676,8 +696,8 @@ function theme_customize_register($wp_customize)
         array(
             'type' => 'select',
             'section' => 'pt_hero',
-            'label' => __('Transform Position', 'propaganda'),
-            'description' => __('Position of the rotating axis of the animation of the background.', 'propaganda'),
+            'label' => __('Transform Position', 'propaganda-customizer-instruction'),
+            'description' => __('Position of the rotating axis of the animation of the background.', 'propaganda-customizer-instruction'),
             'choices' => $positions,
         )
     );
@@ -699,12 +719,12 @@ function theme_customize_register($wp_customize)
         'pt_hero_alignment',
         array(
             'section' => 'pt_hero',
-            'label' => __('Alignment', 'propaganda'),
-            'description' => __('Alignment for the elements in the Hero.', 'propaganda'),
+            'label' => __('Alignment', 'propaganda-customizer-instruction'),
+            'description' => __('Alignment for the elements in the Hero.', 'propaganda-customizer-instruction'),
             'choices' => array(
-                'left' => __('Left', 'propaganda'),
-                'center' => __('Center', 'propaganda'),
-                'right' => __('Right', 'propaganda')
+                'left' => __('Left', 'propaganda-customizer-instruction'),
+                'center' => __('Center', 'propaganda-customizer-instruction'),
+                'right' => __('Right', 'propaganda-customizer-instruction')
             )
         )
     ));
@@ -714,7 +734,7 @@ function theme_customize_register($wp_customize)
 
     // Title
     $wp_customize->add_setting('pt_hero_title', array(
-        'default' => __('Hello there!', 'propaganda'),
+        'default' => 'Привет посетитель!',
         'sanitize_callback' => 'pt_sanitize_textarea',
     ));
 
@@ -724,14 +744,14 @@ function theme_customize_register($wp_customize)
             'type' => 'textarea',
             'section' => 'pt_hero',
             'settings' => 'pt_hero_title',
-            'label' => __('Title', 'propaganda'),
-            'description' => __('Text for the title h1 of the Hero. &lt;br&gt;, bold and italic are accepted.', 'propaganda'),
+            'label' => __('Title', 'propaganda-customizer-instruction'),
+            'description' => __('Text for the title h1 of the Hero. &lt;br&gt;, bold and italic are accepted.', 'propaganda-customizer-instruction'),
         )
     );
 
     // Subtitle
     $wp_customize->add_setting('pt_hero_subtitle', array(
-        'default' => __('Let me explain why I\'m the best', 'propaganda'),
+        'default' => 'Этот сайт здесь, чтобы показать вам кое-что',
         'sanitize_callback' => 'sanitize_text_field',
     ));
 
@@ -741,8 +761,8 @@ function theme_customize_register($wp_customize)
             'type' => 'text',
             'section' => 'pt_hero',
             'settings' => 'pt_hero_subtitle',
-            'label' => __('Subtitle', 'propaganda'),
-            'description' => __('Text for the subtitle h2 of the Hero.', 'propaganda'),
+            'label' => __('Subtitle', 'propaganda-customizer-instruction'),
+            'description' => __('Text for the subtitle h2 of the Hero.', 'propaganda-customizer-instruction'),
         )
     );
 
@@ -765,13 +785,13 @@ function theme_customize_register($wp_customize)
             'pt_hero_button_' . $count,
             array(
                 'section' => 'pt_hero',
-                'label' => __('Display the Button ' . $count, 'propaganda'),
+                'label' => __('Display the Button ' . $count, 'propaganda-customizer-instruction'),
             )
         ));
 
         // Button Label
         $wp_customize->add_setting('pt_hero_button_label_' . $count, array(
-            'default' => __('I lead somewhere', 'propaganda'),
+            'default' => 'Нажми меня товарищ',
             'sanitize_callback' => 'sanitize_text_field',
         ));
 
@@ -781,8 +801,8 @@ function theme_customize_register($wp_customize)
                 'type' => 'text',
                 'section' => 'pt_hero',
                 'settings' => 'pt_hero_button_label_' . $count,
-                'label' => __('Button  ' . $count . ' Label', 'propaganda'),
-                'description' => __('Text for the Button ' . $count . ' in the Hero.', 'propaganda'),
+                'label' => __('Button  ' . $count . ' Label', 'propaganda-customizer-instruction'),
+                'description' => __('Text for the Button ' . $count . ' in the Hero.', 'propaganda-customizer-instruction'),
             )
         );
 
@@ -798,8 +818,8 @@ function theme_customize_register($wp_customize)
                 'type' => 'text',
                 'section' => 'pt_hero',
                 'settings' => 'pt_hero_button_link_' . $count,
-                'label' => __('Button  ' . $count . ' Link', 'propaganda'),
-                'description' => __('Link for the Button ' . $count . ' in the Hero.', 'propaganda'),
+                'label' => __('Button  ' . $count . ' Link', 'propaganda-customizer-instruction'),
+                'description' => __('Link for the Button ' . $count . ' in the Hero.', 'propaganda-customizer-instruction'),
             )
         );
 
@@ -815,8 +835,8 @@ function theme_customize_register($wp_customize)
                 'type' => 'checkbox',
                 'section' => 'pt_hero',
                 'settings' => 'pt_hero_button_external_' . $count,
-                'label' => __('Is this button external?', 'propaganda'),
-                'description' => __('Yes if the checkbox is checked.', 'propaganda'),
+                'label' => __('Is this button external?', 'propaganda-customizer-instruction'),
+                'description' => __('Yes if the checkbox is checked.', 'propaganda-customizer-instruction'),
             )
         );
 
@@ -840,8 +860,8 @@ function theme_customize_register($wp_customize)
         'pt_hero_button_color_2',
         array(
             'section' => 'pt_hero',
-            'label' => __('Button 2 Color', 'propaganda'),
-            'description' => __('Is the button\'s color "Primary" or "Secondary".', 'propaganda'),
+            'label' => __('Button 2 Color', 'propaganda-customizer-instruction'),
+            'description' => __('Is the button\'s color "Primary" or "Secondary".', 'propaganda-customizer-instruction'),
         )
     ));
 
@@ -850,8 +870,8 @@ function theme_customize_register($wp_customize)
     --------------------------------------------------------------- */
     $wp_customize->add_section('pt_skills', array(
         'panel' => 'pt_theme_options',
-        'title' => __('Homepage - Skills Section', 'propaganda'),
-        'description' => __('Options related to the Skills section on the homepage.', 'propaganda'),
+        'title' => __('Homepage - Skills Section', 'propaganda-customizer-instruction'),
+        'description' => __('Options related to the Skills section on the homepage.', 'propaganda-customizer-instruction'),
     ));
 
     // Shortcut
@@ -874,8 +894,8 @@ function theme_customize_register($wp_customize)
         'pt_skills_displayed',
         array(
             'section' => 'pt_skills',
-            'label' => __('Display the whole section', 'propaganda'),
-            'description' => __('Display the section on the homepage', 'propaganda'),
+            'label' => __('Display the whole section', 'propaganda-customizer-instruction'),
+            'description' => __('Display the section on the homepage', 'propaganda-customizer-instruction'),
         )
     ));
 
@@ -893,8 +913,8 @@ function theme_customize_register($wp_customize)
         'pt_skills_general_color',
         array(
             'section' => 'pt_skills',
-            'label' => __('General Color', 'propaganda'),
-            'description' => __('Color for the title h2 and the elements of the grid in the Skills section.', 'propaganda'),
+            'label' => __('General Color', 'propaganda-customizer-instruction'),
+            'description' => __('Color for the title h2 and the elements of the grid in the Skills section.', 'propaganda-customizer-instruction'),
         )
     ));
 
@@ -912,13 +932,13 @@ function theme_customize_register($wp_customize)
         'pt_skills_expanded',
         array(
             'section' => 'pt_skills',
-            'label' => __('Show fully the section.', 'propaganda'),
+            'label' => __('Show fully the section.', 'propaganda-customizer-instruction'),
         )
     ));
 
     // Button Label
     $wp_customize->add_setting('pt_skills_button_label', array(
-        'default' => __('Show me the rest!', 'propaganda'),
+        'default' => 'Покажи мне остальные!',
         'sanitize_callback' => 'sanitize_text_field',
     ));
 
@@ -928,8 +948,8 @@ function theme_customize_register($wp_customize)
             'type' => 'text',
             'section' => 'pt_skills',
             'settings' => 'pt_skills_button_label',
-            'label' => __('Button Label', 'propaganda'),
-            'description' => __('Text for the button in the Skills section.', 'propaganda'),
+            'label' => __('Button Label', 'propaganda-customizer-instruction'),
+            'description' => __('Text for the button in the Skills section.', 'propaganda-customizer-instruction'),
         )
     );
 
@@ -950,19 +970,19 @@ function theme_customize_register($wp_customize)
         'pt_skills_heading_alignment',
         array(
             'section' => 'pt_skills',
-            'label' => __('Alignment', 'propaganda'),
-            'description' => __('Alignment for the headings in the Skills section.', 'propaganda'),
+            'label' => __('Alignment', 'propaganda-customizer-instruction'),
+            'description' => __('Alignment for the headings in the Skills section.', 'propaganda-customizer-instruction'),
             'choices' => array(
-                'left' => __('Left', 'propaganda'),
-                'center' => __('Center', 'propaganda'),
-                'right' => __('Right', 'propaganda'),
+                'left' => __('Left', 'propaganda-customizer-instruction'),
+                'center' => __('Center', 'propaganda-customizer-instruction'),
+                'right' => __('Right', 'propaganda-customizer-instruction'),
             )
         )
     ));
 
     // Title
     $wp_customize->add_setting('pt_skills_heading_title', array(
-        'default' => __('Interesting', 'propaganda'),
+        'default' => 'Навыки и умения',
         'sanitize_callback' => 'sanitize_text_field',
     ));
 
@@ -972,14 +992,14 @@ function theme_customize_register($wp_customize)
             'type' => 'text',
             'section' => 'pt_skills',
             'settings' => 'pt_skills_heading_title',
-            'label' => __('Title', 'propaganda'),
-            'description' => __('Text for the title h2 in the Skills section.', 'propaganda'),
+            'label' => __('Title', 'propaganda-customizer-instruction'),
+            'description' => __('Text for the title h2 in the Skills section.', 'propaganda-customizer-instruction'),
         )
     );
 
     // Subtitle
     $wp_customize->add_setting('pt_skills_heading_subtitle', array(
-        'default' => __('What a title!', 'propaganda'),
+        'default' => 'В чем ты хорош?',
         'sanitize_callback' => 'sanitize_text_field',
     ));
 
@@ -989,8 +1009,8 @@ function theme_customize_register($wp_customize)
             'type' => 'text',
             'section' => 'pt_skills',
             'settings' => 'pt_skills_heading_subtitle',
-            'label' => __('Subtitle', 'propaganda'),
-            'description' => __('Text for the subtitle h3 in the Skills section.', 'propaganda'),
+            'label' => __('Subtitle', 'propaganda-customizer-instruction'),
+            'description' => __('Text for the subtitle h3 in the Skills section.', 'propaganda-customizer-instruction'),
         )
     );
 
@@ -1010,8 +1030,8 @@ function theme_customize_register($wp_customize)
             'type' => 'number',
             'section' => 'pt_skills',
             'settings' => 'pt_skills_grid_items',
-            'label' => __('Number of grid items', 'propaganda'),
-            'description' => __('Number of grid items displayed in the grid in the Skills section. Refresh the all page after modifying the value.', 'propaganda'),
+            'label' => __('Number of grid items', 'propaganda-customizer-instruction'),
+            'description' => __('Number of grid items displayed in the grid in the Skills section. Refresh the all page after modifying the value.', 'propaganda-customizer-instruction'),
         )
     );
 
@@ -1026,7 +1046,7 @@ function theme_customize_register($wp_customize)
         $wp_customize->add_setting(
             'pt_skills_content_' . $count . '_icon',
             array(
-                'default' => 'origami',
+                'default' => 'military-medal',
                 'sanitize_callback' => 'pt_sanitize_select'
             )
         );
@@ -1036,15 +1056,15 @@ function theme_customize_register($wp_customize)
             array(
                 'type' => 'select',
                 'section' => 'pt_skills',
-                'label' => __('Icon ' . $count, 'propaganda'),
-                'description' => __('Icon of the item ' . $count . ' in the Skills section.', 'propaganda'),
+                'label' => __('Icon ' . $count, 'propaganda-customizer-instruction'),
+                'description' => __('Icon of the item ' . $count . ' in the Skills section.', 'propaganda-customizer-instruction'),
                 'choices' => $icons,
             )
         );
 
         // Title
         $wp_customize->add_setting('pt_skills_content_' . $count . '_title', array(
-            'default' => __('Origami', 'propaganda'),
+            'default' => 'молодец товарищ',
             'sanitize_callback' => 'sanitize_text_field',
         ));
 
@@ -1054,14 +1074,14 @@ function theme_customize_register($wp_customize)
                 'type' => 'text',
                 'section' => 'pt_skills',
                 'settings' => 'pt_skills_content_' . $count . '_title',
-                'label' => __('Title ' . $count, 'propaganda'),
-                'description' => __('Title of the item ' . $count . ' in the Skills section.', 'propaganda'),
+                'label' => __('Title ' . $count, 'propaganda-customizer-instruction'),
+                'description' => __('Title of the item ' . $count . ' in the Skills section.', 'propaganda-customizer-instruction'),
             )
         );
 
         // Pill
         $wp_customize->add_setting('pt_skills_content_' . $count . '_pill', array(
-            'default' => __('', 'propaganda'),
+            'default' => ($count == 2) ? 'Новый' : '',
             'sanitize_callback' => 'sanitize_text_field',
         ));
 
@@ -1071,31 +1091,14 @@ function theme_customize_register($wp_customize)
                 'type' => 'text',
                 'section' => 'pt_skills',
                 'settings' => 'pt_skills_content_' . $count . '_pill',
-                'label' => __('Pill label ' . $count, 'propaganda'),
-                'description' => __('Label of the pill of the item ' . $count . ' in the Skills section.', 'propaganda'),
+                'label' => __('Pill label ' . $count, 'propaganda-customizer-instruction'),
+                'description' => __('Label of the pill of the item ' . $count . ' in the Skills section.', 'propaganda-customizer-instruction'),
             )
         );
     }
 
     // ------------ Subsection Options ------------
     custom_heading('pt_skills_heading_subsection', 'pt_skills', 'Subsection Options', $wp_customize);
-
-    // Subtitle
-    $wp_customize->add_setting('pt_skills_subsection_subtitle', array(
-        'default' => __('What a title!', 'propaganda'),
-        'sanitize_callback' => 'sanitize_text_field',
-    ));
-
-    $wp_customize->add_control(
-        'pt_skills_subsection_subtitle',
-        array(
-            'type' => 'text',
-            'section' => 'pt_skills',
-            'settings' => 'pt_skills_subsection_subtitle',
-            'label' => __('Subtitle', 'propaganda'),
-            'description' => __('Text for the subtitle h3 in the subsection of the Skills section.', 'propaganda'),
-        )
-    );
 
     // List Displayed
     $wp_customize->add_setting(
@@ -1111,9 +1114,26 @@ function theme_customize_register($wp_customize)
         'pt_skills_subsection_displayed',
         array(
             'section' => 'pt_skills',
-            'label' => __('Show the subsection section.', 'propaganda'),
+            'label' => __('Show the subsection section.', 'propaganda-customizer-instruction'),
         )
     ));
+
+    // Subtitle
+    $wp_customize->add_setting('pt_skills_subsection_subtitle', array(
+        'default' => 'Ключевое значение имеет точность',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control(
+        'pt_skills_subsection_subtitle',
+        array(
+            'type' => 'text',
+            'section' => 'pt_skills',
+            'settings' => 'pt_skills_subsection_subtitle',
+            'label' => __('Subtitle', 'propaganda-customizer-instruction'),
+            'description' => __('Text for the subtitle h3 in the subsection of the Skills section.', 'propaganda-customizer-instruction'),
+        )
+    );
 
     // Separator
     separator('pt_skills_subsection_separator_1', 'pt_skills', $wp_customize);
@@ -1131,8 +1151,8 @@ function theme_customize_register($wp_customize)
             'type' => 'number',
             'section' => 'pt_skills',
             'settings' => 'pt_skills_subsection_col_1_grid_items',
-            'label' => __('Column 1 - Number of list items', 'propaganda'),
-            'description' => __('Number of list items displayed in the subsection of the Skills section. Refresh the all page after modifying the value.', 'propaganda'),
+            'label' => __('Column 1 - Number of list items', 'propaganda-customizer-instruction'),
+            'description' => __('Number of list items displayed in the subsection of the Skills section. Refresh the all page after modifying the value.', 'propaganda-customizer-instruction'),
         )
     );
 
@@ -1142,7 +1162,7 @@ function theme_customize_register($wp_customize)
 
         // Column 1 - List Title
         $wp_customize->add_setting('pt_skills_subsection_col_1_items' . $count . '_list_title', array(
-            'default' => __('IT Languages', 'propaganda'),
+            'default' => 'Язык программирования',
             'sanitize_callback' => 'sanitize_text_field',
         ));
 
@@ -1152,14 +1172,14 @@ function theme_customize_register($wp_customize)
                 'type' => 'text',
                 'section' => 'pt_skills',
                 'settings' => 'pt_skills_subsection_col_1_items' . $count . '_list_title',
-                'label' => __('Column 1 - List Title ' . $count, 'propaganda'),
-                'description' => __('Title of the list ' . $count . ' in the Skills section.', 'propaganda'),
+                'label' => __('Column 1 - List Title ' . $count, 'propaganda-customizer-instruction'),
+                'description' => __('Title of the list ' . $count . ' in the Skills section.', 'propaganda-customizer-instruction'),
             )
         );
 
         // Column 1 - List Elements
         $wp_customize->add_setting('pt_skills_subsection_col_1_items' . $count . '_list_elements', array(
-            'default' => __('<li>HTML</li><li>PHP</li>', 'propaganda'),
+            'default' => '<li>HTML</li><li>PHP</li>',
             'sanitize_callback' => 'pt_sanitize_textarea',
         ));
 
@@ -1169,8 +1189,8 @@ function theme_customize_register($wp_customize)
                 'type' => 'textarea',
                 'section' => 'pt_skills',
                 'settings' => 'pt_skills_subsection_col_1_items' . $count . '_list_elements',
-                'label' => __('Column 1 - List Elements ' . $count, 'propaganda'),
-                'description' => __('Content for the list of the Skills. &lt;br&gt;, bold and italic are accepted. To make it a list, use &lt;li&gt;.', 'propaganda'),
+                'label' => __('Column 1 - List Elements ' . $count, 'propaganda-customizer-instruction'),
+                'description' => __('Content for the list of the Skills. &lt;br&gt;, bold and italic are accepted. To make it a list, use &lt;li&gt;.', 'propaganda-customizer-instruction'),
             )
         );
     }
@@ -1191,8 +1211,8 @@ function theme_customize_register($wp_customize)
             'type' => 'number',
             'section' => 'pt_skills',
             'settings' => 'pt_skills_subsection_col_2_grid_items',
-            'label' => __('Column 2 - Number of list items', 'propaganda'),
-            'description' => __('Number of list items displayed in the subsection of the Skills section. Refresh the all page after modifying the value.', 'propaganda'),
+            'label' => __('Column 2 - Number of list items', 'propaganda-customizer-instruction'),
+            'description' => __('Number of list items displayed in the subsection of the Skills section. Refresh the all page after modifying the value.', 'propaganda-customizer-instruction'),
         )
     );
 
@@ -1202,7 +1222,7 @@ function theme_customize_register($wp_customize)
 
         // Column 2 - List Title
         $wp_customize->add_setting('pt_skills_subsection_col_2_items' . $count . '_list_title', array(
-            'default' => __('IT Languages', 'propaganda'),
+            'default' => 'IT Languages',
             'sanitize_callback' => 'sanitize_text_field',
         ));
 
@@ -1212,14 +1232,14 @@ function theme_customize_register($wp_customize)
                 'type' => 'text',
                 'section' => 'pt_skills',
                 'settings' => 'pt_skills_subsection_col_2_items' . $count . '_list_title',
-                'label' => __('Column 2 - List Title ' . $count, 'propaganda'),
-                'description' => __('Title of the list ' . $count . ' in the Skills section.', 'propaganda'),
+                'label' => __('Column 2 - List Title ' . $count, 'propaganda-customizer-instruction'),
+                'description' => __('Title of the list ' . $count . ' in the Skills section.', 'propaganda-customizer-instruction'),
             )
         );
 
         // Column 2 - List Elements
         $wp_customize->add_setting('pt_skills_subsection_col_2_items' . $count . '_list_elements', array(
-            'default' => __('<li>HTML</li><li>PHP</li>', 'propaganda'),
+            'default' => '<li>HTML</li><li>PHP</li>',
             'sanitize_callback' => 'pt_sanitize_textarea',
         ));
 
@@ -1229,8 +1249,8 @@ function theme_customize_register($wp_customize)
                 'type' => 'textarea',
                 'section' => 'pt_skills',
                 'settings' => 'pt_skills_subsection_col_2_items' . $count . '_list_elements',
-                'label' => __('Column 2 - List Elements ' . $count, 'propaganda'),
-                'description' => __('Content for the list of the Skills. &lt;br&gt;, bold and italic are accepted. To make it a list, use &lt;li&gt;.', 'propaganda'),
+                'label' => __('Column 2 - List Elements ' . $count, 'propaganda-customizer-instruction'),
+                'description' => __('Content for the list of the Skills. &lt;br&gt;, bold and italic are accepted. To make it a list, use &lt;li&gt;.', 'propaganda-customizer-instruction'),
             )
         );
     }
@@ -1252,7 +1272,7 @@ function theme_customize_register($wp_customize)
         'pt_skills_cf_displayed',
         array(
             'section' => 'pt_skills',
-            'label' => __('Display a contact form?', 'propaganda'),
+            'label' => __('Display a contact form?', 'propaganda-customizer-instruction'),
         )
     ));
 
@@ -1268,8 +1288,8 @@ function theme_customize_register($wp_customize)
             'type' => 'number',
             'section' => 'pt_skills',
             'settings' => 'pt_skills_cf_shortcode',
-            'label' => __('Skills Form Shortcode ID', 'propaganda'),
-            'description' => __('Insert the ID of the shortcode of the Skills Section. Download the plugin <a target="_blank" href="https://fr.wordpress.org/plugins/contact-form-7/">here</a>.', 'propaganda'),
+            'label' => __('Skills Form Shortcode ID', 'propaganda-customizer-instruction'),
+            'description' => __('Insert the ID of the shortcode of the Skills Section. Download the plugin <a target="_blank" href="https://fr.wordpress.org/plugins/contact-form-7/">here</a>.', 'propaganda-customizer-instruction'),
         )
     );
 
@@ -1278,8 +1298,8 @@ function theme_customize_register($wp_customize)
     --------------------------------------------------------------- */
     $wp_customize->add_section('pt_informations', array(
         'panel' => 'pt_theme_options',
-        'title' => __('Homepage - Informations Section', 'propaganda'),
-        'description' => __('Options related to the Informations section on the homepage.', 'propaganda'),
+        'title' => __('Homepage - Informations Section', 'propaganda-customizer-instruction'),
+        'description' => __('Options related to the Informations section on the homepage.', 'propaganda-customizer-instruction'),
     ));
 
     // Shortcut
@@ -1302,8 +1322,8 @@ function theme_customize_register($wp_customize)
         'pt_informations_displayed',
         array(
             'section' => 'pt_informations',
-            'label' => __('Display the whole section', 'propaganda'),
-            'description' => __('Display the section on the homepage.', 'propaganda'),
+            'label' => __('Display the whole section', 'propaganda-customizer-instruction'),
+            'description' => __('Display the section on the homepage.', 'propaganda-customizer-instruction'),
         )
     ));
 
@@ -1311,7 +1331,7 @@ function theme_customize_register($wp_customize)
     $wp_customize->add_setting(
         'pt_informations_block_color',
         array(
-            'default' => false,
+            'default' => true,
             'sanitize_callback' => 'pt_sanitize_checkbox'
         )
     );
@@ -1321,8 +1341,8 @@ function theme_customize_register($wp_customize)
         'pt_informations_block_color',
         array(
             'section' => 'pt_informations',
-            'label' => __('Block Color', 'propaganda'),
-            'description' => __('Color for block in the Informations section.', 'propaganda'),
+            'label' => __('Block Color', 'propaganda-customizer-instruction'),
+            'description' => __('Color for block in the Informations section.', 'propaganda-customizer-instruction'),
         )
     ));
 
@@ -1340,8 +1360,8 @@ function theme_customize_register($wp_customize)
         'pt_informations_offset_color',
         array(
             'section' => 'pt_informations',
-            'label' => __('Offset Color', 'propaganda'),
-            'description' => __('Color for offset block in the Informations section.', 'propaganda'),
+            'label' => __('Offset Color', 'propaganda-customizer-instruction'),
+            'description' => __('Color for offset block in the Informations section.', 'propaganda-customizer-instruction'),
         )
     ));
 
@@ -1362,19 +1382,19 @@ function theme_customize_register($wp_customize)
         'pt_informations_heading_alignment',
         array(
             'section' => 'pt_informations',
-            'label' => __('Alignment', 'propaganda'),
-            'description' => __('Alignment for the headings in the Informations section.', 'propaganda'),
+            'label' => __('Alignment', 'propaganda-customizer-instruction'),
+            'description' => __('Alignment for the headings in the Informations section.', 'propaganda-customizer-instruction'),
             'choices' => array(
-                'left' => __('Left', 'propaganda'),
-                'center' => __('Center', 'propaganda'),
-                'right' => __('Right', 'propaganda')
+                'left' => __('Left', 'propaganda-customizer-instruction'),
+                'center' => __('Center', 'propaganda-customizer-instruction'),
+                'right' => __('Right', 'propaganda-customizer-instruction')
             )
         )
     ));
 
     // Title
     $wp_customize->add_setting('pt_informations_heading_title', array(
-        'default' => __('Interesting', 'propaganda'),
+        'default' => 'биография',
         'sanitize_callback' => 'sanitize_text_field',
     ));
 
@@ -1384,14 +1404,14 @@ function theme_customize_register($wp_customize)
             'type' => 'text',
             'section' => 'pt_informations',
             'settings' => 'pt_informations_heading_title',
-            'label' => __('Title', 'propaganda'),
-            'description' => __('Text for the title h2 in the Informations section.', 'propaganda'),
+            'label' => __('Title', 'propaganda-customizer-instruction'),
+            'description' => __('Text for the title h2 in the Informations section.', 'propaganda-customizer-instruction'),
         )
     );
 
     // Subtitle
     $wp_customize->add_setting('pt_informations_heading_subtitle', array(
-        'default' => __('What a title!', 'propaganda'),
+        'default' => 'Кто ты?',
         'sanitize_callback' => 'sanitize_text_field',
     ));
 
@@ -1401,8 +1421,8 @@ function theme_customize_register($wp_customize)
             'type' => 'text',
             'section' => 'pt_informations',
             'settings' => 'pt_informations_heading_subtitle',
-            'label' => __('Subtitle', 'propaganda'),
-            'description' => __('Text for the subtitle h3 in the Informations section.', 'propaganda'),
+            'label' => __('Subtitle', 'propaganda-customizer-instruction'),
+            'description' => __('Text for the subtitle h3 in the Informations section.', 'propaganda-customizer-instruction'),
         )
     );
 
@@ -1420,19 +1440,19 @@ function theme_customize_register($wp_customize)
         array(
             'section' => 'pt_informations',
             'settings' => 'pt_informations_profile_picture',
-            'label' => __('Upload Profile Picture', 'propaganda'),
-            'description' => __('Profile picture in the Informations section.', 'propaganda'),
+            'label' => __('Upload Profile Picture', 'propaganda-customizer-instruction'),
+            'description' => __('Profile picture in the Informations section.', 'propaganda-customizer-instruction'),
             'button_labels' => array(
-                'select' => __('Select Profile Picture', 'propaganda'),
-                'remove' => __('Remove Profile Picture', 'propaganda'),
-                'change' => __('Change Profile Picture', 'propaganda'),
+                'select' => __('Select Profile Picture', 'propaganda-customizer-instruction'),
+                'remove' => __('Remove Profile Picture', 'propaganda-customizer-instruction'),
+                'change' => __('Change Profile Picture', 'propaganda-customizer-instruction'),
             ),
         )
     ));
 
     // Profile Tooltip
     $wp_customize->add_setting('pt_informations_profile_tooltip', array(
-        'default' => __('Handsome!', 'propaganda'),
+        'default' => 'Привет красавчик',
         'sanitize_callback' => 'sanitize_text_field',
     ));
 
@@ -1442,8 +1462,8 @@ function theme_customize_register($wp_customize)
             'type' => 'text',
             'section' => 'pt_informations',
             'settings' => 'pt_informations_profile_tooltip',
-            'label' => __('Tooltip', 'propaganda'),
-            'description' => __('Text for the tooltip of the profile picture in the Informations section.', 'propaganda'),
+            'label' => __('Tooltip', 'propaganda-customizer-instruction'),
+            'description' => __('Text for the tooltip of the profile picture in the Informations section.', 'propaganda-customizer-instruction'),
         )
     );
 
@@ -1452,7 +1472,7 @@ function theme_customize_register($wp_customize)
 
     // Description
     $wp_customize->add_setting('pt_informations_description', array(
-        'default' => __('Alan Mathison Turing was an English mathematician, computer scientist, logician, cryptanalyst, philosopher, and theoretical biologist. Turing was highly influential in the development of theoretical computer science, providing a formalisation of the concepts of algorithm and computation with the Turing machine, which can be considered a model of a general-purpose computer. Turing is widely considered to be the father of theoretical computer science and artificial intelligence.', 'propaganda'),
+        'default' => 'Алексе́й Григо́рьевич Стаха́нов (21 декабря 1905 — 5 ноября 1977) — советский шахтёр, новатор угольной промышленности, основоположник Стахановского движения, Герой Социалистического Труда (1970).<br />В 1935 году группа, состоявшая из забойщика Стаханова и двоих крепильщиков, за одну смену добыла в 14,5 раза больше угля, чем предписывалось по норме на одного забойщика. Однако советская пропаганда приписала весь добытый за смену уголь лично Стаханову. Рекордная смена была спланирована заранее, было перепроверено оборудование, организован вывоз угля, проведено освещение забоя. Достижение было использовано ВКП для кампании, известной как «стахановское движение».',
         'sanitize_callback' => 'pt_sanitize_textarea',
     ));
 
@@ -1462,8 +1482,8 @@ function theme_customize_register($wp_customize)
             'type' => 'textarea',
             'section' => 'pt_informations',
             'settings' => 'pt_informations_description',
-            'label' => __('Description', 'propaganda'),
-            'description' => __('Text for the description in the Informations section. &lt;br&gt;, bold and italic are accepted.', 'propaganda'),
+            'label' => __('Description', 'propaganda-customizer-instruction'),
+            'description' => __('Text for the description in the Informations section. &lt;br&gt;, bold and italic are accepted.', 'propaganda-customizer-instruction'),
         )
     );
 
@@ -1484,7 +1504,7 @@ function theme_customize_register($wp_customize)
         'pt_informations_lists_displayed',
         array(
             'section' => 'pt_informations',
-            'label' => __('Show the list section.', 'propaganda'),
+            'label' => __('Show the list section.', 'propaganda-customizer-instruction'),
         )
     ));
 
@@ -1493,7 +1513,7 @@ function theme_customize_register($wp_customize)
 
     // Column 1 - Title
     $wp_customize->add_setting('pt_informations_col_1_title', array(
-        'default' => __('What a title!', 'propaganda'),
+        'default' => 'Формирование',
         'sanitize_callback' => 'sanitize_text_field',
     ));
 
@@ -1503,8 +1523,8 @@ function theme_customize_register($wp_customize)
             'type' => 'text',
             'section' => 'pt_informations',
             'settings' => 'pt_informations_col_1_title',
-            'label' => __('Column 1 - Title', 'propaganda'),
-            'description' => __('Text for the title of the column 1 in the Informations section.', 'propaganda'),
+            'label' => __('Column 1 - Title', 'propaganda-customizer-instruction'),
+            'description' => __('Text for the title of the column 1 in the Informations section.', 'propaganda-customizer-instruction'),
         )
     );
 
@@ -1520,8 +1540,8 @@ function theme_customize_register($wp_customize)
             'type' => 'number',
             'section' => 'pt_informations',
             'settings' => 'pt_informations_col_1_grid_item',
-            'label' => __('Column 1 - Number of list items', 'propaganda'),
-            'description' => __('Number of list items displayed in the 1st list in the Informations section. Refresh the all page after modifying the value.', 'propaganda'),
+            'label' => __('Column 1 - Number of list items', 'propaganda-customizer-instruction'),
+            'description' => __('Number of list items displayed in the 1st list in the Informations section. Refresh the all page after modifying the value.', 'propaganda-customizer-instruction'),
         )
     );
 
@@ -1531,7 +1551,7 @@ function theme_customize_register($wp_customize)
 
         // Text
         $wp_customize->add_setting('pt_informations_col_1_content_' . $count . '_text', array(
-            'default' => __('<b>1931 - 1934 | Master Degree</b> King\'s College of Cambridge', 'propaganda'),
+            'default' => '<b>1931 - 1934 | Степень магистра</b> Королевский колледж Кембриджа',
             'sanitize_callback' => 'pt_sanitize_textarea',
         ));
 
@@ -1541,8 +1561,8 @@ function theme_customize_register($wp_customize)
                 'type' => 'textarea',
                 'section' => 'pt_informations',
                 'settings' => 'pt_informations_col_1_content_' . $count . '_text',
-                'label' => __('Column 1 - Text ' . $count, 'propaganda'),
-                'description' => __('Text for the list element ' . $count . ' in the Informations section. &lt;br&gt;, bold and italic are accepted.', 'propaganda'),
+                'label' => __('Column 1 - Text ' . $count, 'propaganda-customizer-instruction'),
+                'description' => __('Text for the list element ' . $count . ' in the Informations section. &lt;br&gt;, bold and italic are accepted.', 'propaganda-customizer-instruction'),
             )
         );
 
@@ -1558,8 +1578,8 @@ function theme_customize_register($wp_customize)
                 'type' => 'url',
                 'section' => 'pt_informations',
                 'settings' => 'pt_informations_col_1_content_' . $count . '_link',
-                'label' => __('Column 1 - Link ' . $count, 'propaganda'),
-                'description' => __('Link for the list element ' . $count . ' in the Informations section.', 'propaganda'),
+                'label' => __('Column 1 - Link ' . $count, 'propaganda-customizer-instruction'),
+                'description' => __('Link for the list element ' . $count . ' in the Informations section.', 'propaganda-customizer-instruction'),
             )
         );
     }
@@ -1569,7 +1589,7 @@ function theme_customize_register($wp_customize)
 
     // Column 2 - Title
     $wp_customize->add_setting('pt_informations_col_2_title', array(
-        'default' => __('What a title!', 'propaganda'),
+        'default' => 'Формирование',
         'sanitize_callback' => 'sanitize_text_field',
     ));
 
@@ -1579,8 +1599,8 @@ function theme_customize_register($wp_customize)
             'type' => 'text',
             'section' => 'pt_informations',
             'settings' => 'pt_informations_col_2_title',
-            'label' => __('Column 2 - Title', 'propaganda'),
-            'description' => __('Text for the title of the column 2 in the Informations section.', 'propaganda'),
+            'label' => __('Column 2 - Title', 'propaganda-customizer-instruction'),
+            'description' => __('Text for the title of the column 2 in the Informations section.', 'propaganda-customizer-instruction'),
         )
     );
 
@@ -1596,8 +1616,8 @@ function theme_customize_register($wp_customize)
             'type' => 'number',
             'section' => 'pt_informations',
             'settings' => 'pt_informations_col_2_grid_item',
-            'label' => __('Column 2 - Number of list items', 'propaganda'),
-            'description' => __('Number of list items displayed in the 2nd list in the Informations section. Refresh the all page after modifying the value.', 'propaganda'),
+            'label' => __('Column 2 - Number of list items', 'propaganda-customizer-instruction'),
+            'description' => __('Number of list items displayed in the 2nd list in the Informations section. Refresh the all page after modifying the value.', 'propaganda-customizer-instruction'),
         )
     );
 
@@ -1607,7 +1627,7 @@ function theme_customize_register($wp_customize)
 
         // Text
         $wp_customize->add_setting('pt_informations_col_2_content_' . $count . '_text', array(
-            'default' => __('<b>1931 - 1934 | Master Degree</b> King\'s College of Cambridge', 'propaganda'),
+            'default' => '<b>1931 - 1934 | Степень магистра</b> Королевский колледж Кембриджа',
             'sanitize_callback' => 'pt_sanitize_textarea',
         ));
 
@@ -1617,14 +1637,14 @@ function theme_customize_register($wp_customize)
                 'type' => 'textarea',
                 'section' => 'pt_informations',
                 'settings' => 'pt_informations_col_2_content_' . $count . '_text',
-                'label' => __('Column 2 - Text ' . $count, 'propaganda'),
-                'description' => __('Text for the list element ' . $count . ' in the Informations section. &lt;br&gt;, bold and italic are accepted.', 'propaganda'),
+                'label' => __('Column 2 - Text ' . $count, 'propaganda-customizer-instruction'),
+                'description' => __('Text for the list element ' . $count . ' in the Informations section. &lt;br&gt;, bold and italic are accepted.', 'propaganda-customizer-instruction'),
             )
         );
 
         // Link
         $wp_customize->add_setting('pt_informations_col_2_content_' . $count . '_link', array(
-            'default' => __('', 'propaganda'),
+            'default' => '',
             'sanitize_callback' => 'pt_sanitize_url',
         ));
 
@@ -1634,8 +1654,8 @@ function theme_customize_register($wp_customize)
                 'type' => 'url',
                 'section' => 'pt_informations',
                 'settings' => 'pt_informations_col_2_content_' . $count . '_link',
-                'label' => __('Column 2 - Link ' . $count, 'propaganda'),
-                'description' => __('Link for the list element ' . $count . ' in the Informations section.', 'propaganda'),
+                'label' => __('Column 2 - Link ' . $count, 'propaganda-customizer-instruction'),
+                'description' => __('Link for the list element ' . $count . ' in the Informations section.', 'propaganda-customizer-instruction'),
             )
         );
     }
@@ -1645,8 +1665,8 @@ function theme_customize_register($wp_customize)
     --------------------------------------------------------------- */
     $wp_customize->add_section('pt_benefits', array(
         'panel' => 'pt_theme_options',
-        'title' => __('Homepage - Benefits Section', 'propaganda'),
-        'description' => __('Options related to the Benefits section on the homepage.', 'propaganda'),
+        'title' => __('Homepage - Benefits Section', 'propaganda-customizer-instruction'),
+        'description' => __('Options related to the Benefits section on the homepage.', 'propaganda-customizer-instruction'),
     ));
 
     // Shortcut
@@ -1669,8 +1689,8 @@ function theme_customize_register($wp_customize)
         'pt_benefits_displayed',
         array(
             'section' => 'pt_benefits',
-            'label' => __('Display the whole section', 'propaganda'),
-            'description' => __('Display the section on the homepage.', 'propaganda'),
+            'label' => __('Display the whole section', 'propaganda-customizer-instruction'),
+            'description' => __('Display the section on the homepage.', 'propaganda-customizer-instruction'),
         )
     ));
 
@@ -1691,12 +1711,12 @@ function theme_customize_register($wp_customize)
         'pt_benefits_heading_alignment',
         array(
             'section' => 'pt_benefits',
-            'label' => __('Alignment', 'propaganda'),
-            'description' => __('Alignment for the headings in the Benefits section.', 'propaganda'),
+            'label' => __('Alignment', 'propaganda-customizer-instruction'),
+            'description' => __('Alignment for the headings in the Benefits section.', 'propaganda-customizer-instruction'),
             'choices' => array(
-                'left' => __('Left', 'propaganda'),
-                'center' => __('Center', 'propaganda'),
-                'right' => __('Right', 'propaganda')
+                'left' => __('Left', 'propaganda-customizer-instruction'),
+                'center' => __('Center', 'propaganda-customizer-instruction'),
+                'right' => __('Right', 'propaganda-customizer-instruction')
             )
         )
     ));
@@ -1715,14 +1735,14 @@ function theme_customize_register($wp_customize)
         'pt_benefits_heading_color',
         array(
             'section' => 'pt_benefits',
-            'label' => __('Heading Color', 'propaganda'),
-            'description' => __('Color for the title h2 in the Benefits section.', 'propaganda'),
+            'label' => __('Heading Color', 'propaganda-customizer-instruction'),
+            'description' => __('Color for the title h2 in the Benefits section.', 'propaganda-customizer-instruction'),
         )
     ));
 
     // Title
     $wp_customize->add_setting('pt_benefits_heading_title', array(
-        'default' => __('Interesting', 'propaganda'),
+        'default' => 'Ценности',
         'sanitize_callback' => 'sanitize_text_field',
     ));
 
@@ -1732,14 +1752,14 @@ function theme_customize_register($wp_customize)
             'type' => 'text',
             'section' => 'pt_benefits',
             'settings' => 'pt_benefits_heading_title',
-            'label' => __('Title', 'propaganda'),
-            'description' => __('Text for the title h2 in the Benefits section.', 'propaganda'),
+            'label' => __('Title', 'propaganda-customizer-instruction'),
+            'description' => __('Text for the title h2 in the Benefits section.', 'propaganda-customizer-instruction'),
         )
     );
 
     // Subtitle
     $wp_customize->add_setting('pt_benefits_heading_subtitle', array(
-        'default' => __('What a title!', 'propaganda'),
+        'default' => 'во что ты веришь?',
         'sanitize_callback' => 'sanitize_text_field',
     ));
 
@@ -1749,8 +1769,8 @@ function theme_customize_register($wp_customize)
             'type' => 'text',
             'section' => 'pt_benefits',
             'settings' => 'pt_benefits_heading_subtitle',
-            'label' => __('Subtitle', 'propaganda'),
-            'description' => __('Text for the subtitle h3 in the Benefits section.', 'propaganda'),
+            'label' => __('Subtitle', 'propaganda-customizer-instruction'),
+            'description' => __('Text for the subtitle h3 in the Benefits section.', 'propaganda-customizer-instruction'),
         )
     );
 
@@ -1763,7 +1783,7 @@ function theme_customize_register($wp_customize)
         $wp_customize->add_setting(
             'pt_benefits_content_' . $count . '_icon',
             array(
-                'default' => 'hot-air-balloon',
+                'default' => 'rocket',
                 'sanitize_callback' => 'pt_sanitize_select'
             )
         );
@@ -1773,15 +1793,15 @@ function theme_customize_register($wp_customize)
             array(
                 'type' => 'select',
                 'section' => 'pt_benefits',
-                'label' => __('Icon ' . $count, 'propaganda'),
-                'description' => __('Icon of the item ' . $count . ' in the Benefits section.', 'propaganda'),
+                'label' => __('Icon ' . $count, 'propaganda-customizer-instruction'),
+                'description' => __('Icon of the item ' . $count . ' in the Benefits section.', 'propaganda-customizer-instruction'),
                 'choices' => $icons,
             )
         );
 
         // Title
         $wp_customize->add_setting('pt_benefits_content_' . $count . '_title', array(
-            'default' => __('Wow', 'propaganda'),
+            'default' => 'Скажи нам',
             'sanitize_callback' => 'sanitize_text_field',
         ));
 
@@ -1791,14 +1811,14 @@ function theme_customize_register($wp_customize)
                 'type' => 'text',
                 'section' => 'pt_benefits',
                 'settings' => 'pt_benefits_content_' . $count . '_title',
-                'label' => __('Title ' . $count, 'propaganda'),
-                'description' => __('Title of the item ' . $count . ' in the Benefits section.', 'propaganda'),
+                'label' => __('Title ' . $count, 'propaganda-customizer-instruction'),
+                'description' => __('Title of the item ' . $count . ' in the Benefits section.', 'propaganda-customizer-instruction'),
             )
         );
 
         // Subtitle
         $wp_customize->add_setting('pt_benefits_content_' . $count . '_subtitle', array(
-            'default' => __('Why I\'m the best', 'propaganda'),
+            'default' => 'Почему ты лучший',
             'sanitize_callback' => 'pt_sanitize_textarea',
         ));
 
@@ -1808,8 +1828,8 @@ function theme_customize_register($wp_customize)
                 'type' => 'textarea',
                 'section' => 'pt_benefits',
                 'settings' => 'pt_benefits_content_' . $count . '_subtitle',
-                'label' => __('Subtitle ' . $count, 'propaganda'),
-                'description' => __('The subtitle of the item ' . $count . ' in the Benefits section.', 'propaganda'),
+                'label' => __('Subtitle ' . $count, 'propaganda-customizer-instruction'),
+                'description' => __('The subtitle of the item ' . $count . ' in the Benefits section.', 'propaganda-customizer-instruction'),
             )
         );
 
@@ -1824,8 +1844,8 @@ function theme_customize_register($wp_customize)
     --------------------------------------------------------------- */
     $wp_customize->add_section('pt_notification', array(
         'panel' => 'pt_theme_options',
-        'title' => __('Homepage - Notification Section', 'propaganda'),
-        'description' => __('Options related to the Notification section on the homepage.', 'propaganda'),
+        'title' => __('Homepage - Notification Section', 'propaganda-customizer-instruction'),
+        'description' => __('Options related to the Notification section on the homepage.', 'propaganda-customizer-instruction'),
     ));
 
     // Shortcut
@@ -1848,8 +1868,8 @@ function theme_customize_register($wp_customize)
         'pt_notification_displayed',
         array(
             'section' => 'pt_notification',
-            'label' => __('Display the whole section', 'propaganda'),
-            'description' => __('Display the section on the homepage.', 'propaganda'),
+            'label' => __('Display the whole section', 'propaganda-customizer-instruction'),
+            'description' => __('Display the section on the homepage.', 'propaganda-customizer-instruction'),
         )
     ));
 
@@ -1867,8 +1887,8 @@ function theme_customize_register($wp_customize)
         'pt_notification_background_color',
         array(
             'section' => 'pt_notification',
-            'label' => __('Background Color', 'propaganda'),
-            'description' => __('Color of the background of the Notification section.', 'propaganda'),
+            'label' => __('Background Color', 'propaganda-customizer-instruction'),
+            'description' => __('Color of the background of the Notification section.', 'propaganda-customizer-instruction'),
         )
     ));
 
@@ -1877,7 +1897,7 @@ function theme_customize_register($wp_customize)
 
     // Content
     $wp_customize->add_setting('pt_notification_content', array(
-        'default' => __('I\'d really like you to see this!', 'propaganda'),
+        'default' => 'Мы нуждаемся в тебе!',
         'sanitize_callback' => 'sanitize_text_field',
     ));
 
@@ -1887,8 +1907,8 @@ function theme_customize_register($wp_customize)
             'type' => 'text',
             'section' => 'pt_notification',
             'settings' => 'pt_notification_content',
-            'label' => __('Content', 'propaganda'),
-            'description' => __('Text for the Notification section.', 'propaganda'),
+            'label' => __('Content', 'propaganda-customizer-instruction'),
+            'description' => __('Text for the Notification section.', 'propaganda-customizer-instruction'),
         )
     );
 
@@ -1897,7 +1917,7 @@ function theme_customize_register($wp_customize)
 
     // Button Label
     $wp_customize->add_setting('pt_notification_button_label', array(
-        'default' => __('Click me!', 'propaganda'),
+        'default' => 'Проверь это',
         'sanitize_callback' => 'sanitize_text_field',
     ));
 
@@ -1907,8 +1927,8 @@ function theme_customize_register($wp_customize)
             'type' => 'text',
             'section' => 'pt_notification',
             'settings' => 'pt_notification_button_label',
-            'label' => __('Button Label', 'propaganda'),
-            'description' => __('Text for the button in the Notification section.', 'propaganda'),
+            'label' => __('Button Label', 'propaganda-customizer-instruction'),
+            'description' => __('Text for the button in the Notification section.', 'propaganda-customizer-instruction'),
         )
     );
 
@@ -1924,8 +1944,8 @@ function theme_customize_register($wp_customize)
             'type' => 'text',
             'section' => 'pt_notification',
             'settings' => 'pt_notification_button_link',
-            'label' => __('Button Link', 'propaganda'),
-            'description' => __('Link for the button in the Notification section.', 'propaganda'),
+            'label' => __('Button Link', 'propaganda-customizer-instruction'),
+            'description' => __('Link for the button in the Notification section.', 'propaganda-customizer-instruction'),
         )
     );
 
@@ -1941,8 +1961,8 @@ function theme_customize_register($wp_customize)
             'type' => 'checkbox',
             'section' => 'pt_notification',
             'settings' => 'pt_notification_button_external',
-            'label' => __('Is this button external?', 'propaganda'),
-            'description' => __('Yes if the checkbox is checked.', 'propaganda'),
+            'label' => __('Is this button external?', 'propaganda-customizer-instruction'),
+            'description' => __('Yes if the checkbox is checked.', 'propaganda-customizer-instruction'),
         )
     );
 
@@ -1960,8 +1980,8 @@ function theme_customize_register($wp_customize)
         'pt_notification_button_color',
         array(
             'section' => 'pt_notification',
-            'label' => __('Button Color', 'propaganda'),
-            'description' => __('Color of the button in the Notification section.', 'propaganda'),
+            'label' => __('Button Color', 'propaganda-customizer-instruction'),
+            'description' => __('Color of the button in the Notification section.', 'propaganda-customizer-instruction'),
         )
     ));
 
@@ -1970,8 +1990,8 @@ function theme_customize_register($wp_customize)
     --------------------------------------------------------------- */
     $wp_customize->add_section('pt_clients', array(
         'panel' => 'pt_theme_options',
-        'title' => __('Homepage - Clients Section', 'propaganda'),
-        'description' => __('Options related to the Clients section on the homepage.', 'propaganda'),
+        'title' => __('Homepage - Clients Section', 'propaganda-customizer-instruction'),
+        'description' => __('Options related to the Clients section on the homepage.', 'propaganda-customizer-instruction'),
     ));
 
     // Shortcut
@@ -1994,8 +2014,8 @@ function theme_customize_register($wp_customize)
         'pt_clients_displayed',
         array(
             'section' => 'pt_clients',
-            'label' => __('Display the whole section', 'propaganda'),
-            'description' => __('Display the section on the homepage.', 'propaganda'),
+            'label' => __('Display the whole section', 'propaganda-customizer-instruction'),
+            'description' => __('Display the section on the homepage.', 'propaganda-customizer-instruction'),
         )
     ));
 
@@ -2013,8 +2033,8 @@ function theme_customize_register($wp_customize)
         'pt_clients_general_color',
         array(
             'section' => 'pt_clients',
-            'label' => __('General Color', 'propaganda'),
-            'description' => __('Color for the title h2 in the Clients section.', 'propaganda'),
+            'label' => __('General Color', 'propaganda-customizer-instruction'),
+            'description' => __('Color for the title h2 in the Clients section.', 'propaganda-customizer-instruction'),
         )
     ));
 
@@ -2035,19 +2055,19 @@ function theme_customize_register($wp_customize)
         'pt_clients_heading_alignment',
         array(
             'section' => 'pt_clients',
-            'label' => __('Alignment', 'propaganda'),
-            'description' => __('Alignment for the headings in the Clients section.', 'propaganda'),
+            'label' => __('Alignment', 'propaganda-customizer-instruction'),
+            'description' => __('Alignment for the headings in the Clients section.', 'propaganda-customizer-instruction'),
             'choices' => array(
-                'left' => __('Left', 'propaganda'),
-                'center' => __('Center', 'propaganda'),
-                'right' => __('Right', 'propaganda')
+                'left' => __('Left', 'propaganda-customizer-instruction'),
+                'center' => __('Center', 'propaganda-customizer-instruction'),
+                'right' => __('Right', 'propaganda-customizer-instruction')
             )
         )
     ));
 
     // Title
     $wp_customize->add_setting('pt_clients_heading_title', array(
-        'default' => __('Interesting', 'propaganda'),
+        'default' => 'Клиенты',
         'sanitize_callback' => 'sanitize_text_field',
     ));
 
@@ -2057,14 +2077,14 @@ function theme_customize_register($wp_customize)
             'type' => 'text',
             'section' => 'pt_clients',
             'settings' => 'pt_clients_heading_title',
-            'label' => __('Title', 'propaganda'),
-            'description' => __('Text for the title h2 in the Clients section.', 'propaganda'),
+            'label' => __('Title', 'propaganda-customizer-instruction'),
+            'description' => __('Text for the title h2 in the Clients section.', 'propaganda-customizer-instruction'),
         )
     );
 
     // Subtitle
     $wp_customize->add_setting('pt_clients_heading_subtitle', array(
-        'default' => __('What a title!', 'propaganda'),
+        'default' => 'На кого ты работаешь?!',
         'sanitize_callback' => 'sanitize_text_field',
     ));
 
@@ -2074,8 +2094,8 @@ function theme_customize_register($wp_customize)
             'type' => 'text',
             'section' => 'pt_clients',
             'settings' => 'pt_clients_heading_subtitle',
-            'label' => __('Subtitle', 'propaganda'),
-            'description' => __('Text for the subtitle h3 in the Clients section.', 'propaganda'),
+            'label' => __('Subtitle', 'propaganda-customizer-instruction'),
+            'description' => __('Text for the subtitle h3 in the Clients section.', 'propaganda-customizer-instruction'),
         )
     );
 
@@ -2094,8 +2114,8 @@ function theme_customize_register($wp_customize)
             'type' => 'number',
             'section' => 'pt_clients',
             'settings' => 'pt_clients_items',
-            'label' => __('Number of items displayed', 'propaganda'),
-            'description' => __('Number of clients that this section will display.', 'propaganda'),
+            'label' => __('Number of items displayed', 'propaganda-customizer-instruction'),
+            'description' => __('Number of clients that this section will display.', 'propaganda-customizer-instruction'),
         )
     );
 
@@ -2104,8 +2124,8 @@ function theme_customize_register($wp_customize)
     --------------------------------------------------------------- */
     $wp_customize->add_section('pt_testimonials', array(
         'panel' => 'pt_theme_options',
-        'title' => __('Homepage - Testimonials Section', 'propaganda'),
-        'description' => __('Options related to the Testimonials section on the homepage.', 'propaganda'),
+        'title' => __('Homepage - Testimonials Section', 'propaganda-customizer-instruction'),
+        'description' => __('Options related to the Testimonials section on the homepage.', 'propaganda-customizer-instruction'),
     ));
 
     // Shortcut
@@ -2128,8 +2148,8 @@ function theme_customize_register($wp_customize)
         'pt_testimonials_displayed',
         array(
             'section' => 'pt_testimonials',
-            'label' => __('Display the whole section', 'propaganda'),
-            'description' => __('Display the section on the homepage.', 'propaganda'),
+            'label' => __('Display the whole section', 'propaganda-customizer-instruction'),
+            'description' => __('Display the section on the homepage.', 'propaganda-customizer-instruction'),
         )
     ));
 
@@ -2147,8 +2167,8 @@ function theme_customize_register($wp_customize)
         'pt_testimonials_general_color',
         array(
             'section' => 'pt_testimonials',
-            'label' => __('General Color', 'propaganda'),
-            'description' => __('Color for the title h2 and the testimonials in the Testimonials section.', 'propaganda'),
+            'label' => __('General Color', 'propaganda-customizer-instruction'),
+            'description' => __('Color for the title h2 and the testimonials in the Testimonials section.', 'propaganda-customizer-instruction'),
         )
     ));
 
@@ -2169,19 +2189,19 @@ function theme_customize_register($wp_customize)
         'pt_testimonials_heading_alignment',
         array(
             'section' => 'pt_testimonials',
-            'label' => __('Alignment', 'propaganda'),
-            'description' => __('Alignment for the headings in the Testimonials section.', 'propaganda'),
+            'label' => __('Alignment', 'propaganda-customizer-instruction'),
+            'description' => __('Alignment for the headings in the Testimonials section.', 'propaganda-customizer-instruction'),
             'choices' => array(
-                'left' => __('Left', 'propaganda'),
-                'center' => __('Center', 'propaganda'),
-                'right' => __('Right', 'propaganda')
+                'left' => __('Left', 'propaganda-customizer-instruction'),
+                'center' => __('Center', 'propaganda-customizer-instruction'),
+                'right' => __('Right', 'propaganda-customizer-instruction')
             )
         )
     ));
 
     // Title
     $wp_customize->add_setting('pt_testimonials_heading_title', array(
-        'default' => __('Interesting', 'propaganda'),
+        'default' => 'Отзывы',
         'sanitize_callback' => 'sanitize_text_field',
     ));
 
@@ -2191,14 +2211,14 @@ function theme_customize_register($wp_customize)
             'type' => 'text',
             'section' => 'pt_testimonials',
             'settings' => 'pt_testimonials_heading_title',
-            'label' => __('Title', 'propaganda'),
-            'description' => __('Text for the title h2 in the Testimonials section.', 'propaganda'),
+            'label' => __('Title', 'propaganda-customizer-instruction'),
+            'description' => __('Text for the title h2 in the Testimonials section.', 'propaganda-customizer-instruction'),
         )
     );
 
     // Subtitle
     $wp_customize->add_setting('pt_testimonials_heading_subtitle', array(
-        'default' => __('What a title!', 'propaganda'),
+        'default' => 'Кто ваши союзники?',
         'sanitize_callback' => 'sanitize_text_field',
     ));
 
@@ -2208,8 +2228,8 @@ function theme_customize_register($wp_customize)
             'type' => 'text',
             'section' => 'pt_testimonials',
             'settings' => 'pt_testimonials_heading_subtitle',
-            'label' => __('Subtitle', 'propaganda'),
-            'description' => __('Text for the subtitle h3 in the Testimonials section.', 'propaganda'),
+            'label' => __('Subtitle', 'propaganda-customizer-instruction'),
+            'description' => __('Text for the subtitle h3 in the Testimonials section.', 'propaganda-customizer-instruction'),
         )
     );
 
@@ -2228,8 +2248,8 @@ function theme_customize_register($wp_customize)
             'type' => 'number',
             'section' => 'pt_testimonials',
             'settings' => 'pt_testimonials_items',
-            'label' => __('Number of items displayed', 'propaganda'),
-            'description' => __('Number of testimonials that this section will display.', 'propaganda'),
+            'label' => __('Number of items displayed', 'propaganda-customizer-instruction'),
+            'description' => __('Number of testimonials that this section will display.', 'propaganda-customizer-instruction'),
         )
     );
 
@@ -2238,8 +2258,8 @@ function theme_customize_register($wp_customize)
     --------------------------------------------------------------- */
     $wp_customize->add_section('pt_projects', array(
         'panel' => 'pt_theme_options',
-        'title' => __('Homepage - Projects Section', 'propaganda'),
-        'description' => __('Options related to the Projects section on the homepage.', 'propaganda'),
+        'title' => __('Homepage - Projects Section', 'propaganda-customizer-instruction'),
+        'description' => __('Options related to the Projects section on the homepage.', 'propaganda-customizer-instruction'),
     ));
 
     // Shortcut
@@ -2262,14 +2282,14 @@ function theme_customize_register($wp_customize)
         'pt_projects_general_color',
         array(
             'section' => 'pt_projects',
-            'label' => __('General Color', 'propaganda'),
-            'description' => __('Color for the title h2 and the button in the Projects section.', 'propaganda'),
+            'label' => __('General Color', 'propaganda-customizer-instruction'),
+            'description' => __('Color for the title h2 and the button in the Projects section.', 'propaganda-customizer-instruction'),
         )
     ));
 
     // Button Label
     $wp_customize->add_setting('pt_projects_button_label', array(
-        'default' => __('Show me the rest!', 'propaganda'),
+        'default' => 'Посмотреть еще',
         'sanitize_callback' => 'sanitize_text_field',
     ));
 
@@ -2279,8 +2299,8 @@ function theme_customize_register($wp_customize)
             'type' => 'text',
             'section' => 'pt_projects',
             'settings' => 'pt_projects_button_label',
-            'label' => __('Button Label', 'propaganda'),
-            'description' => __('Text for the button in the Projects section.', 'propaganda'),
+            'label' => __('Button Label', 'propaganda-customizer-instruction'),
+            'description' => __('Text for the button in the Projects section.', 'propaganda-customizer-instruction'),
         )
     );
 
@@ -2301,19 +2321,19 @@ function theme_customize_register($wp_customize)
         'pt_projects_heading_alignment',
         array(
             'section' => 'pt_projects',
-            'label' => __('Alignment', 'propaganda'),
-            'description' => __('Alignment for the headings in the Projects section.', 'propaganda'),
+            'label' => __('Alignment', 'propaganda-customizer-instruction'),
+            'description' => __('Alignment for the headings in the Projects section.', 'propaganda-customizer-instruction'),
             'choices' => array(
-                'left' => __('Left', 'propaganda'),
-                'center' => __('Center', 'propaganda'),
-                'right' => __('Right', 'propaganda')
+                'left' => __('Left', 'propaganda-customizer-instruction'),
+                'center' => __('Center', 'propaganda-customizer-instruction'),
+                'right' => __('Right', 'propaganda-customizer-instruction')
             )
         )
     ));
 
     // Title
     $wp_customize->add_setting('pt_projects_heading_title', array(
-        'default' => __('Interesting', 'propaganda'),
+        'default' => 'Проекты',
         'sanitize_callback' => 'sanitize_text_field',
     ));
 
@@ -2323,14 +2343,14 @@ function theme_customize_register($wp_customize)
             'type' => 'text',
             'section' => 'pt_projects',
             'settings' => 'pt_projects_heading_title',
-            'label' => __('Title', 'propaganda'),
-            'description' => __('Text for the title h2 in the Projects section.', 'propaganda'),
+            'label' => __('Title', 'propaganda-customizer-instruction'),
+            'description' => __('Text for the title h2 in the Projects section.', 'propaganda-customizer-instruction'),
         )
     );
 
     // Subtitle
     $wp_customize->add_setting('pt_projects_heading_subtitle', array(
-        'default' => __('What a title!', 'propaganda'),
+        'default' => 'Каковы ваши достижения',
         'sanitize_callback' => 'sanitize_text_field',
     ));
 
@@ -2340,8 +2360,8 @@ function theme_customize_register($wp_customize)
             'type' => 'text',
             'section' => 'pt_projects',
             'settings' => 'pt_projects_heading_subtitle',
-            'label' => __('Subtitle', 'propaganda'),
-            'description' => __('Text for the subtitle h3 in the Projects section.', 'propaganda'),
+            'label' => __('Subtitle', 'propaganda-customizer-instruction'),
+            'description' => __('Text for the subtitle h3 in the Projects section.', 'propaganda-customizer-instruction'),
         )
     );
 
@@ -2360,8 +2380,8 @@ function theme_customize_register($wp_customize)
             'type' => 'number',
             'section' => 'pt_projects',
             'settings' => 'pt_projects_items',
-            'label' => __('Number of items displayed', 'propaganda'),
-            'description' => __('Number of items that this section will display.', 'propaganda'),
+            'label' => __('Number of items displayed', 'propaganda-customizer-instruction'),
+            'description' => __('Number of items that this section will display.', 'propaganda-customizer-instruction'),
         )
     );
 
@@ -2370,8 +2390,8 @@ function theme_customize_register($wp_customize)
     --------------------------------------------------------------- */
     $wp_customize->add_section('pt_blog', array(
         'panel' => 'pt_theme_options',
-        'title' => __('Homepage - Blog Section', 'propaganda'),
-        'description' => __('Options related to the Blog section on the homepage.', 'propaganda'),
+        'title' => __('Homepage - Blog Section', 'propaganda-customizer-instruction'),
+        'description' => __('Options related to the Blog section on the homepage.', 'propaganda-customizer-instruction'),
     ));
 
     // Shortcut
@@ -2394,14 +2414,14 @@ function theme_customize_register($wp_customize)
         'pt_blog_general_color',
         array(
             'section' => 'pt_blog',
-            'label' => __('General Color', 'propaganda'),
-            'description' => __('Color for the title h2 and the button in the Blog section.', 'propaganda'),
+            'label' => __('General Color', 'propaganda-customizer-instruction'),
+            'description' => __('Color for the title h2 and the button in the Blog section.', 'propaganda-customizer-instruction'),
         )
     ));
 
     // Button Label
     $wp_customize->add_setting('pt_blog_button_label', array(
-        'default' => __('Show me the rest!', 'propaganda'),
+        'default' => 'Покажи мне остальные!',
         'sanitize_callback' => 'sanitize_text_field',
     ));
 
@@ -2411,8 +2431,8 @@ function theme_customize_register($wp_customize)
             'type' => 'text',
             'section' => 'pt_blog',
             'settings' => 'pt_blog_button_label',
-            'label' => __('Button Label', 'propaganda'),
-            'description' => __('Text for the button in the Blog section.', 'propaganda'),
+            'label' => __('Button Label', 'propaganda-customizer-instruction'),
+            'description' => __('Text for the button in the Blog section.', 'propaganda-customizer-instruction'),
         )
     );
 
@@ -2433,19 +2453,19 @@ function theme_customize_register($wp_customize)
         'pt_blog_heading_alignment',
         array(
             'section' => 'pt_blog',
-            'label' => __('Alignment', 'propaganda'),
-            'description' => __('Alignment for the headings in the Blog section.', 'propaganda'),
+            'label' => __('Alignment', 'propaganda-customizer-instruction'),
+            'description' => __('Alignment for the headings in the Blog section.', 'propaganda-customizer-instruction'),
             'choices' => array(
-                'left' => __('Left', 'propaganda'),
-                'center' => __('Center', 'propaganda'),
-                'right' => __('Right', 'propaganda')
+                'left' => __('Left', 'propaganda-customizer-instruction'),
+                'center' => __('Center', 'propaganda-customizer-instruction'),
+                'right' => __('Right', 'propaganda-customizer-instruction')
             )
         )
     ));
 
     // Title
     $wp_customize->add_setting('pt_blog_heading_title', array(
-        'default' => __('Interesting', 'propaganda'),
+        'default' => 'Блог',
         'sanitize_callback' => 'sanitize_text_field',
     ));
 
@@ -2455,14 +2475,14 @@ function theme_customize_register($wp_customize)
             'type' => 'text',
             'section' => 'pt_blog',
             'settings' => 'pt_blog_heading_title',
-            'label' => __('Title', 'propaganda'),
-            'description' => __('Text for the title h2 in the Blog section.', 'propaganda'),
+            'label' => __('Title', 'propaganda-customizer-instruction'),
+            'description' => __('Text for the title h2 in the Blog section.', 'propaganda-customizer-instruction'),
         )
     );
 
     // Subtitle
     $wp_customize->add_setting('pt_blog_heading_subtitle', array(
-        'default' => __('What a title!', 'propaganda'),
+        'default' => 'Здесь вы будете размещать свои отчеты',
         'sanitize_callback' => 'sanitize_text_field',
     ));
 
@@ -2472,8 +2492,8 @@ function theme_customize_register($wp_customize)
             'type' => 'text',
             'section' => 'pt_blog',
             'settings' => 'pt_blog_heading_subtitle',
-            'label' => __('Subtitle', 'propaganda'),
-            'description' => __('Text for the subtitle h3 in the Blog section.', 'propaganda'),
+            'label' => __('Subtitle', 'propaganda-customizer-instruction'),
+            'description' => __('Text for the subtitle h3 in the Blog section.', 'propaganda-customizer-instruction'),
         )
     );
 
@@ -2482,8 +2502,8 @@ function theme_customize_register($wp_customize)
     --------------------------------------------------------------- */
     $wp_customize->add_section('pt_contact', array(
         'panel' => 'pt_theme_options',
-        'title' => __('Homepage - Contact Section', 'propaganda'),
-        'description' => __('Options related to the Contact section on the homepage.', 'propaganda'),
+        'title' => __('Homepage - Contact Section', 'propaganda-customizer-instruction'),
+        'description' => __('Options related to the Contact section on the homepage.', 'propaganda-customizer-instruction'),
     ));
 
     // Shortcut
@@ -2496,7 +2516,7 @@ function theme_customize_register($wp_customize)
     $wp_customize->add_setting(
         'pt_contact_background',
         array(
-            'default' => 'seigaiha',
+            'default' => 'ichimatu',
             'sanitize_callback' => 'pt_sanitize_select'
         )
     );
@@ -2506,8 +2526,8 @@ function theme_customize_register($wp_customize)
         array(
             'type' => 'select',
             'section' => 'pt_contact',
-            'label' => __('Background Pattern', 'propaganda'),
-            'description' => __('Background pattern for the Contact.', 'propaganda'),
+            'label' => __('Background Pattern', 'propaganda-customizer-instruction'),
+            'description' => __('Background pattern for the Contact.', 'propaganda-customizer-instruction'),
             'choices' => $svg_patterns,
         )
     );
@@ -2526,8 +2546,8 @@ function theme_customize_register($wp_customize)
         'pt_contact_general_color',
         array(
             'section' => 'pt_contact',
-            'label' => __('General Color', 'propaganda'),
-            'description' => __('Color for the title h2, the labels and the button in the Contact section.', 'propaganda'),
+            'label' => __('General Color', 'propaganda-customizer-instruction'),
+            'description' => __('Color for the title h2, the labels and the button in the Contact section.', 'propaganda-customizer-instruction'),
         )
     ));
 
@@ -2548,19 +2568,19 @@ function theme_customize_register($wp_customize)
         'pt_contact_heading_alignment',
         array(
             'section' => 'pt_contact',
-            'label' => __('Alignment', 'propaganda'),
-            'description' => __('Alignment for the headings in the Contact section.', 'propaganda'),
+            'label' => __('Alignment', 'propaganda-customizer-instruction'),
+            'description' => __('Alignment for the headings in the Contact section.', 'propaganda-customizer-instruction'),
             'choices' => array(
-                'left' => __('Left', 'propaganda'),
-                'center' => __('Center', 'propaganda'),
-                'right' => __('Right', 'propaganda')
+                'left' => __('Left', 'propaganda-customizer-instruction'),
+                'center' => __('Center', 'propaganda-customizer-instruction'),
+                'right' => __('Right', 'propaganda-customizer-instruction')
             )
         )
     ));
 
     // Title
     $wp_customize->add_setting('pt_contact_heading_title', array(
-        'default' => __('Interesting', 'propaganda'),
+        'default' => 'свяжитесь с нами немедленно',
         'sanitize_callback' => 'sanitize_text_field',
     ));
 
@@ -2570,14 +2590,14 @@ function theme_customize_register($wp_customize)
             'type' => 'text',
             'section' => 'pt_contact',
             'settings' => 'pt_contact_heading_title',
-            'label' => __('Title', 'propaganda'),
-            'description' => __('Text for the title h2 in the Contact section.', 'propaganda'),
+            'label' => __('Title', 'propaganda-customizer-instruction'),
+            'description' => __('Text for the title h2 in the Contact section.', 'propaganda-customizer-instruction'),
         )
     );
 
     // Subtitle
     $wp_customize->add_setting('pt_contact_heading_subtitle', array(
-        'default' => __('What a title!', 'propaganda'),
+        'default' => 'Мы знаем все.',
         'sanitize_callback' => 'sanitize_text_field',
     ));
 
@@ -2587,8 +2607,8 @@ function theme_customize_register($wp_customize)
             'type' => 'text',
             'section' => 'pt_contact',
             'settings' => 'pt_contact_heading_subtitle',
-            'label' => __('Subtitle', 'propaganda'),
-            'description' => __('Text for the subtitle h3 in the Contact section.', 'propaganda'),
+            'label' => __('Subtitle', 'propaganda-customizer-instruction'),
+            'description' => __('Text for the subtitle h3 in the Contact section.', 'propaganda-customizer-instruction'),
         )
     );
 
@@ -2597,7 +2617,7 @@ function theme_customize_register($wp_customize)
 
     // Description
     $wp_customize->add_setting('pt_contact_description', array(
-        'default' => __('Alan Mathison Turing was an English mathematician, computer scientist, logician, cryptanalyst, philosopher, and theoretical biologist. Turing was highly influential in the development of theoretical computer science, providing a formalisation of the concepts of algorithm and computation with the Turing machine, which can be considered a model of a general-purpose computer. Turing is widely considered to be the father of theoretical computer science and artificial intelligence.', 'propaganda'),
+        'default' => 'Мы знаем все.',
         'sanitize_callback' => 'pt_sanitize_textarea',
     ));
 
@@ -2607,14 +2627,14 @@ function theme_customize_register($wp_customize)
             'type' => 'textarea',
             'section' => 'pt_contact',
             'settings' => 'pt_contact_description',
-            'label' => __('Description', 'propaganda'),
-            'description' => __('Text for the description in the Contact section. &lt;br&gt;, bold and italic are accepted.', 'propaganda'),
+            'label' => __('Description', 'propaganda-customizer-instruction'),
+            'description' => __('Text for the description in the Contact section. &lt;br&gt;, bold and italic are accepted.', 'propaganda-customizer-instruction'),
         )
     );
 
     // Email
     $wp_customize->add_setting('pt_contact_email', array(
-        'default' => __('hello@website.com', 'propaganda'),
+        'default' => 'привет@сайт.ru',
         'sanitize_callback' => 'sanitize_email',
     ));
 
@@ -2624,14 +2644,14 @@ function theme_customize_register($wp_customize)
             'type' => 'email',
             'section' => 'pt_contact',
             'settings' => 'pt_contact_email',
-            'label' => __('Email', 'propaganda'),
-            'description' => __('Your email address for the Contact section.', 'propaganda'),
+            'label' => __('Email', 'propaganda-customizer-instruction'),
+            'description' => __('Your email address for the Contact section.', 'propaganda-customizer-instruction'),
         )
     );
 
     // Phone
     $wp_customize->add_setting('pt_contact_phone', array(
-        'default' => __('118 712', 'propaganda'),
+        'default' => '118 712',
         'sanitize_callback' => 'sanitize_text_field',
     ));
 
@@ -2641,8 +2661,8 @@ function theme_customize_register($wp_customize)
             'type' => 'text',
             'section' => 'pt_contact',
             'settings' => 'pt_contact_phone',
-            'label' => __('Phone', 'propaganda'),
-            'description' => __('Your phone number for the Contact section.', 'propaganda'),
+            'label' => __('Phone', 'propaganda-customizer-instruction'),
+            'description' => __('Your phone number for the Contact section.', 'propaganda-customizer-instruction'),
         )
     );
 
@@ -2660,8 +2680,8 @@ function theme_customize_register($wp_customize)
         array(
             'type' => 'select',
             'section' => 'pt_contact',
-            'label' => __('Icon', 'propaganda'),
-            'description' => __('Icon displayed in the Contact section.', 'propaganda'),
+            'label' => __('Icon', 'propaganda-customizer-instruction'),
+            'description' => __('Icon displayed in the Contact section.', 'propaganda-customizer-instruction'),
             'choices' => $icons,
         )
     );
@@ -2681,8 +2701,8 @@ function theme_customize_register($wp_customize)
             'type' => 'number',
             'section' => 'pt_contact',
             'settings' => 'pt_contact_cf_shortcode',
-            'label' => __('Contact Form Shortcode ID', 'propaganda'),
-            'description' => __('Insert the ID of the shortcode of the Contact Form. Download the plugin <a target="_blank" href="https://fr.wordpress.org/plugins/contact-form-7/">here</a>.', 'propaganda'),
+            'label' => __('Contact Form Shortcode ID', 'propaganda-customizer-instruction'),
+            'description' => __('Insert the ID of the shortcode of the Contact Form. Download the plugin <a target="_blank" href="https://fr.wordpress.org/plugins/contact-form-7/">here</a>.', 'propaganda-customizer-instruction'),
         )
     );
 
@@ -2691,8 +2711,8 @@ function theme_customize_register($wp_customize)
     --------------------------------------------------------------- */
     $wp_customize->add_section('pt_marquee', array(
         'panel' => 'pt_theme_options',
-        'title' => __('Homepage - Marquee Section', 'propaganda'),
-        'description' => __('Options related to the Marquee section on the homepage.', 'propaganda'),
+        'title' => __('Homepage - Marquee Section', 'propaganda-customizer-instruction'),
+        'description' => __('Options related to the Marquee section on the homepage.', 'propaganda-customizer-instruction'),
     ));
 
     // Shortcut
@@ -2715,8 +2735,8 @@ function theme_customize_register($wp_customize)
         'pt_marquee_displayed',
         array(
             'section' => 'pt_marquee',
-            'label' => __('Display the whole section', 'propaganda'),
-            'description' => __('Display the section on the homepage.', 'propaganda'),
+            'label' => __('Display the whole section', 'propaganda-customizer-instruction'),
+            'description' => __('Display the section on the homepage.', 'propaganda-customizer-instruction'),
         )
     ));
 
@@ -2734,8 +2754,8 @@ function theme_customize_register($wp_customize)
         'pt_marquee_general_color',
         array(
             'section' => 'pt_marquee',
-            'label' => __('General Color', 'propaganda'),
-            'description' => __('Color for the background of the Marquee.', 'propaganda'),
+            'label' => __('General Color', 'propaganda-customizer-instruction'),
+            'description' => __('Color for the background of the Marquee.', 'propaganda-customizer-instruction'),
         )
     ));
 
@@ -2744,7 +2764,7 @@ function theme_customize_register($wp_customize)
 
     // Content
     $wp_customize->add_setting('pt_marquee_content', array(
-        'default' => __('Here is some message!', 'propaganda'),
+        'default' => 'Срочно - немедленно свяжитесь с вашим руководителем',
         'sanitize_callback' => 'sanitize_text_field',
     ));
 
@@ -2754,8 +2774,8 @@ function theme_customize_register($wp_customize)
             'type' => 'textarea',
             'section' => 'pt_marquee',
             'settings' => 'pt_marquee_content',
-            'label' => __('Content', 'propaganda'),
-            'description' => __('Text for the Marquee.', 'propaganda'),
+            'label' => __('Content', 'propaganda-customizer-instruction'),
+            'description' => __('Text for the Marquee.', 'propaganda-customizer-instruction'),
         )
     );
 
@@ -2771,8 +2791,8 @@ function theme_customize_register($wp_customize)
             'type' => 'checkbox',
             'section' => 'pt_marquee',
             'settings' => 'pt_marquee_content_uppercase',
-            'label' => __('Is the content in uppercase?', 'propaganda'),
-            'description' => __('Yes if the checkbox is checked.', 'propaganda'),
+            'label' => __('Is the content in uppercase?', 'propaganda-customizer-instruction'),
+            'description' => __('Yes if the checkbox is checked.', 'propaganda-customizer-instruction'),
         )
     );
 
@@ -2781,8 +2801,8 @@ function theme_customize_register($wp_customize)
     --------------------------------------------------------------- */
     $wp_customize->add_section('pt_comments', array(
         'panel' => 'pt_theme_options',
-        'title' => __('Content - Comments', 'propaganda'),
-        'description' => __('Options related to Comments on all the content types.', 'propaganda'),
+        'title' => __('Content - Comments', 'propaganda-customizer-instruction'),
+        'description' => __('Options related to Comments on all the content types.', 'propaganda-customizer-instruction'),
     ));
 
     // Shortcut
@@ -2805,8 +2825,8 @@ function theme_customize_register($wp_customize)
         'pt_comments_general_color',
         array(
             'section' => 'pt_comments',
-            'label' => __('General Color', 'propaganda'),
-            'description' => __('Color of the elements in the Comments section.', 'propaganda'),
+            'label' => __('General Color', 'propaganda-customizer-instruction'),
+            'description' => __('Color of the elements in the Comments section.', 'propaganda-customizer-instruction'),
         )
     ));
 
@@ -2815,8 +2835,8 @@ function theme_customize_register($wp_customize)
     --------------------------------------------------------------- */
     $wp_customize->add_section('pt_single_page', array(
         'panel' => 'pt_theme_options',
-        'title' => __('Page - Single', 'propaganda'),
-        'description' => __('Options related to pages.', 'propaganda'),
+        'title' => __('Page - Single', 'propaganda-customizer-instruction'),
+        'description' => __('Options related to pages.', 'propaganda-customizer-instruction'),
     ));
 
     // Shortcut
@@ -2839,8 +2859,8 @@ function theme_customize_register($wp_customize)
         'pt_single_page_background_color',
         array(
             'section' => 'pt_single_page',
-            'label' => __('Background Color', 'propaganda'),
-            'description' => __('Color of the background of pages.', 'propaganda'),
+            'label' => __('Background Color', 'propaganda-customizer-instruction'),
+            'description' => __('Color of the background of pages.', 'propaganda-customizer-instruction'),
         )
     ));
 
@@ -2858,8 +2878,8 @@ function theme_customize_register($wp_customize)
         'pt_single_page_elements_color',
         array(
             'section' => 'pt_single_page',
-            'label' => __('Elements Color', 'propaganda'),
-            'description' => __('Color of all the elements of pages.', 'propaganda'),
+            'label' => __('Elements Color', 'propaganda-customizer-instruction'),
+            'description' => __('Color of all the elements of pages.', 'propaganda-customizer-instruction'),
         )
     ));
 
@@ -2867,8 +2887,8 @@ function theme_customize_register($wp_customize)
     --------------------------------------------------------------- */
     $wp_customize->add_section('pt_archive_post', array(
         'panel' => 'pt_theme_options',
-        'title' => __('Post - Archive', 'propaganda'),
-        'description' => __('Options related to the Post archive page.', 'propaganda'),
+        'title' => __('Post - Archive', 'propaganda-customizer-instruction'),
+        'description' => __('Options related to the Post archive page.', 'propaganda-customizer-instruction'),
     ));
 
     // Shortcut
@@ -2891,8 +2911,8 @@ function theme_customize_register($wp_customize)
         'pt_archive_post_general_color',
         array(
             'section' => 'pt_archive_post',
-            'label' => __('General Color', 'propaganda'),
-            'description' => __('Color of all the elements of the Post archive page.', 'propaganda'),
+            'label' => __('General Color', 'propaganda-customizer-instruction'),
+            'description' => __('Color of all the elements of the Post archive page.', 'propaganda-customizer-instruction'),
         )
     ));
 
@@ -2901,7 +2921,7 @@ function theme_customize_register($wp_customize)
 
     // Title
     $wp_customize->add_setting('pt_archive_post_title', array(
-        'default' => __('Blog', 'propaganda'),
+        'default' => 'Блог',
         'sanitize_callback' => 'sanitize_text_field',
     ));
 
@@ -2911,14 +2931,14 @@ function theme_customize_register($wp_customize)
             'type' => 'text',
             'section' => 'pt_archive_post',
             'settings' => 'pt_archive_post_title',
-            'label' => __('Title', 'propaganda'),
-            'description' => __('Text for the title h1 of the Hero of the Post archive page.', 'propaganda'),
+            'label' => __('Title', 'propaganda-customizer-instruction'),
+            'description' => __('Text for the title h1 of the Hero of the Post archive page.', 'propaganda-customizer-instruction'),
         )
     );
 
     // Subtitle
     $wp_customize->add_setting('pt_archive_post_subtitle', array(
-        'default' => __('This is where the posts belong.', 'propaganda'),
+        'default' => 'Это твой дневник?',
         'sanitize_callback' => 'sanitize_text_field',
     ));
 
@@ -2928,8 +2948,8 @@ function theme_customize_register($wp_customize)
             'type' => 'text',
             'section' => 'pt_archive_post',
             'settings' => 'pt_archive_post_subtitle',
-            'label' => __('Subtitle', 'propaganda'),
-            'description' => __('Text for the subtitle h2 of the Hero of the Post archive page.', 'propaganda'),
+            'label' => __('Subtitle', 'propaganda-customizer-instruction'),
+            'description' => __('Text for the subtitle h2 of the Hero of the Post archive page.', 'propaganda-customizer-instruction'),
         )
     );
 
@@ -2938,7 +2958,7 @@ function theme_customize_register($wp_customize)
 
     // Title
     $wp_customize->add_setting('pt_archive_post_outro_title', array(
-        'default' => __('Check this out!', 'propaganda'),
+        'default' => 'ты должен это увидеть',
         'sanitize_callback' => 'sanitize_text_field',
     ));
 
@@ -2948,8 +2968,8 @@ function theme_customize_register($wp_customize)
             'type' => 'text',
             'section' => 'pt_archive_post',
             'settings' => 'pt_archive_post_outro_title',
-            'label' => __('Title', 'propaganda'),
-            'description' => __('Text for the title h3 of the Outro section of the Post archive page.', 'propaganda'),
+            'label' => __('Title', 'propaganda-customizer-instruction'),
+            'description' => __('Text for the title h3 of the Outro section of the Post archive page.', 'propaganda-customizer-instruction'),
         )
     );
 
@@ -2958,7 +2978,7 @@ function theme_customize_register($wp_customize)
 
     // Button Label
     $wp_customize->add_setting('pt_archive_post_button_label', array(
-        'default' => __('I lead somewhere', 'propaganda'),
+        'default' => 'кликните сюда',
         'sanitize_callback' => 'sanitize_text_field',
     ));
 
@@ -2968,8 +2988,8 @@ function theme_customize_register($wp_customize)
             'type' => 'text',
             'section' => 'pt_archive_post',
             'settings' => 'pt_archive_post_button_label',
-            'label' => __('Button Label', 'propaganda'),
-            'description' => __('Text for the button of the Outro section of the Post archive page.', 'propaganda'),
+            'label' => __('Button Label', 'propaganda-customizer-instruction'),
+            'description' => __('Text for the button of the Outro section of the Post archive page.', 'propaganda-customizer-instruction'),
         )
     );
 
@@ -2985,8 +3005,8 @@ function theme_customize_register($wp_customize)
             'type' => 'text',
             'section' => 'pt_archive_post',
             'settings' => 'pt_archive_post_button_link',
-            'label' => __('Button Link', 'propaganda'),
-            'description' => __('Link for the button of the Outro section of the Post archive page.', 'propaganda'),
+            'label' => __('Button Link', 'propaganda-customizer-instruction'),
+            'description' => __('Link for the button of the Outro section of the Post archive page.', 'propaganda-customizer-instruction'),
         )
     );
 
@@ -2995,8 +3015,8 @@ function theme_customize_register($wp_customize)
     --------------------------------------------------------------- */
     $wp_customize->add_section('pt_single_post', array(
         'panel' => 'pt_theme_options',
-        'title' => __('Post - Single', 'propaganda'),
-        'description' => __('Options related to Client articles.', 'propaganda'),
+        'title' => __('Post - Single', 'propaganda-customizer-instruction'),
+        'description' => __('Options related to Client articles.', 'propaganda-customizer-instruction'),
     ));
 
     // Shortcut
@@ -3019,8 +3039,8 @@ function theme_customize_register($wp_customize)
         'pt_single_post_background_color',
         array(
             'section' => 'pt_single_post',
-            'label' => __('Background Color', 'propaganda'),
-            'description' => __('Color of the background of Post articles.', 'propaganda'),
+            'label' => __('Background Color', 'propaganda-customizer-instruction'),
+            'description' => __('Color of the background of Post articles.', 'propaganda-customizer-instruction'),
         )
     ));
 
@@ -3038,8 +3058,8 @@ function theme_customize_register($wp_customize)
         'pt_single_post_elements_color',
         array(
             'section' => 'pt_single_post',
-            'label' => __('Elements Color', 'propaganda'),
-            'description' => __('Color of all the elements of Post articles, such as buttons or some titles.', 'propaganda'),
+            'label' => __('Elements Color', 'propaganda-customizer-instruction'),
+            'description' => __('Color of all the elements of Post articles, such as buttons or some titles.', 'propaganda-customizer-instruction'),
         )
     ));
 
@@ -3048,7 +3068,7 @@ function theme_customize_register($wp_customize)
 
     // Title
     $wp_customize->add_setting('pt_single_post_outro_title', array(
-        'default' => __('Check this out!', 'propaganda'),
+        'default' => 'Вы должны увидеть это',
         'sanitize_callback' => 'sanitize_text_field',
     ));
 
@@ -3058,8 +3078,8 @@ function theme_customize_register($wp_customize)
             'type' => 'text',
             'section' => 'pt_single_post',
             'settings' => 'pt_single_post_outro_title',
-            'label' => __('Title', 'propaganda'),
-            'description' => __('Text for the title h3 of the Outro section in Post articles.', 'propaganda'),
+            'label' => __('Title', 'propaganda-customizer-instruction'),
+            'description' => __('Text for the title h3 of the Outro section in Post articles.', 'propaganda-customizer-instruction'),
         )
     );
 
@@ -3068,7 +3088,7 @@ function theme_customize_register($wp_customize)
 
     // Button Label
     $wp_customize->add_setting('pt_single_post_button_label', array(
-        'default' => __('I lead somewhere', 'propaganda'),
+        'default' => 'я куда-то веду',
         'sanitize_callback' => 'sanitize_text_field',
     ));
 
@@ -3078,8 +3098,8 @@ function theme_customize_register($wp_customize)
             'type' => 'text',
             'section' => 'pt_single_post',
             'settings' => 'pt_single_post_button_label',
-            'label' => __('Button Label', 'propaganda'),
-            'description' => __('Text for the button of the Outro section in Post articles.', 'propaganda'),
+            'label' => __('Button Label', 'propaganda-customizer-instruction'),
+            'description' => __('Text for the button of the Outro section in Post articles.', 'propaganda-customizer-instruction'),
         )
     );
 
@@ -3095,8 +3115,8 @@ function theme_customize_register($wp_customize)
             'type' => 'text',
             'section' => 'pt_single_post',
             'settings' => 'pt_single_post_button_link',
-            'label' => __('Button Link', 'propaganda'),
-            'description' => __('Link for the button of the Outro section in Post articles.', 'propaganda'),
+            'label' => __('Button Link', 'propaganda-customizer-instruction'),
+            'description' => __('Link for the button of the Outro section in Post articles.', 'propaganda-customizer-instruction'),
         )
     );
 
@@ -3117,8 +3137,8 @@ function theme_customize_register($wp_customize)
         'pt_single_post_related',
         array(
             'section' => 'pt_single_post',
-            'label' => __('Related Posts?', 'propaganda'),
-            'description' => __('Display the related posts in Post articles.', 'propaganda'),
+            'label' => __('Related Posts?', 'propaganda-customizer-instruction'),
+            'description' => __('Display the related posts in Post articles.', 'propaganda-customizer-instruction'),
         )
     ));
 
@@ -3127,7 +3147,7 @@ function theme_customize_register($wp_customize)
 
     // Title
     $wp_customize->add_setting('pt_single_post_related_title', array(
-        'default' => __('Related Posts', 'propaganda'),
+        'default' => 'Related Posts',
         'sanitize_callback' => 'sanitize_text_field',
     ));
 
@@ -3137,8 +3157,8 @@ function theme_customize_register($wp_customize)
             'type' => 'text',
             'section' => 'pt_single_post',
             'settings' => 'pt_single_post_related_title',
-            'label' => __('Title', 'propaganda'),
-            'description' => __('Text for the title h2 of the Related Posts section in Post articles.', 'propaganda'),
+            'label' => __('Title', 'propaganda-customizer-instruction'),
+            'description' => __('Text for the title h2 of the Related Posts section in Post articles.', 'propaganda-customizer-instruction'),
         )
     );
 
@@ -3147,8 +3167,8 @@ function theme_customize_register($wp_customize)
     --------------------------------------------------------------- */
     $wp_customize->add_section('pt_single_client', array(
         'panel' => 'pt_theme_options',
-        'title' => __('Client - Single', 'propaganda'),
-        'description' => __('Options related to Client pages.', 'propaganda'),
+        'title' => __('Client - Single', 'propaganda-customizer-instruction'),
+        'description' => __('Options related to Client pages.', 'propaganda-customizer-instruction'),
     ));
 
     // Shortcut
@@ -3171,8 +3191,8 @@ function theme_customize_register($wp_customize)
         'pt_single_client_background_color',
         array(
             'section' => 'pt_single_client',
-            'label' => __('Background Color', 'propaganda'),
-            'description' => __('Color of the background of Client pages.', 'propaganda'),
+            'label' => __('Background Color', 'propaganda-customizer-instruction'),
+            'description' => __('Color of the background of Client pages.', 'propaganda-customizer-instruction'),
         )
     ));
 
@@ -3190,8 +3210,8 @@ function theme_customize_register($wp_customize)
         'pt_single_client_elements_color',
         array(
             'section' => 'pt_single_client',
-            'label' => __('Elements Color', 'propaganda'),
-            'description' => __('Color of all the elements of Client pages, such as buttons or some titles.', 'propaganda'),
+            'label' => __('Elements Color', 'propaganda-customizer-instruction'),
+            'description' => __('Color of all the elements of Client pages, such as buttons or some titles.', 'propaganda-customizer-instruction'),
         )
     ));
 
@@ -3200,7 +3220,7 @@ function theme_customize_register($wp_customize)
 
     // Button Label
     $wp_customize->add_setting('pt_single_client_intro_button_label', array(
-        'default' => __('See the result', 'propaganda'),
+        'default' => 'Посмотреть результат',
         'sanitize_callback' => 'sanitize_text_field',
     ));
 
@@ -3210,8 +3230,8 @@ function theme_customize_register($wp_customize)
             'type' => 'text',
             'section' => 'pt_single_client',
             'settings' => 'pt_single_client_intro_button_label',
-            'label' => __('Button Label', 'propaganda'),
-            'description' => __('Text for the button of the Intro section in Client pages.', 'propaganda'),
+            'label' => __('Button Label', 'propaganda-customizer-instruction'),
+            'description' => __('Text for the button of the Intro section in Client pages.', 'propaganda-customizer-instruction'),
         )
     );
 
@@ -3220,7 +3240,7 @@ function theme_customize_register($wp_customize)
 
     // Title
     $wp_customize->add_setting('pt_single_client_outro_title', array(
-        'default' => __('Check this out!', 'propaganda'),
+        'default' => 'Вы должны увидеть это',
         'sanitize_callback' => 'sanitize_text_field',
     ));
 
@@ -3230,8 +3250,8 @@ function theme_customize_register($wp_customize)
             'type' => 'text',
             'section' => 'pt_single_client',
             'settings' => 'pt_single_client_outro_title',
-            'label' => __('Title', 'propaganda'),
-            'description' => __('Text for the title h3 of the Outro section in Client pages.', 'propaganda'),
+            'label' => __('Title', 'propaganda-customizer-instruction'),
+            'description' => __('Text for the title h3 of the Outro section in Client pages.', 'propaganda-customizer-instruction'),
         )
     );
 
@@ -3240,7 +3260,7 @@ function theme_customize_register($wp_customize)
 
     // Button Label
     $wp_customize->add_setting('pt_single_client_button_label', array(
-        'default' => __('I lead somewhere', 'propaganda'),
+        'default' => 'я куда-то веду',
         'sanitize_callback' => 'sanitize_text_field',
     ));
 
@@ -3250,8 +3270,8 @@ function theme_customize_register($wp_customize)
             'type' => 'text',
             'section' => 'pt_single_client',
             'settings' => 'pt_single_client_button_label',
-            'label' => __('Button Label', 'propaganda'),
-            'description' => __('Text for the button of the Outro section in Client pages.', 'propaganda'),
+            'label' => __('Button Label', 'propaganda-customizer-instruction'),
+            'description' => __('Text for the button of the Outro section in Client pages.', 'propaganda-customizer-instruction'),
         )
     );
 
@@ -3267,8 +3287,8 @@ function theme_customize_register($wp_customize)
             'type' => 'text',
             'section' => 'pt_single_client',
             'settings' => 'pt_single_client_button_link',
-            'label' => __('Button Link', 'propaganda'),
-            'description' => __('Link for the button of the Outro section in Client pages.', 'propaganda'),
+            'label' => __('Button Link', 'propaganda-customizer-instruction'),
+            'description' => __('Link for the button of the Outro section in Client pages.', 'propaganda-customizer-instruction'),
         )
     );
 
@@ -3277,8 +3297,8 @@ function theme_customize_register($wp_customize)
     --------------------------------------------------------------- */
     $wp_customize->add_section('pt_archive_project', array(
         'panel' => 'pt_theme_options',
-        'title' => __('Project - Archive', 'propaganda'),
-        'description' => __('Options related to the Project archive page.', 'propaganda'),
+        'title' => __('Project - Archive', 'propaganda-customizer-instruction'),
+        'description' => __('Options related to the Project archive page.', 'propaganda-customizer-instruction'),
     ));
 
     // Shortcut
@@ -3301,8 +3321,8 @@ function theme_customize_register($wp_customize)
         'pt_archive_project_general_color',
         array(
             'section' => 'pt_archive_project',
-            'label' => __('General Color', 'propaganda'),
-            'description' => __('Color of all the elements of the Project archive page.', 'propaganda'),
+            'label' => __('General Color', 'propaganda-customizer-instruction'),
+            'description' => __('Color of all the elements of the Project archive page.', 'propaganda-customizer-instruction'),
         )
     ));
 
@@ -3311,7 +3331,7 @@ function theme_customize_register($wp_customize)
 
     // Title
     $wp_customize->add_setting('pt_archive_project_title', array(
-        'default' => __('Projects', 'propaganda'),
+        'default' => 'проекты',
         'sanitize_callback' => 'sanitize_text_field',
     ));
 
@@ -3321,14 +3341,14 @@ function theme_customize_register($wp_customize)
             'type' => 'text',
             'section' => 'pt_archive_project',
             'settings' => 'pt_archive_project_title',
-            'label' => __('Title', 'propaganda'),
-            'description' => __('Text for the title h1 of the Hero of the Project archive page.', 'propaganda'),
+            'label' => __('Title', 'propaganda-customizer-instruction'),
+            'description' => __('Text for the title h1 of the Hero of the Project archive page.', 'propaganda-customizer-instruction'),
         )
     );
 
     // Subtitle
     $wp_customize->add_setting('pt_archive_project_subtitle', array(
-        'default' => __('My personal projects, finished or not.', 'propaganda'),
+        'default' => 'чего ты добился, товарищ',
         'sanitize_callback' => 'sanitize_text_field',
     ));
 
@@ -3338,8 +3358,8 @@ function theme_customize_register($wp_customize)
             'type' => 'text',
             'section' => 'pt_archive_project',
             'settings' => 'pt_archive_project_subtitle',
-            'label' => __('Subtitle', 'propaganda'),
-            'description' => __('Text for the subtitle h2 of the Hero of the Project archive page.', 'propaganda'),
+            'label' => __('Subtitle', 'propaganda-customizer-instruction'),
+            'description' => __('Text for the subtitle h2 of the Hero of the Project archive page.', 'propaganda-customizer-instruction'),
         )
     );
 
@@ -3348,7 +3368,7 @@ function theme_customize_register($wp_customize)
 
     // Title
     $wp_customize->add_setting('pt_archive_project_outro_title', array(
-        'default' => __('Check this out!', 'propaganda'),
+        'default' => 'Вы должны увидеть это',
         'sanitize_callback' => 'sanitize_text_field',
     ));
 
@@ -3358,8 +3378,8 @@ function theme_customize_register($wp_customize)
             'type' => 'text',
             'section' => 'pt_archive_project',
             'settings' => 'pt_archive_project_outro_title',
-            'label' => __('Title', 'propaganda'),
-            'description' => __('Text for the title h3 of the Outro section of the Project archive page.', 'propaganda'),
+            'label' => __('Title', 'propaganda-customizer-instruction'),
+            'description' => __('Text for the title h3 of the Outro section of the Project archive page.', 'propaganda-customizer-instruction'),
         )
     );
 
@@ -3368,7 +3388,7 @@ function theme_customize_register($wp_customize)
 
     // Button Label
     $wp_customize->add_setting('pt_archive_project_button_label', array(
-        'default' => __('I lead somewhere', 'propaganda'),
+        'default' => 'я куда-то веду',
         'sanitize_callback' => 'sanitize_text_field',
     ));
 
@@ -3378,8 +3398,8 @@ function theme_customize_register($wp_customize)
             'type' => 'text',
             'section' => 'pt_archive_project',
             'settings' => 'pt_archive_project_button_label',
-            'label' => __('Button Label', 'propaganda'),
-            'description' => __('Text for the button of the Outro section of the Project archive page.', 'propaganda'),
+            'label' => __('Button Label', 'propaganda-customizer-instruction'),
+            'description' => __('Text for the button of the Outro section of the Project archive page.', 'propaganda-customizer-instruction'),
         )
     );
 
@@ -3395,8 +3415,8 @@ function theme_customize_register($wp_customize)
             'type' => 'text',
             'section' => 'pt_archive_project',
             'settings' => 'pt_archive_project_button_link',
-            'label' => __('Button Link', 'propaganda'),
-            'description' => __('Link for the button of the Outro section of the Project archive page.', 'propaganda'),
+            'label' => __('Button Link', 'propaganda-customizer-instruction'),
+            'description' => __('Link for the button of the Outro section of the Project archive page.', 'propaganda-customizer-instruction'),
         )
     );
 
@@ -3405,8 +3425,8 @@ function theme_customize_register($wp_customize)
     --------------------------------------------------------------- */
     $wp_customize->add_section('pt_single_project', array(
         'panel' => 'pt_theme_options',
-        'title' => __('Project - Single', 'propaganda'),
-        'description' => __('Options related to Project pages.', 'propaganda'),
+        'title' => __('Project - Single', 'propaganda-customizer-instruction'),
+        'description' => __('Options related to Project pages.', 'propaganda-customizer-instruction'),
     ));
 
     // Shortcut
@@ -3429,8 +3449,8 @@ function theme_customize_register($wp_customize)
         'pt_single_project_background_color',
         array(
             'section' => 'pt_single_project',
-            'label' => __('Background Color', 'propaganda'),
-            'description' => __('Color of the background of Project pages.', 'propaganda'),
+            'label' => __('Background Color', 'propaganda-customizer-instruction'),
+            'description' => __('Color of the background of Project pages.', 'propaganda-customizer-instruction'),
         )
     ));
 
@@ -3448,8 +3468,8 @@ function theme_customize_register($wp_customize)
         'pt_single_project_elements_color',
         array(
             'section' => 'pt_single_project',
-            'label' => __('Elements Color', 'propaganda'),
-            'description' => __('Color of all the elements of Project pages, such as buttons or some titles.', 'propaganda'),
+            'label' => __('Elements Color', 'propaganda-customizer-instruction'),
+            'description' => __('Color of all the elements of Project pages, such as buttons or some titles.', 'propaganda-customizer-instruction'),
         )
     ));
 
@@ -3458,7 +3478,7 @@ function theme_customize_register($wp_customize)
 
     // Button Label
     $wp_customize->add_setting('pt_single_project_intro_button_label', array(
-        'default' => __('See the result', 'propaganda'),
+        'default' => 'Посмотреть результат',
         'sanitize_callback' => 'sanitize_text_field',
     ));
 
@@ -3468,8 +3488,8 @@ function theme_customize_register($wp_customize)
             'type' => 'text',
             'section' => 'pt_single_project',
             'settings' => 'pt_single_project_intro_button_label',
-            'label' => __('Button Label', 'propaganda'),
-            'description' => __('Text for the button of the Intro section in Project pages.', 'propaganda'),
+            'label' => __('Button Label', 'propaganda-customizer-instruction'),
+            'description' => __('Text for the button of the Intro section in Project pages.', 'propaganda-customizer-instruction'),
         )
     );
 
@@ -3478,7 +3498,7 @@ function theme_customize_register($wp_customize)
 
     // Title
     $wp_customize->add_setting('pt_single_project_outro_title', array(
-        'default' => __('Check this out!', 'propaganda'),
+        'default' => 'Вы должны увидеть это',
         'sanitize_callback' => 'sanitize_text_field',
     ));
 
@@ -3488,8 +3508,8 @@ function theme_customize_register($wp_customize)
             'type' => 'text',
             'section' => 'pt_single_project',
             'settings' => 'pt_single_project_outro_title',
-            'label' => __('Title', 'propaganda'),
-            'description' => __('Text for the title h3 of the Outro section in Project pages.', 'propaganda'),
+            'label' => __('Title', 'propaganda-customizer-instruction'),
+            'description' => __('Text for the title h3 of the Outro section in Project pages.', 'propaganda-customizer-instruction'),
         )
     );
 
@@ -3498,7 +3518,7 @@ function theme_customize_register($wp_customize)
 
     // Button Label
     $wp_customize->add_setting('pt_single_project_button_label', array(
-        'default' => __('I lead somewhere', 'propaganda'),
+        'default' => 'я куда-то веду',
         'sanitize_callback' => 'sanitize_text_field',
     ));
 
@@ -3508,8 +3528,8 @@ function theme_customize_register($wp_customize)
             'type' => 'text',
             'section' => 'pt_single_project',
             'settings' => 'pt_single_project_button_label',
-            'label' => __('Button Label', 'propaganda'),
-            'description' => __('Text for the button of the Outro section in Project pages.', 'propaganda'),
+            'label' => __('Button Label', 'propaganda-customizer-instruction'),
+            'description' => __('Text for the button of the Outro section in Project pages.', 'propaganda-customizer-instruction'),
         )
     );
 
@@ -3525,8 +3545,8 @@ function theme_customize_register($wp_customize)
             'type' => 'text',
             'section' => 'pt_single_project',
             'settings' => 'pt_single_project_button_link',
-            'label' => __('Button Link', 'propaganda'),
-            'description' => __('Link for the button of the Outro section in Project pages.', 'propaganda'),
+            'label' => __('Button Link', 'propaganda-customizer-instruction'),
+            'description' => __('Link for the button of the Outro section in Project pages.', 'propaganda-customizer-instruction'),
         )
     );
 }

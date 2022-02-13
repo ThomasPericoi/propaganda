@@ -3,8 +3,8 @@
     <section id="hp-testimonials">
         <div class="container">
             <div class="heading-wrapper heading-<?php echo get_theme_mod('pt_testimonials_general_color', false) ? 'primary' : 'secondary'; ?> align-<?php echo get_theme_mod('pt_testimonials_heading_alignment', 'center'); ?>">
-                <h2><?php echo get_theme_mod('pt_testimonials_heading_title', "Interesting"); ?></h2>
-                <h3><?php echo get_theme_mod('pt_testimonials_heading_subtitle', "What a title!"); ?></h3>
+                <h2><?php echo get_theme_mod('pt_testimonials_heading_title', "Отзывы"); ?></h2>
+                <h3><?php echo get_theme_mod('pt_testimonials_heading_subtitle', "Кто ваши союзники?"); ?></h3>
             </div>
             <div class="swiper-slider testimonials testimonials-<?php echo get_theme_mod('pt_testimonials_general_color', false) ? 'primary' : 'secondary'; ?>">
                 <?php
@@ -36,7 +36,7 @@
                     <div class="swiper-pagination"></div>
                 <?php else : ?>
                     <div class="align-center">
-                        <p><?php echo __('No testimonial to be found yet...', 'propaganda'); ?></p>
+                        <p><?php echo __('это пусто товарищ', 'propaganda'); ?></p>
                     </div>
                 <?php endif; ?>
             </div>

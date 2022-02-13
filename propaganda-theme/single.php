@@ -16,7 +16,7 @@
                             <?php the_post_thumbnail(); ?>
                         </div>
                         <?php get_template_part('templates/share', null, array(
-                            'url' => 'https://stackoverflow.com/questions/10713542/how-to-make-a-custom-linkedin-share-button',
+                            'url' => get_permalink(),
                             'color' => get_theme_mod('pt_single_post_elements_color', true) ? 'primary' : 'secondary',
                         )); ?>
                     </header>
@@ -33,10 +33,10 @@
         ?>
         <div class="inner-outro">
             <?php get_template_part('templates/outro', null, array(
-                'title' => get_theme_mod('pt_single_post_outro_title', "Check this out!"),
+                'title' => get_theme_mod('pt_single_post_outro_title', "Вы должны увидеть это"),
                 'color' => get_theme_mod('pt_single_post_elements_color', true) ? 'primary' : 'secondary',
                 'btn_link' => get_theme_mod('pt_single_post_button_link', "#"),
-                'btn_label' => get_theme_mod('pt_single_post_button_label', "I lead somewhere"),
+                'btn_label' => get_theme_mod('pt_single_post_button_label', "я куда-то веду"),
             )); ?>
         </div>
         <?php
