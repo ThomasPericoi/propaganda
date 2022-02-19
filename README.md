@@ -21,7 +21,7 @@ Theme made by Thomas Pericoi (<https://thomaspericoi.com/>).
 
 ### Icons
 
-Icons made by Pixel Perfect (<https://www.flaticon.com/fr/auteurs/pixel-perfect>) from flaticon.com (<https://www.flaticon.com/>).
+Icons made by Pixel Perfect (<https://www.flaticon.com/authors/pixel-perfect>) from flaticon.com (<https://www.flaticon.com/>).
 
 ### SVG patterns
 
