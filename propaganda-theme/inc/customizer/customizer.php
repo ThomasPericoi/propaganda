@@ -153,7 +153,7 @@ function theme_customize_register($wp_customize)
     // ------------ General Options ------------
     custom_heading('pt_socials_heading_content', 'pt_socials', 'General Options', $wp_customize);
 
-    $socials = ["behance", "discord", "dribbble", "facebook", "github", "linkedin", "mail", "medium", "phone", "reddit", "soundcloud", "spotify", "stackOverflow", "twitch", "twitter", "youtube"];
+    $socials = ["appstore", "behance", "codepen", "discord", "dribbble", "facebook", "github", "instagram", "linkedin", "mail", "medium", "patreon", "pinterest", "phone", "reddit", "skype", "soundcloud", "spotify", "stackOverflow", "twitch", "twitter", "youtube"];
 
     foreach ($socials as $value) {
         $wp_customize->add_setting('pt_socials_' . $value, array(
@@ -932,7 +932,7 @@ function theme_customize_register($wp_customize)
         'pt_skills_expanded',
         array(
             'section' => 'pt_skills',
-            'label' => __('Show fully the section.', 'propaganda-customizer-instruction'),
+            'label' => __('Expand fully the section initially.', 'propaganda-customizer-instruction'),
         )
     ));
 
