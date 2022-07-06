@@ -184,6 +184,7 @@ $svg_patterns = array(
     'plants' => __('Plants', 'propaganda-customizer-instruction'),
     'plus' => __('Plus', 'propaganda-customizer-instruction'),
     'pumpkins' => __('Pumpkins', 'propaganda-customizer-instruction'),
+    'quarter-disc' => __('Quarter Disc', 'propaganda-customizer-instruction'),
     'rounded-squares' => __('Rounded Squares', 'propaganda-customizer-instruction'),
     'san-kuzushi' => __('San Kuzushi', 'propaganda-customizer-instruction'),
     'seigaiha' => __('Seigaiha', 'propaganda-customizer-instruction'),

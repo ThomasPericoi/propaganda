@@ -1,14 +1,26 @@
 <?php
 
+/* THEME SUPPORTS
+--------------------------------------------------------------- */
+
 // Add Thumbnail
 add_theme_support('post-thumbnails');
 
 // Add Title
 add_theme_support('title-tag');
 
+
+/* INCLUDES
+--------------------------------------------------------------- */
+
 // Add Stylesheets
 function pt_enqueue_theme_stylesheets()
 {
+    if (!is_admin()) {
+        wp_deregister_style('wp-block-library');
+        wp_dequeue_style('wp-block-library');
+        wp_dequeue_style('dashicons');
+    }
     wp_register_style('font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css', '', null, 'all');
     wp_register_style('swiper', 'https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.5.8/swiper-bundle.min.css', '', null, 'all');
     wp_register_style('normalize', get_template_directory_uri() . '/assets/css/normalize.css', '', null, 'all');
@@ -50,8 +62,25 @@ function pt_register_menus()
 }
 add_action('init', 'pt_register_menus');
 
+// Include Admin
+include_once('admin/admin.php');
+
+
+/* IMPROVEMENTS
+--------------------------------------------------------------- */
+
+// Disable emojis
+function disable_emojis()
+{
+    remove_action('wp_head', 'print_emoji_detection_script', 7);
+    remove_action('admin_print_scripts', 'print_emoji_detection_script');
+    remove_action('wp_print_styles', 'print_emoji_styles');
+    remove_action('admin_print_styles', 'print_emoji_styles');
+    remove_filter('the_content_feed', 'wp_staticize_emoji');
+    remove_filter('comment_text_rss', 'wp_staticize_emoji');
+    remove_filter('wp_mail', 'wp_staticize_emoji_for_email');
+}
+add_action('init', 'disable_emojis');
+
 // Fix the Admin Bar CSS
 add_theme_support('admin-bar', array('callback' => '__return_false'));
-
-// Add Customizer
-include(get_stylesheet_directory() . '/inc/customizer/customizer.php');

@@ -2,8 +2,8 @@
 
 function theme_customize_register($wp_customize)
 {
-    require get_template_directory() . '/inc/customizer/customizer-custom-functions.php';
-    require get_template_directory() . '/inc/customizer/customizer-custom-controls.php';
+    require get_template_directory() . '/admin/customizer/customizer-custom-functions.php';
+    require get_template_directory() . '/admin/customizer/customizer-custom-controls.php';
 
 
     /* #0 FUNCTIONS
@@ -2114,6 +2114,140 @@ function theme_customize_register($wp_customize)
             'type' => 'number',
             'section' => 'pt_clients',
             'settings' => 'pt_clients_items',
+            'label' => __('Number of items displayed', 'propaganda-customizer-instruction'),
+            'description' => __('Number of clients that this section will display.', 'propaganda-customizer-instruction'),
+        )
+    );
+
+
+    /* HOMEPAGE - LOGOS SECTION
+    --------------------------------------------------------------- */
+    $wp_customize->add_section('pt_logos', array(
+        'panel' => 'pt_theme_options',
+        'title' => __('Homepage - Logos Section', 'propaganda-customizer-instruction'),
+        'description' => __('Options related to the Logos section on the homepage.', 'propaganda-customizer-instruction'),
+    ));
+
+    // Shortcut
+    shortcut('pt_logos_heading_alignment', '#hp-logos .container', $wp_customize);
+
+    // ------------ General Options ------------
+    custom_heading('pt_logos_heading_general', 'pt_logos', 'General Options', $wp_customize);
+
+    // Display the Section
+    $wp_customize->add_setting(
+        'pt_logos_displayed',
+        array(
+            'default' => true,
+            'sanitize_callback' => 'pt_sanitize_checkbox'
+        )
+    );
+
+    $wp_customize->add_control(new PT_Toggle_Basic_Custom_Control(
+        $wp_customize,
+        'pt_logos_displayed',
+        array(
+            'section' => 'pt_logos',
+            'label' => __('Display the whole section', 'propaganda-customizer-instruction'),
+            'description' => __('Display the section on the homepage.', 'propaganda-customizer-instruction'),
+        )
+    ));
+
+    // Color
+    $wp_customize->add_setting(
+        'pt_logos_general_color',
+        array(
+            'default' => false,
+            'sanitize_callback' => 'pt_sanitize_checkbox'
+        )
+    );
+
+    $wp_customize->add_control(new PT_Toggle_Color_Custom_Control(
+        $wp_customize,
+        'pt_logos_general_color',
+        array(
+            'section' => 'pt_logos',
+            'label' => __('General Color', 'propaganda-customizer-instruction'),
+            'description' => __('Color for the title h2 in the Logos section.', 'propaganda-customizer-instruction'),
+        )
+    ));
+
+    // ------------ Headings Options ------------
+    custom_heading('pt_logos_heading_headings', 'pt_logos', 'Headings Options', $wp_customize);
+
+    // Alignment
+    $wp_customize->add_setting(
+        'pt_logos_heading_alignment',
+        array(
+            'default' => 'left',
+            'sanitize_callback' => 'pt_sanitize_radio'
+        )
+    );
+
+    $wp_customize->add_control(new PT_Alignment_Radios_Custom_Control(
+        $wp_customize,
+        'pt_logos_heading_alignment',
+        array(
+            'section' => 'pt_logos',
+            'label' => __('Alignment', 'propaganda-customizer-instruction'),
+            'description' => __('Alignment for the headings in the Logos section.', 'propaganda-customizer-instruction'),
+            'choices' => array(
+                'left' => __('Left', 'propaganda-customizer-instruction'),
+                'center' => __('Center', 'propaganda-customizer-instruction'),
+                'right' => __('Right', 'propaganda-customizer-instruction')
+            )
+        )
+    ));
+
+    // Title
+    $wp_customize->add_setting('pt_logos_heading_title', array(
+        'default' => 'Клиенты',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control(
+        'pt_logos_heading_title',
+        array(
+            'type' => 'text',
+            'section' => 'pt_logos',
+            'settings' => 'pt_logos_heading_title',
+            'label' => __('Title', 'propaganda-customizer-instruction'),
+            'description' => __('Text for the title h2 in the Logos section.', 'propaganda-customizer-instruction'),
+        )
+    );
+
+    // Subtitle
+    $wp_customize->add_setting('pt_logos_heading_subtitle', array(
+        'default' => 'На кого ты работаешь?!',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control(
+        'pt_logos_heading_subtitle',
+        array(
+            'type' => 'text',
+            'section' => 'pt_logos',
+            'settings' => 'pt_logos_heading_subtitle',
+            'label' => __('Subtitle', 'propaganda-customizer-instruction'),
+            'description' => __('Text for the subtitle h3 in the Logos section.', 'propaganda-customizer-instruction'),
+        )
+    );
+
+    // ------------ Content Options ------------
+    custom_heading('pt_logos_heading_content', 'pt_logos', 'Content Options', $wp_customize);
+
+    // Displayed Items
+    $wp_customize->add_setting('pt_logos_items', array(
+        'default' => 12,
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control(
+        'pt_logos_items',
+        array(
+            'type' => 'number',
+            'section' => 'pt_logos',
+            'settings' => 'pt_logos_items',
             'label' => __('Number of items displayed', 'propaganda-customizer-instruction'),
             'description' => __('Number of clients that this section will display.', 'propaganda-customizer-instruction'),
         )

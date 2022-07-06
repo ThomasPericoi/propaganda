@@ -2314,7 +2314,21 @@ div.outro {
 }
 
 
-/* #Homepage - Informations
+/* #Homepage - Logos
+--------------------------------------------------------------- */
+
+#hp-logos {
+    padding-top: 0;
+}
+
+@media screen and (min-width: 1200px) {
+    #hp-logos .logo-grid .grid-item {
+        flex-basis: 20%;
+    }
+}
+
+
+/* #404
 --------------------------------------------------------------- */
 
 #error-404-hero .icon {

@@ -19,7 +19,7 @@
                     <div class="col-2-inner">
                         <div class="col">
                             <h4 class="h3-size"><?php echo get_theme_mod('pt_informations_col_1_title', "Формирование"); ?></h4>
-                            <ul class="list list-<?php echo !get_theme_mod('pt_informations_block_color', false) ? 'primary' : 'secondary'; ?>">
+                            <ul class="list list-<?php echo !get_theme_mod('pt_informations_block_color', true) ? 'primary' : 'secondary'; ?>">
                                 <?php $items = get_theme_mod('pt_informations_col_1_grid_item', 1);
                                 for ($count = 1; $count <= $items; $count++) { ?>
                                     <li>
@@ -32,7 +32,7 @@
                         </div>
                         <div class="col">
                             <h4 class="h3-size"><?php echo get_theme_mod('pt_informations_col_2_title', "Формирование"); ?></h4>
-                            <ul class="list list-<?php echo !get_theme_mod('pt_informations_block_color', false) ? 'primary' : 'secondary'; ?>">
+                            <ul class="list list-<?php echo !get_theme_mod('pt_informations_block_color', true) ? 'primary' : 'secondary'; ?>">
                                 <?php $items = get_theme_mod('pt_informations_col_2_grid_item', 1);
                                 for ($count = 1; $count <= $items; $count++) { ?>
                                     <li>

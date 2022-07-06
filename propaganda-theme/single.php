@@ -10,11 +10,17 @@
                         $cat_name = $cat[0]->cat_name;
                         $cat_link = get_category_link($cat[0]->cat_ID);
                         ?>
-                        <a href="<?php echo $cat_link; ?>" class="category color-<?php echo get_theme_mod('pt_single_post_elements_color', true) ? 'primary' : 'secondary'; ?>"><?php echo $cat_name; ?></a>
+                        <?php if ($cat) : ?>
+                            <a href="<?php echo $cat_link; ?>" class="category color-<?php echo get_theme_mod('pt_single_post_elements_color', true) ? 'primary' : 'secondary'; ?>"><?php echo $cat_name; ?></a>
+                        <?php else : ?>
+                            <span class="category color-<?php echo get_theme_mod('pt_single_post_elements_color', true) ? 'primary' : 'secondary'; ?>"><?php echo get_post_type(); ?></span>
+                        <?php endif; ?>
                         <h1><?php the_title(); ?></h1>
-                        <div class="featured-image">
-                            <?php the_post_thumbnail(); ?>
-                        </div>
+                        <?php if (has_post_thumbnail()) : ?>
+                            <div class="featured-image">
+                                <?php the_post_thumbnail(); ?>
+                            </div>
+                        <?php endif; ?>
                         <?php get_template_part('templates/share', null, array(
                             'url' => get_permalink(),
                             'color' => get_theme_mod('pt_single_post_elements_color', true) ? 'primary' : 'secondary',

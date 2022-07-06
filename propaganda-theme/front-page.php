@@ -12,6 +12,8 @@
 
 <?php get_template_part('templates/home-clients'); ?>
 
+<?php get_template_part('templates/home-logos'); ?>
+
 <?php get_template_part('templates/home-testimonials'); ?>
 
 <?php get_template_part('templates/projects-blog', null, array(
