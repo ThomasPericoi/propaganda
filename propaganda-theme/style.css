@@ -2103,6 +2103,11 @@ div.outro {
     padding: var(--spacing-between) 0;
 }
 
+.outro .illustration {
+    max-width: 300px;
+    margin: 0 auto var(--spacing-inner-small) auto;
+}
+
 
 /* #Block - Categories Menu
 --------------------------------------------------------------- */

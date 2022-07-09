@@ -6,6 +6,10 @@ Icons
 --------------
 Icons made by Pixel Perfect (https://www.flaticon.com/authors/pixel-perfect) from www.flaticon.com (https://www.flaticon.com/).
 
+Illustrations
+--------------
+Illustrations made by Romain Ordonnaud.
+
 SVG patterns
 --------------
 SVG patterns created with the help of Pattern Monster (https://pattern.monster/).

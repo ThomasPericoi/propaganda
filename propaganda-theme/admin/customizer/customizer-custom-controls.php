@@ -157,7 +157,7 @@ class PT_Toggle_Color_Custom_Control extends WP_Customize_Control
     }
 }
 
-// Custom Background Patterns
+// Background Patterns
 $svg_patterns = array(
     'asanoha' => __('Asanoha', 'propaganda-customizer-instruction'),
     'batik-pattern' => __('Batik Pattern', 'propaganda-customizer-instruction'),
@@ -607,4 +607,10 @@ $icons = array(
     'zen-stones' => __('Zen Stones'),
     'zip-folder' => __('ZIP Folder'),
     'zippo' => __('Zippo'),
+);
+
+// Icons
+$illustrations = array(
+    // T
+    'tetris-cube' => __('Tetris Cube'),
 );

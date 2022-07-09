@@ -3090,6 +3090,47 @@ function theme_customize_register($wp_customize)
     // ------------ Outro Options ------------
     custom_heading('pt_archive_post_heading_outro', 'pt_archive_post', 'Outro Section Options', $wp_customize);
 
+    // Display Illustration
+    $wp_customize->add_setting(
+        'pt_archive_post_illustration_outro_displayed',
+        array(
+            'default' => false,
+            'sanitize_callback' => 'pt_sanitize_checkbox'
+        )
+    );
+
+    $wp_customize->add_control(new PT_Toggle_Basic_Custom_Control(
+        $wp_customize,
+        'pt_archive_post_illustration_outro_displayed',
+        array(
+            'section' => 'pt_archive_post',
+            'label' => __('Display an illustration.', 'propaganda-customizer-instruction'),
+        )
+    ));
+
+    // Illustration
+    $wp_customize->add_setting(
+        'pt_archive_post_illustration_outro',
+        array(
+            'default' => 'tetris-cube',
+            'sanitize_callback' => 'pt_sanitize_select'
+        )
+    );
+
+    $wp_customize->add_control(
+        'pt_archive_post_illustration_outro',
+        array(
+            'type' => 'select',
+            'section' => 'pt_archive_post',
+            'label' => __('Illustration', 'propaganda-customizer-instruction'),
+            'description' => __('Illustration displayed in the Outro section of the Post archive page.', 'propaganda-customizer-instruction'),
+            'choices' => $illustrations,
+        )
+    );
+
+    // Separator
+    separator('pt_archive_post_outro_separator_1', 'pt_archive_post', $wp_customize);
+
     // Title
     $wp_customize->add_setting('pt_archive_post_outro_title', array(
         'default' => 'ты должен это увидеть',
@@ -3108,7 +3149,7 @@ function theme_customize_register($wp_customize)
     );
 
     // Separator
-    separator('pt_archive_post_outro_separator', 'pt_archive_post', $wp_customize);
+    separator('pt_archive_post_outro_separator_2', 'pt_archive_post', $wp_customize);
 
     // Button Label
     $wp_customize->add_setting('pt_archive_post_button_label', array(
@@ -3200,6 +3241,47 @@ function theme_customize_register($wp_customize)
     // ------------ Outro Options ------------
     custom_heading('pt_single_post_heading_outro', 'pt_single_post', 'Outro Section Options', $wp_customize);
 
+    // Display Illustration
+    $wp_customize->add_setting(
+        'pt_single_post_illustration_outro_displayed',
+        array(
+            'default' => true,
+            'sanitize_callback' => 'pt_sanitize_checkbox'
+        )
+    );
+
+    $wp_customize->add_control(new PT_Toggle_Basic_Custom_Control(
+        $wp_customize,
+        'pt_single_post_illustration_outro_displayed',
+        array(
+            'section' => 'pt_single_post',
+            'label' => __('Display an illustration.', 'propaganda-customizer-instruction'),
+        )
+    ));
+
+    // Illustration
+    $wp_customize->add_setting(
+        'pt_single_post_illustration_outro',
+        array(
+            'default' => 'tetris-cube',
+            'sanitize_callback' => 'pt_sanitize_select'
+        )
+    );
+
+    $wp_customize->add_control(
+        'pt_single_post_illustration_outro',
+        array(
+            'type' => 'select',
+            'section' => 'pt_single_post',
+            'label' => __('Illustration', 'propaganda-customizer-instruction'),
+            'description' => __('Illustration displayed in the Outro section in Post articles.', 'propaganda-customizer-instruction'),
+            'choices' => $illustrations,
+        )
+    );
+
+    // Separator
+    separator('pt_single_post_outro_separator_1', 'pt_single_post', $wp_customize);
+
     // Title
     $wp_customize->add_setting('pt_single_post_outro_title', array(
         'default' => 'Вы должны увидеть это',
@@ -3218,7 +3300,7 @@ function theme_customize_register($wp_customize)
     );
 
     // Separator
-    separator('pt_single_post_outro_separator', 'pt_single_post', $wp_customize);
+    separator('pt_single_post_outro_separator_2', 'pt_single_post', $wp_customize);
 
     // Button Label
     $wp_customize->add_setting('pt_single_post_button_label', array(
@@ -3372,6 +3454,47 @@ function theme_customize_register($wp_customize)
     // ------------ Outro Options ------------
     custom_heading('pt_single_client_heading_outro', 'pt_single_client', 'Outro Section Options', $wp_customize);
 
+    // Display Illustration
+    $wp_customize->add_setting(
+        'pt_single_client_illustration_outro_displayed',
+        array(
+            'default' => true,
+            'sanitize_callback' => 'pt_sanitize_checkbox'
+        )
+    );
+
+    $wp_customize->add_control(new PT_Toggle_Basic_Custom_Control(
+        $wp_customize,
+        'pt_single_client_illustration_outro_displayed',
+        array(
+            'section' => 'pt_single_client',
+            'label' => __('Display an illustration.', 'propaganda-customizer-instruction'),
+        )
+    ));
+
+    // Illustration
+    $wp_customize->add_setting(
+        'pt_single_client_illustration_outro',
+        array(
+            'default' => 'tetris-cube',
+            'sanitize_callback' => 'pt_sanitize_select'
+        )
+    );
+
+    $wp_customize->add_control(
+        'pt_single_client_illustration_outro',
+        array(
+            'type' => 'select',
+            'section' => 'pt_single_client',
+            'label' => __('Illustration', 'propaganda-customizer-instruction'),
+            'description' => __('Illustration displayed in the Outro section in Client pages.', 'propaganda-customizer-instruction'),
+            'choices' => $illustrations,
+        )
+    );
+
+    // Separator
+    separator('pt_single_client_outro_separator_1', 'pt_single_client', $wp_customize);
+
     // Title
     $wp_customize->add_setting('pt_single_client_outro_title', array(
         'default' => 'Вы должны увидеть это',
@@ -3390,7 +3513,7 @@ function theme_customize_register($wp_customize)
     );
 
     // Separator
-    separator('pt_single_client_outro_separator', 'pt_single_client', $wp_customize);
+    separator('pt_single_client_outro_separator_2', 'pt_single_client', $wp_customize);
 
     // Button Label
     $wp_customize->add_setting('pt_single_client_button_label', array(
@@ -3500,6 +3623,47 @@ function theme_customize_register($wp_customize)
     // ------------ Outro Options ------------
     custom_heading('pt_archive_project_heading_outro', 'pt_archive_project', 'Outro Section Options', $wp_customize);
 
+    // Display Illustration
+    $wp_customize->add_setting(
+        'pt_archive_project_illustration_outro_displayed',
+        array(
+            'default' => false,
+            'sanitize_callback' => 'pt_sanitize_checkbox'
+        )
+    );
+
+    $wp_customize->add_control(new PT_Toggle_Basic_Custom_Control(
+        $wp_customize,
+        'pt_archive_project_illustration_outro_displayed',
+        array(
+            'section' => 'pt_archive_project',
+            'label' => __('Display an illustration.', 'propaganda-customizer-instruction'),
+        )
+    ));
+
+    // Illustration
+    $wp_customize->add_setting(
+        'pt_archive_project_illustration_outro',
+        array(
+            'default' => 'tetris-cube',
+            'sanitize_callback' => 'pt_sanitize_select'
+        )
+    );
+
+    $wp_customize->add_control(
+        'pt_archive_project_illustration_outro',
+        array(
+            'type' => 'select',
+            'section' => 'pt_archive_project',
+            'label' => __('Illustration', 'propaganda-customizer-instruction'),
+            'description' => __('Illustration displayed in the Outro section of the Project archive page.', 'propaganda-customizer-instruction'),
+            'choices' => $illustrations,
+        )
+    );
+
+    // Separator
+    separator('pt_archive_project_outro_separator_1', 'pt_archive_project', $wp_customize);
+
     // Title
     $wp_customize->add_setting('pt_archive_project_outro_title', array(
         'default' => 'Вы должны увидеть это',
@@ -3518,7 +3682,7 @@ function theme_customize_register($wp_customize)
     );
 
     // Separator
-    separator('pt_archive_project_outro_separator', 'pt_archive_project', $wp_customize);
+    separator('pt_archive_project_outro_separator_2', 'pt_archive_project', $wp_customize);
 
     // Button Label
     $wp_customize->add_setting('pt_archive_project_button_label', array(
@@ -3630,6 +3794,47 @@ function theme_customize_register($wp_customize)
     // ------------ Outro Options ------------
     custom_heading('pt_single_project_heading_outro', 'pt_single_project', 'Outro Section Options', $wp_customize);
 
+    // Display Illustration
+    $wp_customize->add_setting(
+        'pt_single_project_illustration_outro_displayed',
+        array(
+            'default' => true,
+            'sanitize_callback' => 'pt_sanitize_checkbox'
+        )
+    );
+
+    $wp_customize->add_control(new PT_Toggle_Basic_Custom_Control(
+        $wp_customize,
+        'pt_single_project_illustration_outro_displayed',
+        array(
+            'section' => 'pt_single_project',
+            'label' => __('Display an illustration.', 'propaganda-customizer-instruction'),
+        )
+    ));
+
+    // Illustration
+    $wp_customize->add_setting(
+        'pt_single_project_illustration_outro',
+        array(
+            'default' => 'tetris-cube',
+            'sanitize_callback' => 'pt_sanitize_select'
+        )
+    );
+
+    $wp_customize->add_control(
+        'pt_single_project_illustration_outro',
+        array(
+            'type' => 'select',
+            'section' => 'pt_single_project',
+            'label' => __('Illustration', 'propaganda-customizer-instruction'),
+            'description' => __('Illustration displayed in the Outro section in Project pages.', 'propaganda-customizer-instruction'),
+            'choices' => $illustrations,
+        )
+    );
+
+    // Separator
+    separator('pt_single_project_outro_separator_1', 'pt_single_project', $wp_customize);
+
     // Title
     $wp_customize->add_setting('pt_single_project_outro_title', array(
         'default' => 'Вы должны увидеть это',
@@ -3648,7 +3853,7 @@ function theme_customize_register($wp_customize)
     );
 
     // Separator
-    separator('pt_single_project_outro_separator', 'pt_single_project', $wp_customize);
+    separator('pt_single_project_outro_separator_2', 'pt_single_project', $wp_customize);
 
     // Button Label
     $wp_customize->add_setting('pt_single_project_button_label', array(

@@ -38,6 +38,7 @@
         </div>
         <div class="inner-outro">
             <?php get_template_part('templates/outro', null, array(
+                'illustration' => get_theme_mod('pt_single_project_illustration_outro_displayed', true) ? get_theme_mod('pt_single_project_illustration_outro', "tetris-cube") : false,
                 'title' => get_theme_mod('pt_single_project_outro_title', "Вы должны увидеть это"),
                 'color' => get_theme_mod('pt_single_project_elements_color', true) ? 'primary' : 'secondary',
                 'btn_link' => get_theme_mod('pt_single_project_button_link', "#"),
