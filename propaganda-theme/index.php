@@ -38,7 +38,7 @@
         <div class="inner-cta">
             <?php get_template_part('templates/outro', null, array(
                 'illustration' => get_theme_mod('pt_archive_post_illustration_outro_displayed', false) ? get_theme_mod('pt_archive_post_illustration_outro', "tetris-cube") : false,
-                'title' => get_theme_mod('pt_archive_post_title_outro', "ты должен это увидеть"),
+                'title' => get_theme_mod('pt_archive_post_outro_title', "ты должен это увидеть"),
                 'color' => get_theme_mod('pt_archive_post_general_color', false) ? 'primary' : 'secondary',
                 'btn_link' => get_theme_mod('pt_archive_post_button_link', "#"),
                 'btn_label' => get_theme_mod('pt_archive_post_button_label', "кликните сюда"),

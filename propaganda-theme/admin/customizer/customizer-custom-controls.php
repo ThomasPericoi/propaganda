@@ -611,6 +611,30 @@ $icons = array(
 
 // Icons
 $illustrations = array(
+    // B
+    'books' => __('Books'),
+    // C
+    'camera' => __('Camera'),
+    'cloud-data' => __('Cloud Data'),
+    'compass' => __('Compass'),
+    // D
+    'dashboard' => __('Dashboard'),
+    // G
+    'gift' => __('Gift'),
+    'growth' => __('Growth'),
+    // L
+    'lp-player' => __('LP Player'),
+    // M
+    'mountain-top' => __('Mountain Top'),
+    // P
+    'performances' => __('Performances'),
+    // S
+    'swiss-knife' => __('Swiss Knife'),
     // T
     'tetris-cube' => __('Tetris Cube'),
+    // V
+    'visual-editing' => __('Visual Editing'),
+    // W
+    'writing' => __('Writing'),
+    'wordpress' => __('Wordpress'),
 );
