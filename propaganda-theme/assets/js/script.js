@@ -19,7 +19,7 @@ $(document).ready(function () {
     console.log("This theme was made by Thomas Pericoi - https://thomaspericoi.com/");
 
     // General - Enable ASCII Printer on random
-    printAsciiRandom();
+    printRandomAscii();
 
     // General - Change page name on blur (not on mobile)
     if (!isMobile()) {
